@@ -14,8 +14,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Transform.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IGraphics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\P8Sprite.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Graphics\SpriteAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\IInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\PlayerInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Misc\util.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Physics\IPhysics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Physics\TopDownPhysics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)pico8-emulator\AudioUnit.cs" />

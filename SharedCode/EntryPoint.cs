@@ -103,9 +103,12 @@ namespace SharedCode
             pico8.LoadGame("resources.lua", new NLuaInterpreter());
 
             Physics.TopDownPhysics physics = new Physics.TopDownPhysics();
-            Graphics.P8TopDownSpr sprs = new Graphics.P8TopDownSpr(pico8.graphics, physics);
-            sprs.animLeft = new Graphics.SpriteAnimation(new Graphics.P8Sprite(pico8.graphics, 33), 4, 15);
-            mainCharacter = new GameObject(physics, sprs, null);
+            Graphics.P8TopDownAnimator sprs = new Graphics.P8TopDownAnimator(pico8.graphics, physics, Graphics.P8TopDownAnimator.AnimationMode.SIDES_ONLY);
+            sprs.RunLeft = new Graphics.SpriteAnimation(new Graphics.P8Sprite(pico8.graphics, 33, 1, 1, true, false), 4, 10);
+            sprs.IdleLeft = new Graphics.SpriteAnimation(new Graphics.P8Sprite(pico8.graphics, 32, 1, 1, true, false), 1, 15);
+            sprs.RunRight = new Graphics.SpriteAnimation(new Graphics.P8Sprite(pico8.graphics, 33, 1, 1, false, false), 4, 10);
+            sprs.IdleRight = new Graphics.SpriteAnimation(new Graphics.P8Sprite(pico8.graphics, 32, 1, 1, false, false), 1, 15);
+            mainCharacter = new GameObject(physics, sprs, new Input.PlayerInput(pico8));
         }
 
         /// <summary>
