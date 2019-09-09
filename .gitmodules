@@ -1,0 +1,3 @@
+[submodule "SharedCode/pico8-emulator"]
+	path = SharedCode/pico8-emulator
+	url = git@github.com:mmortatti/pico8-emulator.git

@@ -2,6 +2,7 @@
 
 namespace Windows
 {
+    using SharedCode;
 #if WINDOWS || LINUX
     /// <summary>
     /// The main class.
@@ -14,7 +15,7 @@ namespace Windows
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
+            using (var game = new Untitled1BitGame())
                 game.Run();
         }
     }

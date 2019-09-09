@@ -9,12 +9,39 @@
     <Import_RootNamespace>SharedCode</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Game1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EntryPoint.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\GameObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Transform.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\IGraphics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\P8Sprite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\SpriteAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\IInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Physics\IPhysics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Physics\TopDownPhysics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)pico8-emulator\AudioUnit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)pico8-emulator\Cartridge.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)pico8-emulator\GraphicsUnit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)pico8-emulator\Lua Interpreter\ILuaInterpreter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)pico8-emulator\Lua Interpreter\NLuaInterpreter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)pico8-emulator\MemoryUnit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)pico8-emulator\Pico8.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)pico8-emulator\util.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)window_management\Resolution.cs" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+    <None Include="$(MSBuildThisFileDirectory)pico8-emulator\.gitignore" />
+    <None Include="$(MSBuildThisFileDirectory)pico8-emulator\CODEOWNERS" />
+    <None Include="$(MSBuildThisFileDirectory)pico8-emulator\LICENSE" />
+    <None Include="$(MSBuildThisFileDirectory)pico8-emulator\README.md" />
+    <None Include="$(MSBuildThisFileDirectory)resources.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)window_management\" />
   </ItemGroup>
 </Project>
