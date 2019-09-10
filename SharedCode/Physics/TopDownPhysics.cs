@@ -45,16 +45,21 @@ namespace SharedCode.Physics
         }
 
         public Vector2 velocity { get; private set; }
-        public float speed { get; set; }
+        public float maxSpeed { get; set; }
         public float acceleration { get; set; }
         public float friction { get; set; }
 
-        public TopDownPhysics()
+        public TopDownPhysics(float maxSpeed, float accel)
         {
             velocity = new Vector2();
-            speed = 1;
-            acceleration = 0.5f;
-            friction = 0.5f;
+            this.maxSpeed = maxSpeed;
+            acceleration = accel;
+            friction = accel;
+        }
+
+        public TopDownPhysics(float maxSpeed, float accel, float friction) : this (maxSpeed, accel)
+        {
+            this.friction = friction;
         }
 
         public void Update(GameObject gameObject)
@@ -70,18 +75,48 @@ namespace SharedCode.Physics
                                        Math.Sign(movingDirection.Y) != Math.Sign(targetDirection.Y) ? friction : acceleration);
             velocity = new Vector2
             {
-                X = MathHelper.Lerp(velocity.X, speed * targetDirection.X, step.X),
-                Y = MathHelper.Lerp(velocity.Y, speed * targetDirection.Y, step.Y)
+                X = MathHelper.Lerp(velocity.X, maxSpeed * targetDirection.X, step.X),
+                Y = MathHelper.Lerp(velocity.Y, maxSpeed * targetDirection.Y, step.Y)
             };
 
             velocity = Misc.util.RoundIfNear(velocity, Vector2.Zero, 1e-2f);
 
             // Update moving direction.
-            movingDirection = velocity == Vector2.Zero ? Vector2.Zero : velocity;
+            movingDirection = new Vector2(velocity.X, velocity.Y);
             movingDirection.Normalize();
 
-            // Update position.
-            gameObject.transform.MoveTo(gameObject.transform.position + velocity);
+            // Don't try to move if velocity is zero.
+            if (velocity == Vector2.Zero)
+                return;
+
+            // Update position if there is no collision box.
+            if (gameObject.collisionBox == null)
+            {
+                gameObject.transform.MoveTo(gameObject.transform.position + velocity);
+                return;
+            }
+
+            Box col = gameObject.collisionBox;
+            Vector2 dest = gameObject.transform.position + velocity;
+            Vector2 amount = new Vector2(velocity.X, velocity.Y);
+            while (true)
+            {
+                if (amount == Vector2.Zero)
+                    break;
+
+                Vector2 moveStep = new Vector2(amount.X % 8, amount.Y % 8);
+                amount -= moveStep;
+                Vector2 nextPos = gameObject.transform.position + moveStep;
+
+                col.position = nextPos;
+                if (col.CheckCollision().Count != 0)
+                {
+                    amount = Vector2.Zero;
+                    velocity = Vector2.Zero;
+                }
+
+                gameObject.transform.MoveTo(col.position);
+            }
         }
     }
 }

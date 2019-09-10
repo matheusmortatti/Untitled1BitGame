@@ -264,16 +264,6 @@ namespace SharedCode.Graphics
             _animations[(int)GetRealValue(currentlyPlaying)]?.GetCurrentSprite()?.Draw(gameObject);
         }
 
-        public bool IsRunningUpOrDown(AnimationIndex index)
-        {
-            return index == AnimationIndex.RUN_DOWN || index == AnimationIndex.RUN_UP;
-        }
-
-        public bool IsIdleUpOrDown(AnimationIndex index)
-        {
-            return index == AnimationIndex.IDLE_DOWN || index == AnimationIndex.IDLE_UP;
-        }
-
         public bool IsRunning(AnimationIndex index)
         {
             return (int)index < 4;

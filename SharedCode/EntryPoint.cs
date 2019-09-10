@@ -44,7 +44,7 @@ namespace SharedCode
         internal DynamicSoundEffectInstance soundEffectInstance;
         internal byte[] audioBuffer;
 
-        GameObject mainCharacter;
+        GameObject mainCharacter, otherCharacter;
 
         public Untitled1BitGame()
         {
@@ -101,14 +101,16 @@ namespace SharedCode
             soundEffectInstance.Play();
 
             pico8.LoadGame("resources.lua", new NLuaInterpreter());
+            Debug.SetPico8(pico8);
 
-            Physics.TopDownPhysics physics = new Physics.TopDownPhysics();
+            Physics.TopDownPhysics physics = new Physics.TopDownPhysics(1, 0.5f);
             Graphics.P8TopDownAnimator sprs = new Graphics.P8TopDownAnimator(pico8.graphics, physics, Graphics.P8TopDownAnimator.AnimationMode.SIDES_ONLY);
             sprs.RunLeft = new Graphics.SpriteAnimation(new Graphics.P8Sprite(pico8.graphics, 33, 1, 1, true, false), 4, 10);
             sprs.IdleLeft = new Graphics.SpriteAnimation(new Graphics.P8Sprite(pico8.graphics, 32, 1, 1, true, false), 1, 15);
             sprs.RunRight = new Graphics.SpriteAnimation(new Graphics.P8Sprite(pico8.graphics, 33, 1, 1, false, false), 4, 10);
             sprs.IdleRight = new Graphics.SpriteAnimation(new Graphics.P8Sprite(pico8.graphics, 32, 1, 1, false, false), 1, 15);
             mainCharacter = new GameObject(physics, sprs, new Input.PlayerInput(pico8));
+            otherCharacter = new GameObject(new Physics.TopDownPhysics(0, 0), new Graphics.P8Sprite(pico8.graphics, 1), null, new Vector2(48, 48));
         }
 
         /// <summary>
@@ -129,6 +131,7 @@ namespace SharedCode
 #endif
 
             mainCharacter.Update(gameTime);
+            otherCharacter.Update(gameTime);
             pico8.Update();
 
             while (soundEffectInstance.PendingBufferCount < 3)
@@ -176,6 +179,12 @@ namespace SharedCode
             spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp, null, rasterizerState, null, Resolution.getTransformationMatrix());
             pico8.memory.Cls();
             mainCharacter.Draw();
+            otherCharacter.Draw();
+            Debug.DrawLine(mainCharacter.collisionBox.middle.X,
+                           mainCharacter.collisionBox.middle.Y,
+                           otherCharacter.collisionBox.middle.X,
+                           otherCharacter.collisionBox.middle.Y);
+            pico8.Print($"distVec: {Vector2.Subtract(mainCharacter.collisionBox.position, otherCharacter.collisionBox.position).Length()}", 0, 0, 9);
             pico8.Draw();
             screenTexture.SetData(screenColorData);
             spriteBatch.Draw(screenTexture, new Rectangle(0, 0, 128, 128), Color.White);
