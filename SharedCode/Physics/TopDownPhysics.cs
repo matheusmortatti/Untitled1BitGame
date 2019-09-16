@@ -49,6 +49,8 @@ namespace SharedCode.Physics
         public float acceleration { get; set; }
         public float friction { get; set; }
 
+        private const int MOVE_STEP = 8;
+
         public TopDownPhysics(float maxSpeed, float accel)
         {
             velocity = new Vector2();
@@ -62,8 +64,9 @@ namespace SharedCode.Physics
             this.friction = friction;
         }
 
-        public void Update(GameObject gameObject)
+        public List<GameObject> Update(GameObject gameObject, GameTime gameTime)
         {
+            List<GameObject> collidedWith = new List<GameObject>();
             Vector2 targetDirection = new Vector2(gameObject.transform.direction.X, gameObject.transform.direction.Y);
 
             if (targetDirection != Vector2.Zero)
@@ -75,8 +78,8 @@ namespace SharedCode.Physics
                                        Math.Sign(movingDirection.Y) != Math.Sign(targetDirection.Y) ? friction : acceleration);
             velocity = new Vector2
             {
-                X = MathHelper.Lerp(velocity.X, maxSpeed * targetDirection.X, step.X),
-                Y = MathHelper.Lerp(velocity.Y, maxSpeed * targetDirection.Y, step.Y)
+                X = Misc.util.Lerp(velocity.X, maxSpeed * targetDirection.X, step.X),
+                Y = Misc.util.Lerp(velocity.Y, maxSpeed * targetDirection.Y, step.Y)
             };
 
             velocity = Misc.util.RoundIfNear(velocity, Vector2.Zero, 1e-2f);
@@ -87,36 +90,52 @@ namespace SharedCode.Physics
 
             // Don't try to move if velocity is zero.
             if (velocity == Vector2.Zero)
-                return;
+                return collidedWith;
 
             // Update position if there is no collision box.
             if (gameObject.collisionBox == null)
             {
                 gameObject.transform.MoveTo(gameObject.transform.position + velocity);
-                return;
+                return collidedWith;
             }
 
             Box col = gameObject.collisionBox;
-            Vector2 dest = gameObject.transform.position + velocity;
-            Vector2 amount = new Vector2(velocity.X, velocity.Y);
+            Vector2 amount = new Vector2(velocity.X, velocity.Y) * (float)gameTime.ElapsedGameTime.TotalSeconds;
             while (true)
             {
                 if (amount == Vector2.Zero)
                     break;
 
-                Vector2 moveStep = new Vector2(amount.X % 8, amount.Y % 8);
+                // Move the collider by steps so it doesn't go through objects if
+                // velocity is too high.
+                Vector2 moveStep = new Vector2(amount.X > MOVE_STEP ? MOVE_STEP : amount.X, amount.Y > MOVE_STEP ? MOVE_STEP : amount.Y);
                 amount -= moveStep;
                 Vector2 nextPos = gameObject.transform.position + moveStep;
 
+                // Move to the desired position, check collision and adjust the position
+                // with the separation vector that was resulted.
+                Vector2 sepv;
+
                 col.position = nextPos;
-                if (col.CheckCollision().Count != 0)
+                List<Box> others = col.CheckCollision(out sepv);
+
+                foreach(var box in others)
                 {
-                    amount = Vector2.Zero;
-                    velocity = Vector2.Zero;
+                    collidedWith.Add(box.gameObject);
                 }
 
-                gameObject.transform.MoveTo(col.position);
+                // Zero velocity components if the entity has collided in that
+                // component's direction.
+                Vector2 adjustedVelocity = new Vector2(velocity.X, velocity.Y);
+                if (sepv.X != 0) { adjustedVelocity.X = 0; amount.X = 0; }
+                if (sepv.Y != 0) { adjustedVelocity.Y = 0; amount.Y = 0; }
+                velocity = adjustedVelocity;
             }
+
+            // Move game object to collider's new position.
+            gameObject.transform.MoveTo(col.position);
+
+            return collidedWith;
         }
     }
 }

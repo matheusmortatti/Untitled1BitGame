@@ -24,5 +24,11 @@ namespace SharedCode.Misc
             return new Vector2(NearlyEqual(a.X, b.X, epsilon) ? b.X : a.X,
                                NearlyEqual(a.Y, b.Y, epsilon) ? b.Y : a.Y);
         }
+
+        public static float Lerp(float val, float target, float step)
+        {
+            step = Math.Abs(step);
+            return val < target ? Math.Min(val + step, target) : Math.Max(val - step, target);
+        }
     }
 }

@@ -17,8 +17,11 @@ namespace SharedCode.Physics
             }
             set
             {
-                _position = value;
-                UpdateBucket();
+                if (value != position)
+                {
+                    _position = value;
+                    UpdateBucket();
+                }
             }
         }
 
@@ -75,20 +78,37 @@ namespace SharedCode.Physics
             }
         }
 
+        public Vector2[] corners
+        {
+            get
+            {
+                return new Vector2[]
+                    {
+                        new Vector2(position.X, position.Y),
+                        new Vector2(position.X + size.X, position.Y),
+                        new Vector2(position.X, position.Y + size.Y),
+                        new Vector2(position.X + size.X, position.Y + size.Y),
+                    };
+            }
+        }
+
         public bool isTrigger { get; set; }
 
         public static int gridSize { get; private set; } = 32;
 
         private static Dictionary<Vector2, List<Box>> buckets = new Dictionary<Vector2, List<Box>>();
-        private Vector2 bucketKey;
+        private List<Vector2> bucketKeys;
+
+        // Reference to the GameObject that holds this box;
+        public GameObject gameObject { get; set; }
 
         public Box(Vector2 position, Vector2 size)
         {
+            bucketKeys = new List<Vector2>();
+
             this.position = position;
             this.size = size;
             this.isTrigger = false;
-
-            AddToBucket();
         }
 
         public Box(Vector2 position, Vector2 size, bool isTrigger) : this(position, size)
@@ -98,7 +118,13 @@ namespace SharedCode.Physics
 
         ~Box()
         {
-            RemoveFromBucket();
+            CleanUp();
+        }
+
+        public void CleanUp()
+        {
+            foreach (var bk in bucketKeys)
+                RemoveFromBucket(bk);
         }
 
         public bool Collided(Box other)
@@ -112,24 +138,54 @@ namespace SharedCode.Physics
         public List<Box> CheckCollision()
         {
             List<Box> list = new List<Box>();
-            foreach (var o in buckets[this.bucketKey])
+            foreach (var bk in bucketKeys)
             {
-                if (o != this && Collided(o))
-                    list.Add(o);
-            }
-
-            if (!isTrigger)
-            {
-                foreach (var o in list)
+                foreach (var o in buckets[bk])
                 {
-                    MoveOut(o);
+                    if (o != this && !list.Contains(o) && Collided(o))
+                        list.Add(o);
                 }
             }
 
             return list;
         }
 
-        public void MoveOut(Box other)
+        public List<Box> CheckCollision(out Vector2 separationVector)
+        {
+            List<Box> list = CheckCollision();
+            Vector2 sepv = Vector2.Zero;
+
+            foreach (var o in list)
+            {
+                if (o.isTrigger)
+                    continue;
+
+                sepv += MoveOut(o);
+            }
+
+            // Tile Collision
+            Vector2[] possibleTileCollisions = corners;
+            Box tileBox = new Box(Vector2.Zero, new Vector2(8, 8));
+            foreach(Vector2 p in possibleTileCollisions)
+            {
+                tileBox.position = new Vector2((int)Math.Floor(p.X / 8) * 8, (int)Math.Floor(p.Y / 8) * 8);
+                byte val = GameObjectManager.pico8.memory.Mget((int)Math.Floor(tileBox.position.X / 8), (int)Math.Floor(tileBox.position.Y / 8));
+                byte flag = (byte)GameObjectManager.pico8.memory.Fget(val);
+
+                if ((flag & 0b00000100) != 0)
+                {
+                    sepv += MoveOut(tileBox);
+                }
+            }
+
+            tileBox.CleanUp();
+
+            separationVector = sepv;
+
+            return list;
+        }
+
+        public Vector2 MoveOut(Box other)
         {
             Vector2[] candidates = { new Vector2(other.left - this.right, 0),
                                      new Vector2(other.right - this.left, 0),
@@ -147,44 +203,67 @@ namespace SharedCode.Physics
                 }
             }
 
-            this.position += mv;
+            position += mv;
+
+            return mv;
         }
 
         private void UpdateBucket()
         {
-            Vector2 newBucketKey = new Vector2((float)Math.Floor(position.X / gridSize), (float)Math.Floor(position.Y / gridSize));
-            if (newBucketKey == bucketKey)
-                return;
+            List<Vector2> newBucketKeys = new List<Vector2>();
+            Vector2[] bkCandidates = new Vector2[]
+            {
+                new Vector2((float)Math.Floor(position.X / gridSize), (float)Math.Floor(position.Y / gridSize)),
+                new Vector2((float)Math.Floor((position.X + size.X) / gridSize), (float)Math.Floor(position.Y / gridSize)),
+                new Vector2((float)Math.Floor(position.X / gridSize), (float)Math.Floor((position.Y + size.Y) / gridSize)),
+                new Vector2((float)Math.Floor((position.X + size.X) / gridSize), (float)Math.Floor((position.Y + size.Y) / gridSize)),
+            };
+
+            foreach(var c in bkCandidates)
+            {
+                if (!newBucketKeys.Contains(c))
+                    newBucketKeys.Add(c);
+            }
+
 
             // Remove instance from old key, update key and add it to new key.
-            RemoveFromBucket();
-            bucketKey = newBucketKey;
-            AddToBucket();
-        }
-
-        private void AddToBucket()
-        {   
-            if (!buckets.ContainsKey(this.bucketKey))
+            foreach (var bk in bucketKeys)
             {
-                buckets.Add(this.bucketKey, new List<Box>());
+                RemoveFromBucket(bk);
             }
 
-            if (!buckets[this.bucketKey].Contains(this))
-                buckets[this.bucketKey].Add(this);
+            bucketKeys = newBucketKeys;
+
+            foreach (var bk in bucketKeys)
+            {
+                AddToBucket(bk);
+            }
         }
 
-        private void RemoveFromBucket()
+        private void AddToBucket(Vector2 bucketKey)
         {
-            if (!buckets.ContainsKey(this.bucketKey))
+            if (!buckets.ContainsKey(bucketKey))
             {
-                return;
+                buckets.Add(bucketKey, new List<Box>());
             }
 
-            buckets[this.bucketKey].Remove(this);
+            if (!buckets[bucketKey].Contains(this))
+                buckets[bucketKey].Add(this);
+        }
 
-            if (buckets[this.bucketKey].Count == 0)
+        private void RemoveFromBucket(Vector2 bucketKey)
+        {
+            if (!buckets.ContainsKey(bucketKey))
+                return;
+
+            buckets[bucketKey]?.Remove(this);
+
+            if (!buckets.ContainsKey(bucketKey))
+                return;
+
+            if (buckets[bucketKey].Count == 0)
             {
-                buckets.Remove(this.bucketKey);
+                buckets.Remove(bucketKey);
             }
         }
     }

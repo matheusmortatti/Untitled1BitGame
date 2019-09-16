@@ -44,8 +44,6 @@ namespace SharedCode
         internal DynamicSoundEffectInstance soundEffectInstance;
         internal byte[] audioBuffer;
 
-        GameObject mainCharacter, otherCharacter;
-
         public Untitled1BitGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -57,7 +55,7 @@ namespace SharedCode
             Resolution.SetResolution(600, 600, false);
 
             this.IsFixedTimeStep = true;//false;
-            this.TargetElapsedTime = TimeSpan.FromSeconds(1d / 30d); //60);
+            this.TargetElapsedTime = TimeSpan.FromSeconds(1d / 60d); //60);
         }
 
         /// <summary>
@@ -95,22 +93,12 @@ namespace SharedCode
             pico8.AddOButtonDownFunction(() => { return Keyboard.GetState().IsKeyDown(Keys.Z); }, 0);
             pico8.AddXButtonDownFunction(() => { return Keyboard.GetState().IsKeyDown(Keys.X); }, 0);
 
+            GameManager.InitGameState(pico8);
+
             soundEffectInstance = new DynamicSoundEffectInstance(pico8.audio.sampleRate, AudioChannels.Mono);
             audioBuffer = new byte[pico8.audio.samplesPerBuffer * 2];
 
             soundEffectInstance.Play();
-
-            pico8.LoadGame("resources.lua", new NLuaInterpreter());
-            Debug.SetPico8(pico8);
-
-            Physics.TopDownPhysics physics = new Physics.TopDownPhysics(1, 0.5f);
-            Graphics.P8TopDownAnimator sprs = new Graphics.P8TopDownAnimator(pico8.graphics, physics, Graphics.P8TopDownAnimator.AnimationMode.SIDES_ONLY);
-            sprs.RunLeft = new Graphics.SpriteAnimation(new Graphics.P8Sprite(pico8.graphics, 33, 1, 1, true, false), 4, 10);
-            sprs.IdleLeft = new Graphics.SpriteAnimation(new Graphics.P8Sprite(pico8.graphics, 32, 1, 1, true, false), 1, 15);
-            sprs.RunRight = new Graphics.SpriteAnimation(new Graphics.P8Sprite(pico8.graphics, 33, 1, 1, false, false), 4, 10);
-            sprs.IdleRight = new Graphics.SpriteAnimation(new Graphics.P8Sprite(pico8.graphics, 32, 1, 1, false, false), 1, 15);
-            mainCharacter = new GameObject(physics, sprs, new Input.PlayerInput(pico8));
-            otherCharacter = new GameObject(new Physics.TopDownPhysics(0, 0), new Graphics.P8Sprite(pico8.graphics, 1), null, new Vector2(48, 48));
         }
 
         /// <summary>
@@ -128,10 +116,14 @@ namespace SharedCode
             {
                 Exit();
             }
+
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+            {
+                Debug.debugMode = !Debug.debugMode;
+            }
 #endif
 
-            mainCharacter.Update(gameTime);
-            otherCharacter.Update(gameTime);
+            GameManager.Update(gameTime);
             pico8.Update();
 
             while (soundEffectInstance.PendingBufferCount < 3)
@@ -177,15 +169,9 @@ namespace SharedCode
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp, null, rasterizerState, null, Resolution.getTransformationMatrix());
-            pico8.memory.Cls();
-            mainCharacter.Draw();
-            otherCharacter.Draw();
-            Debug.DrawLine(mainCharacter.collisionBox.middle.X,
-                           mainCharacter.collisionBox.middle.Y,
-                           otherCharacter.collisionBox.middle.X,
-                           otherCharacter.collisionBox.middle.Y);
-            pico8.Print($"distVec: {Vector2.Subtract(mainCharacter.collisionBox.position, otherCharacter.collisionBox.position).Length()}", 0, 0, 9);
+            GameManager.Draw();
             pico8.Draw();
+            pico8.memory.Cls();
             screenTexture.SetData(screenColorData);
             spriteBatch.Draw(screenTexture, new Rectangle(0, 0, 128, 128), Color.White);
             spriteBatch.End();

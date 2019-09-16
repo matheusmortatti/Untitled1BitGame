@@ -27,3 +27,5 @@ C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\obj\x86\Debug\Windows.cspr
 C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\obj\x86\Debug\Windows.exe
 C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\obj\x86\Debug\Windows.pdb
 C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Debug\resources.lua
+C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Debug\1bitSheet.png
+C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Debug\untitled1bitgame.p8

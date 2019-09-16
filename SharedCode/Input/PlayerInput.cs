@@ -10,6 +10,7 @@ namespace SharedCode.Input
     class PlayerInput : IInput
     {
         public Pico8<Color> pico8 { get; private set; }
+        private Player _player;
         public PlayerInput(in Pico8<Color> pico8)
         {
             this.pico8 = pico8;

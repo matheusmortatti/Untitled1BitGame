@@ -11,8 +11,14 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Debug\Debug.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EntryPoint.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\GameObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\GameObjectFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\GameObjectManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Map.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Player.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Transform.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\IGraphics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\P8Sprite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\IInput.cs" />
@@ -29,6 +35,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)pico8-emulator\MemoryUnit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)pico8-emulator\Pico8.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)pico8-emulator\util.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Misc\StateMachine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)window_management\Resolution.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -43,8 +50,16 @@
     <None Include="$(MSBuildThisFileDirectory)resources.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="$(MSBuildThisFileDirectory)untitled1bitgame.p8">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)window_management\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)1bitSheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

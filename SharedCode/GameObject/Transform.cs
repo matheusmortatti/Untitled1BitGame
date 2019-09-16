@@ -7,7 +7,7 @@ namespace SharedCode
 {
     public class Transform
     {
-        public Vector2 position { get; private set; }
+        public Vector2 position { get; set; }
         public Vector2 direction { get; set; }
 
         public Transform(Vector2 position)

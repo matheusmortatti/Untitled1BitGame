@@ -24,25 +24,21 @@ namespace SharedCode.Graphics
         public bool flipX { get; set; }
         public bool flipY { get; set; }
 
-        public GraphicsUnit<Color> p8Graphics;
-
-
-        public P8Sprite(in GraphicsUnit<Color> p8Graphics, int spriteIndex)
+        public P8Sprite(int spriteIndex)
         {
-            this.p8Graphics = p8Graphics;
             this.index = spriteIndex;
 
             width = 1;
             height = 1;
         }
 
-        public P8Sprite(in GraphicsUnit<Color> p8Graphics, int spriteIndex, int width, int height) : this(p8Graphics, spriteIndex)
+        public P8Sprite(int spriteIndex, int width, int height) : this( spriteIndex)
         {
             this.width = width;
             this.height = height;
         }
 
-        public P8Sprite(in GraphicsUnit<Color> p8Graphics, int spriteIndex, int width, int height, bool flipX, bool flipY) : this(p8Graphics, spriteIndex, width, height)
+        public P8Sprite(int spriteIndex, int width, int height, bool flipX, bool flipY) : this(spriteIndex, width, height)
         {
             this.flipX = flipX;
             this.flipY = flipY;
@@ -50,10 +46,10 @@ namespace SharedCode.Graphics
 
         public void Draw(GameObject gameObject)
         {
-            p8Graphics.Spr(index, (int)gameObject.transform.position.X, (int)gameObject.transform.position.Y, width, height, flipX, flipY);
+            GameManager.pico8.graphics.Spr(index, (int)gameObject.transform.position.X, (int)gameObject.transform.position.Y, width, height, flipX, flipY);
         }
 
-        public void Update(GameObject gameObject)
+        public void Update(GameObject gameObject, GameTime gameTime)
         {
             
         }
@@ -207,7 +203,7 @@ namespace SharedCode.Graphics
             _previousSide = -1;
         }
 
-        public void Update(GameObject gameObject)
+        public void Update(GameObject gameObject, GameTime gameTime)
         {
             AnimationIndex nextIndex = currentlyPlaying;
 
@@ -256,7 +252,7 @@ namespace SharedCode.Graphics
                 _animations[(int)GetRealValue(currentlyPlaying)]?.Reset();
             }
 
-            _animations[(int)GetRealValue(currentlyPlaying)]?.Update();
+            _animations[(int)GetRealValue(currentlyPlaying)]?.Update(gameTime);
         }
 
         public void Draw(GameObject gameObject)
@@ -289,9 +285,9 @@ namespace SharedCode.Graphics
     {
         public List<P8Sprite> spriteList { get; set; }
         public int currentIndex { get; private set; }
-        public int animationFrameLength { get; set; }
+        public double animationFrameLength { get; set; }
 
-        private int ticks;
+        private double ticks;
         public bool isPlaying;
 
         public SpriteAnimation(List<P8Sprite> spriteList, int animationFrameLength)
@@ -304,19 +300,19 @@ namespace SharedCode.Graphics
             this.isPlaying = true;
         }
 
-        public SpriteAnimation(P8Sprite baseSprite, int spriteSequenceLength, int animationFrameLength)
+        public SpriteAnimation(P8Sprite baseSprite, int spriteSequenceLength, float animationFrameLength)
         {
             spriteList = new List<P8Sprite>();
             for (int i = 0; i < spriteSequenceLength; i += 1)
             {
-                spriteList.Add(new P8Sprite(baseSprite.p8Graphics, baseSprite.index + i, baseSprite.width, baseSprite.height, baseSprite.flipX, baseSprite.flipY));
+                spriteList.Add(new P8Sprite(baseSprite.index + i, baseSprite.width, baseSprite.height, baseSprite.flipX, baseSprite.flipY));
             }
 
             this.animationFrameLength = animationFrameLength;
             this.isPlaying = true;
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             if (!isPlaying)
                 return;
@@ -329,7 +325,7 @@ namespace SharedCode.Graphics
                 ticks = 0;
             }
 
-            ticks += 1;
+            ticks += gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public void Reset()

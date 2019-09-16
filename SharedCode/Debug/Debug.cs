@@ -9,6 +9,7 @@ namespace SharedCode
     public static class Debug
     {
         private static Pico8<Color> _pico8;
+        public static bool debugMode = false;
 
         public static void SetPico8(Pico8<Color> pico8)
         {
