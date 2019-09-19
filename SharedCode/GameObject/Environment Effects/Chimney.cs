@@ -13,7 +13,7 @@ namespace SharedCode
 {
     public class Chimney : GameObject
     {
-        public Chimney(Vector2 position) : base(null, null, null, position)
+        public Chimney(Vector2 position) : base(position)
         {
             //
             // Create object that will instantiate smoke particles every 30 milliseconds.

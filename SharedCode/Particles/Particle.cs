@@ -15,7 +15,7 @@ namespace SharedCode.Particles
         public double lifetime { get; private set; }
         public double timePassed;
 
-        public Particle(APhysics physics, AGraphics graphics, Vector2 position, double lifetime) : base(physics, graphics, null, position, null)
+        public Particle(APhysics physics, AGraphics graphics, Vector2 position, double lifetime) : base(position, physics, graphics)
         {
             this.lifetime = lifetime;
             // Only set task if lifetime is greater than zero. That way we can set lifetime to be

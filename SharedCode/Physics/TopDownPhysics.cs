@@ -52,8 +52,6 @@ namespace SharedCode.Physics
         public float acceleration { get; set; }
         public float friction { get; set; }
 
-        public List<GameObject> collidedWith = new List<GameObject>();
-
         private const int MOVE_STEP = 8;
 
         public TopDownPhysics(float maxSpeed, float accel)
@@ -62,6 +60,8 @@ namespace SharedCode.Physics
             this.maxSpeed = maxSpeed;
             acceleration = accel;
             friction = accel == 0 ? 0.5f : accel;
+
+            collidedWith = new List<GameObject>();
         }
 
         public TopDownPhysics(float maxSpeed, float accel, float friction) : this (maxSpeed, accel)

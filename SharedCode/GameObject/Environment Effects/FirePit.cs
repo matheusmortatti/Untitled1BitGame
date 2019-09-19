@@ -13,9 +13,8 @@ namespace SharedCode
     public class FirePit : GameObject
     {
         int particleNumber;
-        public FirePit(Vector2 position) : base(null, null, null)
+        public FirePit(Vector2 position) : base(position)
         {
-            transform.position = position;
             particleNumber = 1;
 
             var random = new Random();

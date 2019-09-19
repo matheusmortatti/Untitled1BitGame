@@ -39,19 +39,25 @@ namespace SharedCode
 
         void WalkingInit(PlayerStates previous)
         {
-            _player._graphics = walkingGraphics;
-            _player._physics = walkingPhysics;
-            _player._input = walkingInput;
+            _player.RemoveComponent<AGraphics>();
+            _player.RemoveComponent<APhysics>();
+            _player.RemoveComponent<AInput>();
+
+            _player.AddComponent(walkingGraphics);
+            _player.AddComponent(walkingPhysics);
+            _player.AddComponent(walkingInput);
         }
         void WalkingState(GameTime gameTime) { }
 
         void AttackingInit(PlayerStates previous)
         {
-            _player._input = null;
-            _player.transform.direction = Vector2.Zero;
-            ((TopDownPhysics)_player._physics).velocity = Vector2.Zero;
+            _player.RemoveComponent<AInput>();
 
-            Vector2 facingDir = ((TopDownPhysics)_player._physics).facingDirection;
+            _player.transform.direction = Vector2.Zero;
+            var physics = _player.GetComponent<TopDownPhysics>();
+            physics.velocity = Vector2.Zero;
+
+            Vector2 facingDir = physics.facingDirection;
             if (facingDir.X != 0) facingDir.Y = 0;
             if (facingDir != Vector2.Zero) facingDir.Normalize();
 
@@ -74,7 +80,7 @@ namespace SharedCode
         public Sword swordInstance { get; set; }
         public PlayerStateMachine stateMachine { get; private set; }
         public Player(Vector2 position) 
-            : base(null, null, null, position, new Box(position, new Vector2(8, 4), false, new Vector2(0, 4)))
+            : base(position, new Box(position, new Vector2(8, 4), false, new Vector2(0, 4)))
         {
             tags.Add("player");
             swordInstance = null;

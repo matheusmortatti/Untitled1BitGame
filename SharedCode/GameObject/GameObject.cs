@@ -11,9 +11,6 @@ namespace SharedCode
     public class GameObject
     {
         private List<Component> components = new List<Component>();
-        public APhysics _physics { get; set; }
-        public AGraphics _graphics { get; set; }
-        public AInput _input { get; set; }
 
         public float depth { get; protected set; }
         public Transform transform { get; protected set; }
@@ -46,29 +43,20 @@ namespace SharedCode
         public bool fadeOut;
         private int fillp;
 
-        public GameObject(APhysics physics, AGraphics graphics, AInput input)
+        public GameObject(Vector2 position, params Component[] comps)
         {
-            _physics = physics;
-            _graphics = graphics;
-            _input = input;
+            components.AddRange(comps);
 
-            AddComponent(physics);
-
-            transform = new Transform(Vector2.Zero);
+            transform = new Transform(position);
             collisionBox = null;
             collidedLast = new List<GameObject>();
             tags = new List<string>();
-        }
 
-        public GameObject(APhysics physics, AGraphics graphics, AInput input, Vector2 position) 
-            : this(physics, graphics, input)
-        {
-            transform = new Transform(position);
             depth = position.Y;
         }
 
-        public GameObject(APhysics physics, AGraphics graphics, AInput input, Vector2 position, Box collisionBox) 
-            : this(physics, graphics, input, position)
+        public GameObject(Vector2 position, Box collisionBox, params Component[] comps) 
+            : this(position, comps)
         {
             this.collisionBox = collisionBox;
             if (collisionBox != null) this.collisionBox.position = transform.position;
@@ -78,11 +66,11 @@ namespace SharedCode
         {
             foreach(var c in components)
             {
-                if (c.GetType() is T)
+                if (c is T)
                 {
                     try
                     {
-                        return (T)Convert.ChangeType(c, typeof(T));
+                        return (T)((object)c);
                     }
                     catch (InvalidCastException)
                     {
@@ -100,12 +88,42 @@ namespace SharedCode
             return component;
         }
 
+        public T RemoveComponent<T>()
+        {
+            for (int i = components.Count-1; i >= 0; i--)
+            {
+                if (components[i] is T)
+                {
+                    var comp = components[i];
+                    components.RemoveAt(i);
+                    try
+                    {
+                        return (T)((object)comp);
+                    }
+                    catch (InvalidCastException)
+                    {
+                        return default;
+                    }
+                }
+            }
+
+            return default;
+        }
+
+        public Component RemoveComponent(Component component)
+        {
+            components.Remove(component);
+            return component;
+        }
+
         public virtual void Update(GameTime gameTime)
         {
-            _input?.Update(this, gameTime);
-            _graphics?.Update(this, gameTime);
-            _physics?.Update(this, gameTime);
-            List<GameObject> collidedWith = ((TopDownPhysics)_physics)?.collidedWith;
+            for (int i = components.Count - 1; i >= 0; --i)
+            {
+                components[i].Update(this, gameTime);
+            }
+
+            List<GameObject> collidedWith = GetComponent<APhysics>()?.collidedWith;
 
             if (collidedWith != null)
             {
@@ -151,7 +169,7 @@ namespace SharedCode
         public virtual void Draw()
         {
             GameManager.pico8.memory.Fillp(fillp);
-            _graphics?.Draw(this);
+            GetComponent<AGraphics>()?.Draw(this);
             GameManager.pico8.memory.Fillp();
 
             if (Debug.debugMode)

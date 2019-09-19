@@ -31,7 +31,7 @@ namespace SharedCode
                             )
                         );
                 default:
-                    return GameObjectManager.AddObject(new GameObject(null, new Graphics.P8Sprite(spriteValue), null, position));
+                    return GameObjectManager.AddObject(new GameObject(position, new Graphics.P8Sprite(spriteValue)));
             }
         }
     }

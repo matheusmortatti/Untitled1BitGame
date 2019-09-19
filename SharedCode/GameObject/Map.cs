@@ -9,7 +9,7 @@ namespace SharedCode
     public class Map : GameObject
     {
         private Vector2 currentIndex;
-        public Map(Vector2 position) : base(null, null, null, position)
+        public Map(Vector2 position) : base(position)
         {
             currentIndex = new Vector2((float)Math.Floor(position.X / 128),
                                             (float)Math.Floor(position.Y / 128));

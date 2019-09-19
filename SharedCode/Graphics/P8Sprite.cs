@@ -204,7 +204,8 @@ namespace SharedCode.Graphics
         {
             AnimationIndex nextIndex = currentlyPlaying;
 
-            Vector2 facingDir = new Vector2(_physics.facingDirection.X, _physics.facingDirection.Y);
+            var physics = gameObject.GetComponent<TopDownPhysics>();
+            Vector2 facingDir = new Vector2(physics.facingDirection.X, physics.facingDirection.Y);
             // Only update the variable if the X facing side changes.
             _previousSide = facingDir.X != 0 ? facingDir.X : _previousSide;
 

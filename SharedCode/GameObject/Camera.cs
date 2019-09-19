@@ -9,7 +9,7 @@ namespace SharedCode
     public class Camera : GameObject
     {
         private float speed = 5.0f;
-        public Camera(Vector2 position) : base(null, null, null, position, null)
+        public Camera(Vector2 position) : base(position)
         {
         }
 

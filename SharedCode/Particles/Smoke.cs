@@ -25,25 +25,25 @@ namespace SharedCode.Particles
 
             transform.direction = new Vector2((float)random.NextDouble()*0.4f-0.2f, -((float)random.NextDouble()+0.5f));
 
-            ((TopDownPhysics)_physics).maxSpeed += random.Next(1);
+            GetComponent<TopDownPhysics>().maxSpeed += random.Next(1);
 
-            ((Circfill)_graphics).col = 7;
-            ((Circfill)_graphics).radius = minRadius + (float)random.NextDouble() * (maxRadius - minRadius);
+            GetComponent<Circfill>().col = 7;
+            GetComponent<Circfill>().radius = minRadius + (float)random.NextDouble() * (maxRadius - minRadius);
         }
 
         public void SetColor(byte col)
         {
-            ((Circfill)_graphics).col = col;
+            GetComponent<Circfill>().col = col;
         }
 
         public void SetRadius(float min, float max)
         {
-            ((Circfill)_graphics).radius = min + (float)random.NextDouble() * (max - min);
+            GetComponent<Circfill>().radius = min + (float)random.NextDouble() * (max - min);
         }
 
         public void SetMaxMoveSpeed(float speed)
         {
-            ((TopDownPhysics)_physics).maxSpeed = speed;
+            GetComponent<TopDownPhysics>().maxSpeed = speed;
         }
 
         public void SetRadiusDecreaseSpeed(float speed)
@@ -55,8 +55,8 @@ namespace SharedCode.Particles
         {
             base.Update(gameTime);
 
-            ((Circfill)_graphics).radius -= radiusDecreaseSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (((Circfill)_graphics).radius <= 0)
+            GetComponent<Circfill>().radius -= radiusDecreaseSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (GetComponent<Circfill>().radius <= 0)
                 this.done = true;
         }
     }

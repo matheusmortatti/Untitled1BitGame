@@ -11,14 +11,15 @@ namespace SharedCode
 {
     public class OldMan : GameObject
     {
-        public OldMan(Vector2 position) : base(null, null, null, position, new Box(position, new Vector2(8, 8)))
+        public OldMan(Vector2 position) : base(position, new Box(position, new Vector2(8, 8)))
         {
-            _physics = new TopDownPhysics(0, 0, 10);
-            _graphics = new P8TopDownAnimator((TopDownPhysics)_physics, P8TopDownAnimator.AnimationMode.SIDES_ONLY);
-            ((P8TopDownAnimator)_graphics).RunLeft = new SpriteAnimation(new P8Sprite(0, 1, 1, true, false), 3, 0.4f);
-            ((P8TopDownAnimator)_graphics).IdleLeft = ((P8TopDownAnimator)_graphics).RunLeft;
-            ((P8TopDownAnimator)_graphics).RunRight = new SpriteAnimation(new P8Sprite(0, 1, 1, false, false), 3, 0.4f);
-            ((P8TopDownAnimator)_graphics).IdleRight = ((P8TopDownAnimator)_graphics).RunRight;
+            AddComponent(new TopDownPhysics(0, 0, 10));
+            var graphics = new P8TopDownAnimator(GetComponent<TopDownPhysics>(), P8TopDownAnimator.AnimationMode.SIDES_ONLY);
+            AddComponent(graphics);
+            graphics.RunLeft = new SpriteAnimation(new P8Sprite(0, 1, 1, true, false), 3, 0.4f);
+            graphics.IdleLeft = graphics.RunLeft;
+            graphics.RunRight = new SpriteAnimation(new P8Sprite(0, 1, 1, false, false), 3, 0.4f);
+            graphics.IdleRight = graphics.RunRight;
 
             tags.Add("enemy");
         }
