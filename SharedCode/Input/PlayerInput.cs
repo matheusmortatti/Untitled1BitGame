@@ -7,34 +7,38 @@ using Microsoft.Xna.Framework;
 
 namespace SharedCode.Input
 {
-    class PlayerInput : IInput
+    class PlayerInput : AInput
     {
-        public Pico8<Color> pico8 { get; private set; }
-        private Player _player;
-        public PlayerInput(in Pico8<Color> pico8)
+        public PlayerInput()
         {
-            this.pico8 = pico8;
         }
 
-        public void Update(GameObject gameObject)
+        public override void Update(GameObject gameObject, GameTime gameTime)
         {
             Vector2 direction = new Vector2();
-            if ((bool)pico8.Btn(0))
+            if ((bool)GameManager.pico8.Btn(0))
             {
                 direction.X -= 1;
             }
-            if ((bool)pico8.Btn(1))
+            if ((bool)GameManager.pico8.Btn(1))
             {
                 direction.X += 1;
             }
 
-            if ((bool)pico8.Btn(2))
+            if ((bool)GameManager.pico8.Btn(2))
             {
                 direction.Y -= 1;
             }
-            if ((bool)pico8.Btn(3))
+            if ((bool)GameManager.pico8.Btn(3))
             {
                 direction.Y += 1;
+            }
+
+            if ((bool)GameManager.pico8.Btnp(4))
+            {
+                // Change to attacking state.
+                ((Player)gameObject).stateMachine.Init(PlayerStates.Attacking);
+                return;
             }
 
             gameObject.transform.direction = direction;

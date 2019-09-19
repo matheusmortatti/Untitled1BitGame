@@ -8,7 +8,21 @@ namespace SharedCode
     public class Transform
     {
         public Vector2 position { get; set; }
-        public Vector2 direction { get; set; }
+
+        private Vector2 _direction;
+        public Vector2 direction
+        {
+            get
+            {
+                return _direction;
+            }
+            set
+            {
+                _direction = value;
+                if (_direction != Vector2.Zero)
+                    _direction.Normalize();
+            }
+        }
 
         public Transform(Vector2 position)
         {

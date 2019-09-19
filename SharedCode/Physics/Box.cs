@@ -42,7 +42,7 @@ namespace SharedCode.Physics
         {
             get
             {
-                return position.X;
+                return position.X + offset.X;
             }
         }
 
@@ -50,7 +50,7 @@ namespace SharedCode.Physics
         {
             get
             {
-                return position.X + size.X;
+                return position.X + size.X + offset.X;
             }
         }
 
@@ -58,7 +58,7 @@ namespace SharedCode.Physics
         {
             get
             {
-                return position.Y;
+                return position.Y + offset.Y;
             }
         }
 
@@ -66,7 +66,7 @@ namespace SharedCode.Physics
         {
             get
             {
-                return position.Y + size.Y;
+                return position.Y + size.Y + offset.Y;
             }
         }
 
@@ -74,7 +74,7 @@ namespace SharedCode.Physics
         {
             get
             {
-                return new Vector2(position.X + size.X / 2, position.Y + size.Y / 2);
+                return new Vector2(position.X + offset.X + size.X / 2, position.Y + offset.Y + size.Y / 2);
             }
         }
 
@@ -84,15 +84,17 @@ namespace SharedCode.Physics
             {
                 return new Vector2[]
                     {
-                        new Vector2(position.X, position.Y),
-                        new Vector2(position.X + size.X, position.Y),
-                        new Vector2(position.X, position.Y + size.Y),
-                        new Vector2(position.X + size.X, position.Y + size.Y),
+                        new Vector2(position.X + offset.X, position.Y + offset.Y),
+                        new Vector2(position.X + offset.X + size.X, position.Y + offset.Y),
+                        new Vector2(position.X + offset.X, position.Y + offset.Y + size.Y),
+                        new Vector2(position.X + offset.X + size.X, position.Y + offset.Y + size.Y),
                     };
             }
         }
 
         public bool isTrigger { get; set; }
+
+        public Vector2 offset { get; set; } = Vector2.Zero;
 
         public static int gridSize { get; private set; } = 32;
 
@@ -106,14 +108,19 @@ namespace SharedCode.Physics
         {
             bucketKeys = new List<Vector2>();
 
-            this.position = position;
             this.size = size;
+            this.position = position;
             this.isTrigger = false;
         }
 
         public Box(Vector2 position, Vector2 size, bool isTrigger) : this(position, size)
         {
             this.isTrigger = isTrigger;
+        }
+
+        public Box(Vector2 position, Vector2 size, bool isTrigger, Vector2 offset) : this(position, size, isTrigger)
+        {
+            this.offset = offset;
         }
 
         ~Box()
@@ -155,6 +162,9 @@ namespace SharedCode.Physics
             List<Box> list = CheckCollision();
             Vector2 sepv = Vector2.Zero;
 
+            if (this.isTrigger)
+                goto cleanup;
+
             foreach (var o in list)
             {
                 if (o.isTrigger)
@@ -169,10 +179,7 @@ namespace SharedCode.Physics
             foreach(Vector2 p in possibleTileCollisions)
             {
                 tileBox.position = new Vector2((int)Math.Floor(p.X / 8) * 8, (int)Math.Floor(p.Y / 8) * 8);
-                byte val = GameObjectManager.pico8.memory.Mget((int)Math.Floor(tileBox.position.X / 8), (int)Math.Floor(tileBox.position.Y / 8));
-                byte flag = (byte)GameObjectManager.pico8.memory.Fget(val);
-
-                if ((flag & 0b00000100) != 0)
+                if (Map.IsSolid(new Vector2((int)Math.Floor(tileBox.position.X / 8), (int)Math.Floor(tileBox.position.Y / 8))))
                 {
                     sepv += MoveOut(tileBox);
                 }
@@ -180,23 +187,26 @@ namespace SharedCode.Physics
 
             tileBox.CleanUp();
 
+            cleanup:
+
             separationVector = sepv;
 
             return list;
         }
 
-        public Vector2 MoveOut(Box other)
+        public Vector2 MoveOut(Box other, bool[] allowed = null)
         {
             Vector2[] candidates = { new Vector2(other.left - this.right, 0),
                                      new Vector2(other.right - this.left, 0),
                                      new Vector2(0, other.top - this.bottom),
                                      new Vector2(0, other.bottom - this.top)};
+            if (allowed == null) allowed = new bool[] { true, true, true, true };
 
             float ml = float.MaxValue;
             Vector2 mv = Vector2.Zero;
             for (int i = 0; i < candidates.Length; i += 1)
             {
-                if (candidates[i].LengthSquared() < ml)
+                if (allowed[i] && candidates[i].LengthSquared() < ml)
                 {
                     ml = candidates[i].LengthSquared();
                     mv = candidates[i];
@@ -213,10 +223,10 @@ namespace SharedCode.Physics
             List<Vector2> newBucketKeys = new List<Vector2>();
             Vector2[] bkCandidates = new Vector2[]
             {
-                new Vector2((float)Math.Floor(position.X / gridSize), (float)Math.Floor(position.Y / gridSize)),
-                new Vector2((float)Math.Floor((position.X + size.X) / gridSize), (float)Math.Floor(position.Y / gridSize)),
-                new Vector2((float)Math.Floor(position.X / gridSize), (float)Math.Floor((position.Y + size.Y) / gridSize)),
-                new Vector2((float)Math.Floor((position.X + size.X) / gridSize), (float)Math.Floor((position.Y + size.Y) / gridSize)),
+                new Vector2((float)Math.Floor((position.X + offset.X) / gridSize), (float)Math.Floor((position.Y + offset.Y) / gridSize)),
+                new Vector2((float)Math.Floor((position.X + offset.X + size.X) / gridSize), (float)Math.Floor((position.Y + offset.Y) / gridSize)),
+                new Vector2((float)Math.Floor((position.X + offset.X) / gridSize), (float)Math.Floor((position.Y + offset.Y + size.Y) / gridSize)),
+                new Vector2((float)Math.Floor((position.X + offset.X + size.X) / gridSize), (float)Math.Floor((position.Y + offset.Y + size.Y) / gridSize)),
             };
 
             foreach(var c in bkCandidates)
@@ -253,18 +263,27 @@ namespace SharedCode.Physics
 
         private void RemoveFromBucket(Vector2 bucketKey)
         {
-            if (!buckets.ContainsKey(bucketKey))
+            List<Box> bucketBoxes;
+            buckets.TryGetValue(bucketKey, out bucketBoxes);
+
+            if (bucketBoxes == null)
+            {
                 return;
+            }
 
-            buckets[bucketKey]?.Remove(this);
+            bucketBoxes.Remove(this);
 
-            if (!buckets.ContainsKey(bucketKey))
-                return;
-
-            if (buckets[bucketKey].Count == 0)
+            if (bucketBoxes.Count == 0)
             {
                 buckets.Remove(bucketKey);
             }
+        }
+
+        public void DrawCollisionBox()
+        {
+            Debug.DrawRectangle(this.position.X + offset.X, this.position.Y + offset.Y,
+                                this.position.X + this.size.X + offset.X,
+                                this.position.Y + this.size.Y + offset.Y);
         }
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace SharedCode.Physics
 {
-    public class TopDownPhysics : IPhysics
+    public class TopDownPhysics : APhysics
     {
         /// <summary>
         /// Direction the entity is moving.
@@ -23,7 +23,10 @@ namespace SharedCode.Physics
             set
             {
                 if (value != Vector2.Zero)
+                {
                     value.Normalize();
+                    facingDirection = value;
+                }
                 _movingDirection = value;
             }
         }
@@ -31,7 +34,7 @@ namespace SharedCode.Physics
         /// <summary>
         /// Direction the entity is facing.
         /// </summary>
-        private Vector2 _facingDirection;
+        private Vector2 _facingDirection = new Vector2(-1, 0);
         public Vector2 facingDirection
         {
             get
@@ -44,10 +47,12 @@ namespace SharedCode.Physics
             }
         }
 
-        public Vector2 velocity { get; private set; }
+        public Vector2 velocity { get; set; }
         public float maxSpeed { get; set; }
         public float acceleration { get; set; }
         public float friction { get; set; }
+
+        public List<GameObject> collidedWith = new List<GameObject>();
 
         private const int MOVE_STEP = 8;
 
@@ -56,7 +61,7 @@ namespace SharedCode.Physics
             velocity = new Vector2();
             this.maxSpeed = maxSpeed;
             acceleration = accel;
-            friction = accel;
+            friction = accel == 0 ? 0.5f : accel;
         }
 
         public TopDownPhysics(float maxSpeed, float accel, float friction) : this (maxSpeed, accel)
@@ -64,9 +69,9 @@ namespace SharedCode.Physics
             this.friction = friction;
         }
 
-        public List<GameObject> Update(GameObject gameObject, GameTime gameTime)
+        public override void Update(GameObject gameObject, GameTime gameTime)
         {
-            List<GameObject> collidedWith = new List<GameObject>();
+            collidedWith.Clear();
             Vector2 targetDirection = new Vector2(gameObject.transform.direction.X, gameObject.transform.direction.Y);
 
             if (targetDirection != Vector2.Zero)
@@ -89,23 +94,20 @@ namespace SharedCode.Physics
             movingDirection.Normalize();
 
             // Don't try to move if velocity is zero.
-            if (velocity == Vector2.Zero)
-                return collidedWith;
+            //if (velocity == Vector2.Zero)
+            //    return collidedWith;
 
             // Update position if there is no collision box.
             if (gameObject.collisionBox == null)
             {
                 gameObject.transform.MoveTo(gameObject.transform.position + velocity);
-                return collidedWith;
+                return;
             }
 
             Box col = gameObject.collisionBox;
             Vector2 amount = new Vector2(velocity.X, velocity.Y) * (float)gameTime.ElapsedGameTime.TotalSeconds;
             while (true)
             {
-                if (amount == Vector2.Zero)
-                    break;
-
                 // Move the collider by steps so it doesn't go through objects if
                 // velocity is too high.
                 Vector2 moveStep = new Vector2(amount.X > MOVE_STEP ? MOVE_STEP : amount.X, amount.Y > MOVE_STEP ? MOVE_STEP : amount.Y);
@@ -114,28 +116,42 @@ namespace SharedCode.Physics
 
                 // Move to the desired position, check collision and adjust the position
                 // with the separation vector that was resulted.
-                Vector2 sepv;
+                Vector2 sepvX;
+                Vector2 sepvY;
+                List<Box> others = new List<Box>();
 
-                col.position = nextPos;
-                List<Box> others = col.CheckCollision(out sepv);
+                col.position = new Vector2(nextPos.X, col.position.Y);
+                others.AddRange(col.CheckCollision(out sepvX));
 
-                foreach(var box in others)
+                col.position = new Vector2(col.position.X, nextPos.Y);
+                others.AddRange(col.CheckCollision(out sepvY));
+
+                foreach (var box in others)
                 {
-                    collidedWith.Add(box.gameObject);
+                    if (!collidedWith.Contains(box.gameObject))
+                        collidedWith.Add(box.gameObject);
                 }
 
                 // Zero velocity components if the entity has collided in that
                 // component's direction.
                 Vector2 adjustedVelocity = new Vector2(velocity.X, velocity.Y);
-                if (sepv.X != 0) { adjustedVelocity.X = 0; amount.X = 0; }
-                if (sepv.Y != 0) { adjustedVelocity.Y = 0; amount.Y = 0; }
+                if (sepvX.X != 0) { adjustedVelocity.X = 0; amount.X = 0; }
+                if (sepvY.Y != 0) { adjustedVelocity.Y = 0; amount.Y = 0; }
                 velocity = adjustedVelocity;
+
+                if (amount == Vector2.Zero)
+                    break;
             }
 
             // Move game object to collider's new position.
             gameObject.transform.MoveTo(col.position);
 
-            return collidedWith;
+            return;
+        }
+
+        public override void AddVelocity(Vector2 velocity)
+        {
+            this.velocity += velocity;
         }
     }
 }

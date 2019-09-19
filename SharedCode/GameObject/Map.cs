@@ -14,6 +14,8 @@ namespace SharedCode
             currentIndex = new Vector2((float)Math.Floor(position.X / 128),
                                             (float)Math.Floor(position.Y / 128));
             InstantiateEntities(currentIndex);
+
+            depth = -1000;
         }
 
         public override void Update(GameTime gameTime)
@@ -23,7 +25,7 @@ namespace SharedCode
             if (pi == null)
                 return;
 
-            Vector2 nextIndex = new Vector2((float)Math.Floor(pi.transform.position.X / 128), 
+            Vector2 nextIndex = new Vector2((float)Math.Floor(pi.transform.position.X / 128),
                                             (float)Math.Floor(pi.transform.position.Y / 128));
 
             if (currentIndex.X != nextIndex.X || currentIndex.Y != nextIndex.Y)
@@ -44,7 +46,7 @@ namespace SharedCode
 
             for (int i = 0; i < 16; i += 1)
             {
-                for(int j = 0; j < 16; j += 1)
+                for (int j = 0; j < 16; j += 1)
                 {
                     byte val = GameObjectManager.pico8.memory.Mget((int)celPos.X + i, (int)celPos.Y + j);
                     byte flag = (byte)GameObjectManager.pico8.memory.Fget(val);
@@ -54,9 +56,20 @@ namespace SharedCode
                         GameObjectManager.pico8.memory.Mset((int)celPos.X + i, (int)celPos.Y + j, 0);
                     }
 
-                    GameObjectFactory.CreateGameObject(val, new Vector2((int)celPos.X + i, (int)celPos.Y + j) * 8);
+                    if ((flag & 0b00001000) != 0)
+                    {
+                        GameObjectFactory.CreateGameObject(val, new Vector2((int)celPos.X + i, (int)celPos.Y + j) * 8);
+                    }
                 }
             }
+        }
+
+        public static bool IsSolid(Vector2 celPos)
+        {
+            byte val = GameObjectManager.pico8.memory.Mget((int)celPos.X, (int)celPos.Y);
+            byte flag = (byte)GameObjectManager.pico8.memory.Fget(val);
+
+            return (flag & 0b00000100) != 0;
         }
     }
 }

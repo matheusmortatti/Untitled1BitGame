@@ -9,9 +9,8 @@ namespace SharedCode
     public class Camera : GameObject
     {
         private float speed = 5.0f;
-        public Camera(Vector2 position) : base(null, null, null, position)
+        public Camera(Vector2 position) : base(null, null, null, position, null)
         {
-
         }
 
         public override void Update(GameTime gameTime)
@@ -30,8 +29,8 @@ namespace SharedCode
             // Round up if near because if the camera goes up in value, it will never reach the desired value
             // (because of smooth lerp) and the position is rounded down to integer.
             transform.position = new Vector2(
-                    Misc.util.RoundIfNear(transform.position.X, (float)Math.Floor(transform.position.X + 1), 10e-2f),
-                    Misc.util.RoundIfNear(transform.position.Y, (float)Math.Floor(transform.position.X + 1), 10e-2f)
+                    Misc.util.RoundIfNear(transform.position.X, (float)Math.Floor(transform.position.X / 128) * 128, 10e-2f),
+                    Misc.util.RoundIfNear(transform.position.Y, (float)Math.Floor(transform.position.X / 128) * 128, 10e-2f)
                 );
 
             // Update Camera's position

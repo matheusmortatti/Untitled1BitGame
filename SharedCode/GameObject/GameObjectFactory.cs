@@ -15,9 +15,23 @@ namespace SharedCode
                 case 32:
                     return GameObjectManager.InstantiatePlayer(position);
                 case 1:
-                    return GameObjectManager.AddObject(new GameObject(null, new Graphics.P8Sprite(1), null, position));
+                    return GameObjectManager.AddObject(
+                        new OldMan(position)
+                        );
+                case 98:
+                    return GameObjectManager.AddObject(
+                        new FirePit(
+                            position
+                            )
+                        );
+                case 76:
+                    return GameObjectManager.AddObject(
+                        new Chimney(
+                            position
+                            )
+                        );
                 default:
-                    return new GameObject(null, null, null);
+                    return GameObjectManager.AddObject(new GameObject(null, new Graphics.P8Sprite(spriteValue), null, position));
             }
         }
     }

@@ -6,9 +6,8 @@ using Microsoft.Xna.Framework;
 
 namespace SharedCode.Graphics
 {
-    public interface IGraphics
+    public abstract class AGraphics : Component
     {
-        void Draw(GameObject gameObject);
-        void Update(GameObject gameObject, GameTime gameTime);
+        public abstract void Draw(GameObject gameObject);
     }
 }

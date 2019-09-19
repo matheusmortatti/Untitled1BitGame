@@ -7,7 +7,7 @@ using SharedCode.Physics;
 
 namespace SharedCode.Graphics
 {
-    public class P8Sprite : IGraphics
+    public class P8Sprite : AGraphics
     {
         private int _index;
         public int index
@@ -44,17 +44,16 @@ namespace SharedCode.Graphics
             this.flipY = flipY;
         }
 
-        public void Draw(GameObject gameObject)
+        public override void Draw(GameObject gameObject)
         {
             GameManager.pico8.graphics.Spr(index, (int)gameObject.transform.position.X, (int)gameObject.transform.position.Y, width, height, flipX, flipY);
         }
 
-        public void Update(GameObject gameObject, GameTime gameTime)
+        public override void Update(GameObject gameObject, GameTime gameTime)
         {
-            
         }
     }
-    public class P8TopDownAnimator : IGraphics
+    public class P8TopDownAnimator : AGraphics
     {
         public enum AnimationIndex
         {
@@ -183,14 +182,12 @@ namespace SharedCode.Graphics
 
         private AnimationMode _mode;
 
-        public GraphicsUnit<Color> p8Graphics;
         private TopDownPhysics _physics;
 
         private float _previousSide;
 
-        public P8TopDownAnimator(in GraphicsUnit<Color> p8Graphics, TopDownPhysics physics, AnimationMode mode)
+        public P8TopDownAnimator(TopDownPhysics physics, AnimationMode mode)
         {
-            this.p8Graphics = p8Graphics;
             _physics = physics;
 
             // Create animations for side, up and down directions.
@@ -203,7 +200,7 @@ namespace SharedCode.Graphics
             _previousSide = -1;
         }
 
-        public void Update(GameObject gameObject, GameTime gameTime)
+        public override void Update(GameObject gameObject, GameTime gameTime)
         {
             AnimationIndex nextIndex = currentlyPlaying;
 
@@ -255,7 +252,7 @@ namespace SharedCode.Graphics
             _animations[(int)GetRealValue(currentlyPlaying)]?.Update(gameTime);
         }
 
-        public void Draw(GameObject gameObject)
+        public override void Draw(GameObject gameObject)
         {
             _animations[(int)GetRealValue(currentlyPlaying)]?.GetCurrentSprite()?.Draw(gameObject);
         }
@@ -272,11 +269,11 @@ namespace SharedCode.Graphics
 
             if (IsRunning(index))
             {
-                return _previousSide == -1 ? AnimationIndex.RUN_LEFT : AnimationIndex.RUN_RIGHT;
+                return _previousSide < 0 ? AnimationIndex.RUN_LEFT : AnimationIndex.RUN_RIGHT;
             }
             else
             {
-                return _previousSide == -1 ? AnimationIndex.IDLE_LEFT : AnimationIndex.IDLE_RIGHT;
+                return _previousSide < 0 ? AnimationIndex.IDLE_LEFT : AnimationIndex.IDLE_RIGHT;
             }
         }
     }

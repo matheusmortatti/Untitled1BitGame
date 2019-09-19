@@ -4,8 +4,7 @@ using System.Text;
 
 namespace SharedCode.Input
 {
-    public interface IInput
+    public abstract class AInput : Component
     {
-        void Update(GameObject gameObject);
     }
 }

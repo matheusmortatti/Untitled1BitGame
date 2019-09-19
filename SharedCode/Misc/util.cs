@@ -30,5 +30,16 @@ namespace SharedCode.Misc
             step = Math.Abs(step);
             return val < target ? Math.Min(val + step, target) : Math.Max(val - step, target);
         }
+
+        public static T Choose<T>(params T[] p)
+        {
+            var random = new Random();
+            return p[random.Next(p.Length)];
+        }
+
+        public static double PercentageOf(double value, double max)
+        {
+            return value / max;
+        }
     }
 }

@@ -58,6 +58,7 @@ namespace SharedCode
             }
 
             activeObjects.AddRange(nextObjects);
+            activeObjects.Sort((x, y) => x.depth.CompareTo(y.depth));
             nextObjects.Clear();
 
             GC.Collect();
@@ -65,21 +66,15 @@ namespace SharedCode
 
         public static void DrawObjects()
         {
-            foreach (var go in activeObjects)
+            for (int i = 0; i < activeObjects.Count; i += 1)
             {
-                go.Draw();
+                activeObjects[i].Draw();
             }
         }
 
         public static Player InstantiatePlayer(Vector2 position)
         {
-            Physics.TopDownPhysics physics = new Physics.TopDownPhysics(20, 10);
-            Graphics.P8TopDownAnimator sprs = new Graphics.P8TopDownAnimator(pico8.graphics, physics, Graphics.P8TopDownAnimator.AnimationMode.SIDES_ONLY);
-            sprs.RunLeft = new Graphics.SpriteAnimation(new Graphics.P8Sprite(33, 1, 1, true, false), 4, 0.3f);
-            sprs.IdleLeft = new Graphics.SpriteAnimation(new Graphics.P8Sprite(32, 1, 1, true, false), 1, 0.3f);
-            sprs.RunRight = new Graphics.SpriteAnimation(new Graphics.P8Sprite(33, 1, 1, false, false), 4, 0.3f);
-            sprs.IdleRight = new Graphics.SpriteAnimation(new Graphics.P8Sprite(32, 1, 1, false, false), 1, 0.3f);
-            playerInstance = new Player(physics, sprs, new Input.PlayerInput(pico8), position);
+            playerInstance = new Player(position);
             AddObject(playerInstance);
 
             return playerInstance;

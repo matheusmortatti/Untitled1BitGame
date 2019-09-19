@@ -6,8 +6,8 @@ using Microsoft.Xna.Framework;
 
 namespace SharedCode.Physics
 {
-    public interface IPhysics
+    public abstract class APhysics : Component
     {
-        List<GameObject> Update(GameObject gameObject, GameTime gameTime);
+        public abstract void AddVelocity(Vector2 velocity);
     }
 }

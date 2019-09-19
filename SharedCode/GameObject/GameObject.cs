@@ -10,14 +10,24 @@ namespace SharedCode
 {
     public class GameObject
     {
-        private IPhysics _physics;
-        private IGraphics _graphics;
-        private IInput _input;
+        private List<Component> components = new List<Component>();
+        public APhysics _physics { get; set; }
+        public AGraphics _graphics { get; set; }
+        public AInput _input { get; set; }
 
+        public float depth { get; protected set; }
         public Transform transform { get; protected set; }
 
         private Box _collisionBox;
-        public Box collisionBox { get { return _collisionBox; } private set { _collisionBox = value; _collisionBox.gameObject = this;  } }
+        public Box collisionBox
+        {
+            get { return _collisionBox; }
+            protected set
+            {
+                _collisionBox = value;
+                if (_collisionBox != null) _collisionBox.gameObject = this;
+            }
+        }
 
         /// <summary>
         /// Defines if object should stop existing or not.
@@ -28,42 +38,77 @@ namespace SharedCode
 
         public List<GameObject> collidedLast { get; protected set; }
 
-        public GameObject(IPhysics physics, IGraphics graphics, IInput input)
+        /// <summary>
+        /// Fade out variables.
+        /// </summary>
+        private double foTimePassed;
+        public double fadeOutTime;
+        public bool fadeOut;
+        private int fillp;
+
+        public GameObject(APhysics physics, AGraphics graphics, AInput input)
         {
             _physics = physics;
             _graphics = graphics;
             _input = input;
 
+            AddComponent(physics);
+
             transform = new Transform(Vector2.Zero);
-            collisionBox = new Box(transform.position, new Vector2(8, 8), false);
+            collisionBox = null;
             collidedLast = new List<GameObject>();
             tags = new List<string>();
         }
 
-        public GameObject(IPhysics physics, IGraphics graphics, IInput input, Vector2 position) 
+        public GameObject(APhysics physics, AGraphics graphics, AInput input, Vector2 position) 
             : this(physics, graphics, input)
         {
             transform = new Transform(position);
-            this.collisionBox.position = transform.position;
+            depth = position.Y;
         }
 
-        public GameObject(IPhysics physics, IGraphics graphics, IInput input, Vector2 position, Box collisionBox) 
+        public GameObject(APhysics physics, AGraphics graphics, AInput input, Vector2 position, Box collisionBox) 
             : this(physics, graphics, input, position)
         {
-            this.collisionBox?.CleanUp();
             this.collisionBox = collisionBox;
-            this.collisionBox.position = transform.position;
+            if (collisionBox != null) this.collisionBox.position = transform.position;
+        }
+
+        public T GetComponent<T>()
+        {
+            foreach(var c in components)
+            {
+                if (c.GetType() is T)
+                {
+                    try
+                    {
+                        return (T)Convert.ChangeType(c, typeof(T));
+                    }
+                    catch (InvalidCastException)
+                    {
+                        return default;
+                    }
+                }
+            }
+
+            return default;
+        }
+
+        public Component AddComponent(Component component)
+        {
+            components.Add(component);
+            return component;
         }
 
         public virtual void Update(GameTime gameTime)
         {
-            _input?.Update(this);
+            _input?.Update(this, gameTime);
             _graphics?.Update(this, gameTime);
-            List<GameObject> collidedWith = _physics?.Update(this, gameTime);
+            _physics?.Update(this, gameTime);
+            List<GameObject> collidedWith = ((TopDownPhysics)_physics)?.collidedWith;
 
             if (collidedWith != null)
             {
-
                 // Call collision code.
                 foreach (var other in collidedWith)
                 {
@@ -88,17 +133,30 @@ namespace SharedCode
 
                 collidedLast = collidedWith;
             }
+
+            if (fadeOut)
+            {
+                foTimePassed += gameTime.ElapsedGameTime.TotalSeconds;
+                if (foTimePassed < fadeOutTime / 2)
+                {
+                    fillp = 0b1010010110100101;
+                }
+                else
+                {
+                    fillp = 0b1111111111111111;
+                }
+            }
         }
 
         public virtual void Draw()
         {
+            GameManager.pico8.memory.Fillp(fillp);
             _graphics?.Draw(this);
+            GameManager.pico8.memory.Fillp();
 
             if (Debug.debugMode)
             {
-                Debug.DrawRectangle(_collisionBox.position.X, _collisionBox.position.Y,
-                                    _collisionBox.position.X + _collisionBox.size.X,
-                                    _collisionBox.position.Y + _collisionBox.size.Y);
+                collisionBox?.DrawCollisionBox();
             }
         }
 
@@ -108,7 +166,7 @@ namespace SharedCode
 
         public void CleanUp()
         {
-            _collisionBox.CleanUp();
+            _collisionBox?.CleanUp();
         }
     }
 }
