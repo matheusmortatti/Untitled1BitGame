@@ -147,6 +147,7 @@ namespace SharedCode.Physics
             List<Box> list = new List<Box>();
             foreach (var bk in bucketKeys)
             {
+                if (!buckets.ContainsKey(bk)) continue;
                 foreach (var o in buckets[bk])
                 {
                     if (o != this && !list.Contains(o) && Collided(o))
@@ -168,6 +169,10 @@ namespace SharedCode.Physics
             foreach (var o in list)
             {
                 if (o.isTrigger)
+                    continue;
+
+                if (gameObject.shouldIgnoreSolidCollision(o.gameObject) ||
+                    o.gameObject.shouldIgnoreSolidCollision(gameObject))
                     continue;
 
                 sepv += MoveOut(o);

@@ -31,7 +31,7 @@ namespace SharedCode
                     smoke.SetColor(Misc.util.Choose<byte>(7, 9));
                     ParticleManager.AddParticle(smoke);
                 }
-            }, 0.04, true);
+            }, 0.04, -1);
 
         }
     }

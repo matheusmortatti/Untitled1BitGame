@@ -86,12 +86,34 @@ namespace SharedCode
             pico8 = new Pico8<Color>();
             pico8.screenColorData = screenColorData;
             pico8.rgbToColor = (r, g, b) => new Color(r, g, b);
+
+            //
+            // Keyboard input
+            //
+
             pico8.AddLeftButtonDownFunction(() => { return Keyboard.GetState().IsKeyDown(Keys.Left); }, 0);
             pico8.AddDownButtonDownFunction(() => { return Keyboard.GetState().IsKeyDown(Keys.Down); }, 0);
             pico8.AddUpButtonDownFunction(() => { return Keyboard.GetState().IsKeyDown(Keys.Up); }, 0);
             pico8.AddRightButtonDownFunction(() => { return Keyboard.GetState().IsKeyDown(Keys.Right); }, 0);
             pico8.AddOButtonDownFunction(() => { return Keyboard.GetState().IsKeyDown(Keys.Z); }, 0);
             pico8.AddXButtonDownFunction(() => { return Keyboard.GetState().IsKeyDown(Keys.X); }, 0);
+
+            //
+            // Gamepad input
+            //
+
+            pico8.AddLeftButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed; }, 0);
+            pico8.AddDownButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed; }, 0);
+            pico8.AddUpButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed; }, 0);
+            pico8.AddRightButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed; }, 0);
+
+            pico8.AddLeftButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X < -0.5f; }, 0);
+            pico8.AddRightButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X > 0.5f; }, 0);
+            pico8.AddDownButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y < -0.5f; }, 0);
+            pico8.AddUpButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y > 0.5f; }, 0);
+
+            pico8.AddOButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed; }, 0);
+            pico8.AddXButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).Buttons.B == ButtonState.Pressed; }, 0);
 
             GameManager.InitGameState(pico8);
 

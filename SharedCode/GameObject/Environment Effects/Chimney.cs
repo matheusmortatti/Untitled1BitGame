@@ -27,7 +27,7 @@ namespace SharedCode
                 smoke.SetRadius(0.95f, 1.95f);
                 //smoke.SetRadiusDecreaseSpeed(0.1f);
                 ParticleManager.AddParticle(smoke);
-            }, 0.130, true);
+            }, 0.130, -1);
         }
     }
 }

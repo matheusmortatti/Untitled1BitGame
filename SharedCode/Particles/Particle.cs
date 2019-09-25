@@ -21,7 +21,7 @@ namespace SharedCode.Particles
             // Only set task if lifetime is greater than zero. That way we can set lifetime to be
             // "forever" and set it to done when we see fit.
             if (lifetime >= 0)
-                Misc.TaskScheduler.AddTask(() => done = true, lifetime, false);
+                Misc.TaskScheduler.AddTask(() => done = true, lifetime, lifetime);
         }
 
         public override void Update(GameTime gameTime)

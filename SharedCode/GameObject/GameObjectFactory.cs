@@ -30,6 +30,10 @@ namespace SharedCode
                             position
                             )
                         );
+                case 7:
+                    return GameObjectManager.AddObject(new Blob(position));
+                case 55:
+                    return GameObjectManager.AddObject(new Bat(position));
                 default:
                     return GameObjectManager.AddObject(new GameObject(position, new Graphics.P8Sprite(spriteValue)));
             }

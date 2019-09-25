@@ -15,7 +15,7 @@ namespace SharedCode.Particles
         private float maxRadius, minRadius;
         private Random random;
 
-        public Smoke(Vector2 position) : base(new TopDownPhysics(0.5f, 0.5f), new Circfill(2, 8), position, -1)
+        public Smoke(Vector2 position) : base(new TopDownPhysics(0.5f, 0.5f, 0.95f), new Circfill(2, 8), position, -1)
         {
             radiusDecreaseSpeed = 3f;
             maxRadius = 2.5f;

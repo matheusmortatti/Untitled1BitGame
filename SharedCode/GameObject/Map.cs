@@ -9,6 +9,7 @@ namespace SharedCode
     public class Map : GameObject
     {
         private Vector2 currentIndex;
+        private List<GameObject> toDestroy;
         public Map(Vector2 position) : base(position)
         {
             currentIndex = new Vector2((float)Math.Floor(position.X / 128),
@@ -30,7 +31,26 @@ namespace SharedCode
 
             if (currentIndex.X != nextIndex.X || currentIndex.Y != nextIndex.Y)
             {
+                if (toDestroy != null)
+                {
+                    foreach (var obj in toDestroy)
+                    {
+                        obj.done = true;
+                    }
+
+                    toDestroy = null;
+                }
+
                 currentIndex = nextIndex;
+                toDestroy = GameObjectManager.FindObjectsWithTag("nonpersistent");
+                foreach(var obj in toDestroy)
+                {
+                    obj.isPaused = true;
+                    Misc.TaskScheduler.AddTask(() => obj.done = true, 2, 2);
+                }
+
+                Misc.TaskScheduler.AddTask(() => toDestroy = null, 2, 2);
+
                 InstantiateEntities(currentIndex);
             }
         }
@@ -70,6 +90,23 @@ namespace SharedCode
             byte flag = (byte)GameObjectManager.pico8.memory.Fget(val);
 
             return (flag & 0b00000100) != 0;
+        }
+
+        public static Vector2 FindPlayerInMapSheet()
+        {
+            for (int i = 0; i < 128; ++i)
+            {
+                for (int j = 0; j < 64; ++j)
+                {
+                    byte val = GameObjectManager.pico8.memory.Mget(i, j);
+                    if (val == Player.spriteIndex)
+                    {
+                        return new Vector2(i, j) * 8;
+                    }
+                }
+            }
+
+            return Vector2.Zero;
         }
     }
 }

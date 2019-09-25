@@ -182,11 +182,11 @@ namespace SharedCode.Graphics
 
         private AnimationMode _mode;
 
-        private TopDownPhysics _physics;
+        private APhysics _physics;
 
         private float _previousSide;
 
-        public P8TopDownAnimator(TopDownPhysics physics, AnimationMode mode)
+        public P8TopDownAnimator(APhysics physics, AnimationMode mode)
         {
             _physics = physics;
 
@@ -250,7 +250,7 @@ namespace SharedCode.Graphics
                 _animations[(int)GetRealValue(currentlyPlaying)]?.Reset();
             }
 
-            _animations[(int)GetRealValue(currentlyPlaying)]?.Update(gameTime);
+            _animations[(int)GetRealValue(currentlyPlaying)]?.Update(gameObject, gameTime);
         }
 
         public override void Draw(GameObject gameObject)
@@ -279,7 +279,7 @@ namespace SharedCode.Graphics
         }
     }
 
-    public class SpriteAnimation
+    public class SpriteAnimation : AGraphics
     {
         public List<P8Sprite> spriteList { get; set; }
         public int currentIndex { get; private set; }
@@ -310,7 +310,7 @@ namespace SharedCode.Graphics
             this.isPlaying = true;
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameObject gameObject, GameTime gameTime)
         {
             if (!isPlaying)
                 return;
@@ -333,5 +333,18 @@ namespace SharedCode.Graphics
         }
 
         public P8Sprite GetCurrentSprite() { return spriteList[currentIndex]; }
+
+        public override void Draw(GameObject gameObject)
+        {
+            var spr = spriteList[currentIndex];
+            GameManager.pico8.graphics.Spr(
+                spr.index, 
+                (int)gameObject.transform.position.X, 
+                (int)gameObject.transform.position.Y, 
+                spr.width, 
+                spr.height, 
+                spr.flipX, 
+                spr.flipY);
+        }
     }
 }

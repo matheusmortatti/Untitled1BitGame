@@ -21,8 +21,10 @@ namespace SharedCode
         {
             GameManager.pico8.LoadGame("untitled1bitgame.p8", new NLuaInterpreter());
 
-            GameObjectManager.AddObject(new Camera(Vector2.Zero));
-            GameObjectManager.AddObject(new Map(Vector2.Zero));
+            Vector2 playerPosition = Map.FindPlayerInMapSheet();
+            GameObjectManager.AddObject(new Camera(playerPosition));
+            GameObjectManager.AddObject(new Map(playerPosition));
+            GameObjectManager.AddObject(new UI());
         }
 
         void OverworldState(GameTime gameTime)
@@ -39,6 +41,8 @@ namespace SharedCode
 
         private static double framerate;
 
+        public static Random random = new Random();
+
         public static void InitGameState(Pico8<Color> pico8)
         {
             GameManager.pico8 = pico8;
@@ -47,7 +51,7 @@ namespace SharedCode
             // Start PICO-8 stuff.
             //
 
-            Debug.SetPico8(pico8);
+            Debug.Init(pico8);
             GameObjectManager.Init(pico8);
 
             //

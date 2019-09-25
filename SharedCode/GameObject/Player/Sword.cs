@@ -4,7 +4,7 @@ using System.Text;
 
 using SharedCode.Physics;
 using SharedCode.Graphics;
-using SharedCode.Input;
+using SharedCode.Particles;
 using Microsoft.Xna.Framework;
 
 namespace SharedCode
@@ -14,7 +14,9 @@ namespace SharedCode
         private double timePassed;
 
         private double lifetime = 0.5;
-        private float repelSpeed = 10;
+        private float repelSpeed = 80;
+
+        public float damage { get; set; } = 10;
 
         public Sword(Vector2 position, Vector2 direction) : base(position, new TopDownPhysics(0, 0))
         {
@@ -44,6 +46,8 @@ namespace SharedCode
             {
                 fadeOut = true;
                 fadeOutTime = lifetime - timePassed;
+
+                this.collisionBox = null;
             }
         }
 
@@ -54,16 +58,29 @@ namespace SharedCode
             if (other.tags.Contains("enemy"))
             {
                 //
+                // TODO(matheusmortatti) remove time from enemy and give to the player.
+                //
+
+                var inflicted = ((Enemy)other).TakeHit(damage);
+                if (inflicted <= 0) return;
+
+                inflicted = Math.Floor(inflicted);
+
+                ((Camera)GameObjectManager.FindObjectWithTag("camera")).AddShake(0.1);
+
+                TimePiece.SpawnParticles((int)Math.Ceiling(inflicted), other.collisionBox == null ? other.transform.position : other.collisionBox.middle);
+
+#if DEBUG
+                Debug.Log($"Damage Inflicted to {other.GetType().FullName} : {Math.Ceiling(inflicted).ToString()}");
+#endif
+
+                //
                 // Add force to repel enemy.
                 //
 
                 Vector2 repelDir = transform.direction;
 
-                other.GetComponent<APhysics>().AddVelocity(repelDir * repelSpeed);
-
-                //
-                // TODO(matheusmortatti) remove time from enemy and give to the player.
-                //
+                other.GetComponent<APhysics>().velocity = (repelDir * repelSpeed);
             }
         }
     }

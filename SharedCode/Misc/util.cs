@@ -33,8 +33,7 @@ namespace SharedCode.Misc
 
         public static T Choose<T>(params T[] p)
         {
-            var random = new Random();
-            return p[random.Next(p.Length)];
+            return p[GameManager.random.Next(p.Length)];
         }
 
         public static double PercentageOf(double value, double max)

@@ -8,13 +8,14 @@ namespace SharedCode.Misc
 {
     public static class TaskScheduler
     {
-        protected struct Task
+        public class Task
         {
             public Action func;
             public double timePassed;
             public double triggerTime;
+            public double stopAfter;
+            public double lifeTime;
             public bool done;
-            public bool isRecurrent;
         }
         private static List<Task> currentTasks = new List<Task>();
         private static List<Task> nextTasks = new List<Task>();
@@ -24,42 +25,31 @@ namespace SharedCode.Misc
 
             for (int i = currentTasks.Count - 1; i >= 0; --i)
             {
-                var temp = new Task
+                currentTasks[i].timePassed += gameTime.ElapsedGameTime.TotalSeconds;
+                currentTasks[i].lifeTime += gameTime.ElapsedGameTime.TotalSeconds;
+                if (currentTasks[i].timePassed > currentTasks[i].triggerTime)
                 {
-                    func = currentTasks[i].func,
-                    timePassed = currentTasks[i].timePassed,
-                    triggerTime = currentTasks[i].triggerTime,
-                    done = currentTasks[i].done,
-                    isRecurrent = currentTasks[i].isRecurrent
-                };
-
-                temp.timePassed += gameTime.ElapsedGameTime.TotalSeconds;
-                if (temp.timePassed > temp.triggerTime)
-                {
-                    temp.func?.Invoke();
-
-                    if (temp.isRecurrent)
-                    {
-                        temp.timePassed = 0;
-                    }
-                    else
-                    {
-                        temp.done = true;
-                    }
+                    currentTasks[i].func?.Invoke();
+                    currentTasks[i].timePassed = 0;
                 }
 
-
-                if (temp.done) currentTasks.RemoveAt(i);
-                else currentTasks[i] = temp;
+                if (currentTasks[i].stopAfter > 0 && currentTasks[i].lifeTime > currentTasks[i].stopAfter)
+                {
+                    currentTasks[i].done = true;
+                }
+                
+                if (currentTasks[i].done) currentTasks.RemoveAt(i);
             }
 
             currentTasks.AddRange(nextTasks);
             nextTasks.Clear();
         }
 
-        public static void AddTask(Action task, double time, bool isRecurrent)
+        public static Task AddTask(Action task, double triggerEvery, double stopAfter)
         {
-            nextTasks.Add(new Task() { func = task, timePassed = 0, triggerTime = time, done = false, isRecurrent = isRecurrent });
+            var t = new Task() { func = task, timePassed = 0, triggerTime = triggerEvery, done = false, stopAfter = stopAfter, lifeTime = 0 };
+            nextTasks.Add(t);
+            return t;
         }
     }
 }

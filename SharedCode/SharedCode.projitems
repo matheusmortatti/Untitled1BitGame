@@ -13,8 +13,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Debug\Debug.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EntryPoint.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Camera.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Enemies\Bat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Enemies\Blob.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Enemies\Enemy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment Effects\Chimney.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment Effects\FirePit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment Effects\TimePiece.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\GameObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\GameObjectFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\GameObjectManager.cs" />
@@ -24,6 +28,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Player\Sword.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Transform.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\UI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\LineTrail.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\Print.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Circfill.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\AGraphics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\P8Sprite.cs" />
@@ -34,8 +41,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Particles\ParticleManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Particles\Smoke.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Particles\Particle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Particles\TextParticle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Physics\Box.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Physics\APhysics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Physics\SimpleGravity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Physics\TopDownPhysics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)pico8-emulator\AudioUnit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)pico8-emulator\Cartridge.cs" />

@@ -12,6 +12,8 @@ namespace SharedCode
     {
         private List<Component> components = new List<Component>();
 
+        public bool isPaused { get; set; }
+
         public float depth { get; protected set; }
         public Transform transform { get; protected set; }
 
@@ -21,6 +23,7 @@ namespace SharedCode
             get { return _collisionBox; }
             protected set
             {
+                _collisionBox?.CleanUp();
                 _collisionBox = value;
                 if (_collisionBox != null) _collisionBox.gameObject = this;
             }
@@ -29,9 +32,23 @@ namespace SharedCode
         /// <summary>
         /// Defines if object should stop existing or not.
         /// </summary>
-        public bool done { get; protected set; }
+        public bool done { get; set; }
 
-        public List<string> tags;
+        private List<string> _tags;
+        public List<string> tags
+        {
+            get
+            {
+                return new List<string>(_tags);
+            }
+            set
+            {
+                GameObjectManager.RemoveFromTagList(this);
+                _tags = new List<string>(value);
+                GameObjectManager.InsertInTagList(this);
+            }
+        }
+        public List<string> ignoreSolidCollision;
 
         public List<GameObject> collidedLast { get; protected set; }
 
@@ -50,7 +67,8 @@ namespace SharedCode
             transform = new Transform(position);
             collisionBox = null;
             collidedLast = new List<GameObject>();
-            tags = new List<string>();
+            ignoreSolidCollision = new List<string>();
+            _tags = new List<string>();
 
             depth = position.Y;
         }
@@ -80,6 +98,44 @@ namespace SharedCode
             }
 
             return default;
+        }
+
+        public List<T> GetComponents<T>()
+        {
+            List<T> res = new List<T>();
+            foreach (var c in components)
+            {
+                if (c is T)
+                {
+                    try
+                    {
+                        res.Add((T)((object)c));
+                    }
+                    catch (InvalidCastException)
+                    {
+                        // Do nothing
+                    }
+                }
+            }
+
+            return res;
+        }
+
+
+        /// <summary>
+        /// Returns whether or not the game object should stop moving
+        /// after it collides to another object.
+        /// </summary>
+        public bool shouldIgnoreSolidCollision(GameObject other)
+        {
+            if (other == null) return false;
+
+            foreach(var t in ignoreSolidCollision)
+            {
+                if (other.tags.Contains(t)) return true;
+            }
+
+            return false;
         }
 
         public Component AddComponent(Component component)
@@ -169,7 +225,10 @@ namespace SharedCode
         public virtual void Draw()
         {
             GameManager.pico8.memory.Fillp(fillp);
-            GetComponent<AGraphics>()?.Draw(this);
+            foreach (var obj in GetComponents<AGraphics>())
+            {
+                obj.Draw(this);
+            }
             GameManager.pico8.memory.Fillp();
 
             if (Debug.debugMode)

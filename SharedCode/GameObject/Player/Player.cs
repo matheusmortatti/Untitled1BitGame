@@ -29,7 +29,7 @@ namespace SharedCode
             //
 
             walkingInput = new PlayerInput();
-            walkingPhysics = new TopDownPhysics(20, 10);
+            walkingPhysics = new TopDownPhysics(20, 10, 0.9f);
             walkingGraphics = new P8TopDownAnimator((TopDownPhysics)walkingPhysics, P8TopDownAnimator.AnimationMode.SIDES_ONLY);
             ((P8TopDownAnimator)walkingGraphics).RunLeft = new SpriteAnimation(new P8Sprite(33, 1, 1, true, false), 4, 0.3f);
             ((P8TopDownAnimator)walkingGraphics).IdleLeft = new SpriteAnimation(new P8Sprite(32, 1, 1, true, false), 1, 0.3f);
@@ -79,10 +79,18 @@ namespace SharedCode
     {
         public Sword swordInstance { get; set; }
         public PlayerStateMachine stateMachine { get; private set; }
-        public Player(Vector2 position) 
+        public double lifeTime { get; set; } = 120;
+
+        protected bool isInvincible = false;
+        protected double invTime = 1;
+        protected bool isInvisible = false;
+        protected double invisibleTime = 0.2;
+
+        public static int spriteIndex { get; } = 32;
+        public Player(Vector2 position)
             : base(position, new Box(position, new Vector2(8, 4), false, new Vector2(0, 4)))
         {
-            tags.Add("player");
+            tags = new List<string>{"player"};
             swordInstance = null;
 
             stateMachine = new PlayerStateMachine(this);
@@ -96,6 +104,31 @@ namespace SharedCode
             depth = collisionBox.bottom;
 
             stateMachine.StateDo(gameTime);
+
+            var decrease = lifeTime < 10 ? gameTime.ElapsedGameTime.TotalSeconds / 1.5 : gameTime.ElapsedGameTime.TotalSeconds;
+            lifeTime -= decrease;
+        }
+
+        public override void Draw()
+        {
+            if (isInvisible)
+                return;
+
+            base.Draw();
+        }
+
+        public double TakeHit(double hitAmount)
+        {
+            if (isInvincible)
+                return 0;
+
+            isInvincible = true;
+            TaskScheduler.AddTask(() => isInvincible = false, invTime, invTime);
+            TaskScheduler.AddTask(() => isInvisible = !isInvisible, invisibleTime, invTime);
+
+            lifeTime -= hitAmount;
+
+            return lifeTime > 0 ? hitAmount : hitAmount + lifeTime;
         }
 
     }
