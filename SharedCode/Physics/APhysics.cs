@@ -49,6 +49,8 @@ namespace SharedCode.Physics
         }
 
         public Vector2 velocity { get; set; }
+
+        public Vector2 addedVelocity { get; set; }
         public float maxSpeed { get; set; }
         public float acceleration { get; set; }
         public float friction { get; set; }
@@ -62,7 +64,10 @@ namespace SharedCode.Physics
             collidedWith = new List<GameObject>();
         }
 
-        public abstract void AddVelocity(Vector2 velocity);
+        public void AddVelocity(Vector2 velocity)
+        {
+            addedVelocity += velocity;
+        }
 
         public void Move(Vector2 amount, GameObject gameObject)
         {

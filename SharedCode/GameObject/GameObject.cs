@@ -21,7 +21,7 @@ namespace SharedCode
         public Box collisionBox
         {
             get { return _collisionBox; }
-            protected set
+            set
             {
                 _collisionBox?.CleanUp();
                 _collisionBox = value;

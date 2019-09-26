@@ -18,59 +18,137 @@ namespace SharedCode
         void WonderingInit(BatStates previous)
         {
             var physics = _bat.GetComponent<APhysics>();
-            physics.friction = 1;
-            physics.acceleration = _bat.baseSpeed / 2;
+            physics.friction = 0.99f;
+            physics.acceleration = 0;
+
+            _bat.transform.direction = Vector2.Zero;
+
+            //
+            // Set correct animation.
+            //
+
+            _bat.RemoveComponent<AGraphics>();
+
+            _bat.flyingAnim.Reset();
+            _bat.flyingAnim.animationFrameLength = _bat.animationLength / (_bat.flyingAnim.spriteList.Count);
+
+            _bat.AddComponent(_bat.flyingAnim);
         }
 
         void WonderingState(GameTime gameTime)
         {
-            var physics = _bat.GetComponent<APhysics>();
-
-            physics.AddVelocity(
+            _bat.transform.position += (
                 new Vector2(
-                    0, 
-                    _bat.amplitude * ((float)Math.Sin(gameTime.TotalGameTime.TotalSeconds * (2 * Math.PI) / _bat.animationLength)) / 2
+                    0,
+                    _bat.amplitude * ((float)Math.Sin(gameTime.TotalGameTime.TotalSeconds * (2 * Math.PI) / _bat.animationLength + Math.PI))
                     )
                 );
+
+            var player = GameObjectManager.playerInstance;
+            if (player == null)
+                return;
+
+            if ((player.transform.position - _bat.transform.position).LengthSquared() < 1000)
+                Init(BatStates.Charging);
         }
 
         void ChargingInit(BatStates previous)
         {
+            TaskScheduler.AddTask(() => Init(BatStates.Attacking), 1.5f, 1.5f);
 
+            var physics = _bat.GetComponent<APhysics>();
+            physics.friction = 0.98f;
+            physics.acceleration = _bat.baseSpeed / 10;
+            physics.maxSpeed = _bat.baseSpeed / 5;
+
+            //
+            // Set correct animation.
+            //
+
+            //_bat.RemoveComponent<AGraphics>();
+
+            //_bat.chargingAnim.Reset();
+            //_bat.chargingAnim.animationFrameLength = _bat.animationLength;
+
+            //_bat.AddComponent(_bat.chargingAnim);
         }
 
         void ChargingState(GameTime gameTime)
         {
+            var player = GameObjectManager.playerInstance;
 
+            if (player == null)
+                Init(BatStates.Wondering);
+
+            _bat.transform.direction = _bat.transform.position - player.transform.position;
         }
 
+        Vector2 attackDir, targetPos;
         void AttackingInit(BatStates previous)
         {
+            var physics = _bat.GetComponent<APhysics>();
+            physics.friction = 0.98f;
+            physics.acceleration = _bat.baseSpeed / 10;
+            physics.maxSpeed = _bat.baseSpeed;
 
+            var player = GameObjectManager.playerInstance;
+
+            if (player == null)
+                Init(BatStates.Wondering);
+
+            targetPos = new Vector2(player.transform.position.X, player.transform.position.Y);
+            attackDir = targetPos - _bat.transform.position;
+            _bat.transform.direction = new Vector2(attackDir.X, attackDir.Y);
+
+            //
+            // Set correct animation.
+            //
+
+            _bat.RemoveComponent<AGraphics>();
+
+            _bat.flyingAnim.Reset();
+            _bat.flyingAnim.animationFrameLength = _bat.animationLength / (3 * _bat.flyingAnim.spriteList.Count);
+
+            _bat.AddComponent(_bat.flyingAnim);
         }
 
         void AttackingState(GameTime gameTime)
         {
+            var dir = targetPos - _bat.transform.position;
+            if (Math.Sign(attackDir.X) != Math.Sign(dir.X) || Math.Sign(attackDir.Y) != Math.Sign(dir.Y))
+            {
+                _bat.transform.direction = Vector2.Zero;
+                _bat.GetComponent<APhysics>().acceleration = _bat.baseSpeed / 150;
+            }
 
+            if (_bat.GetComponent<APhysics>().velocity == Vector2.Zero)
+                Init(BatStates.Wondering);
         }
     }
 
     public class Bat : Enemy
     {
         BatStateMachine batStateMachine;
-        public float baseSpeed = 10;
-        public float amplitude = 15;
+        public float baseSpeed = 60;
+        public float amplitude = 0.3f;
         public float animationLength = 1.2f;
+
+        public SpriteAnimation flyingAnim, chargingAnim;
+
         public Bat(Vector2 position) : base(position, new Box(position, new Vector2(8, 8)))
         {
             var physics = new TopDownPhysics(baseSpeed, 0, 1f);
-            var anim = new SpriteAnimation(new P8Sprite(53), 2, animationLength / 2);
+            flyingAnim = new SpriteAnimation(new P8Sprite(53), 2, animationLength / 2);
+            chargingAnim = new SpriteAnimation(new P8Sprite(55), 1, animationLength / 2);
 
             AddComponent(physics);
-            AddComponent(anim);
 
             batStateMachine = new BatStateMachine(this);
             batStateMachine.Init(BatStates.Wondering);
+
+            List<string> prevTags = tags;
+            prevTags.Add("ignore_tile");
+            tags = prevTags;
         }
 
         public override void Update(GameTime gameTime)

@@ -43,6 +43,8 @@ namespace SharedCode
                 return;
 
             p.maxSpeed /= 2;
+
+            //_enemy.collisionBox = null;
         }
 
         void DeadState(GameTime gameTime)
@@ -63,6 +65,8 @@ namespace SharedCode
 
         protected double _lifeTime = 30 + (new Random()).NextDouble() * 5;
         protected EnemyStateMachine stateMachine;
+
+        protected Vector2 startPosition;
         public double lifeTime
         {
             get
@@ -82,6 +86,10 @@ namespace SharedCode
 
             stateMachine = new EnemyStateMachine(this);
             stateMachine.Init(EnemyStates.Alive);
+
+            ignoreSolidCollision.Add("enemy");
+
+            startPosition = new Vector2(position.X, position.Y);
         }
 
         public override void Update(GameTime gameTime)
@@ -90,6 +98,21 @@ namespace SharedCode
 
             lifeTime -= gameTime.ElapsedGameTime.TotalSeconds;
             stateMachine.StateDo(gameTime);
+
+            //
+            // Cap position to corners of the screen.
+            //
+
+            transform.position = new Vector2(
+                MathHelper.Clamp(
+                    transform.position.X,
+                    (float)Math.Floor(startPosition.X / 128) * 128,
+                    (float)Math.Floor(startPosition.X / 128) * 128 + 120),
+                MathHelper.Clamp(
+                    transform.position.Y,
+                    (float)Math.Floor(startPosition.Y / 128) * 128,
+                    (float)Math.Floor(startPosition.Y / 128) * 128 + 120)
+                );
         }
 
         public override void Draw()

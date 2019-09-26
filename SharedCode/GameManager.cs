@@ -21,7 +21,7 @@ namespace SharedCode
         {
             GameManager.pico8.LoadGame("untitled1bitgame.p8", new NLuaInterpreter());
 
-            Vector2 playerPosition = Map.FindPlayerInMapSheet();
+             Vector2 playerPosition = Map.FindPlayerInMapSheet();
             GameObjectManager.AddObject(new Camera(playerPosition));
             GameObjectManager.AddObject(new Map(playerPosition));
             GameObjectManager.AddObject(new UI());

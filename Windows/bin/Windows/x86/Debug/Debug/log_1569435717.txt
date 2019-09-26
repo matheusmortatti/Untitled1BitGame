@@ -1,0 +1,4 @@
+Damage Inflicted to SharedCode.Blob : 10
+Damage Inflicted to SharedCode.Blob : 10
+Damage Inflicted to SharedCode.Blob : 6
+Damage Inflicted to SharedCode.OldMan : 10

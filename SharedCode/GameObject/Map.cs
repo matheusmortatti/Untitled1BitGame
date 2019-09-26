@@ -104,7 +104,7 @@ namespace SharedCode
                         return new Vector2(i, j) * 8;
                     }
                 }
-            }
+             }
 
             return Vector2.Zero;
         }

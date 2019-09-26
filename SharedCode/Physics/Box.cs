@@ -178,7 +178,13 @@ namespace SharedCode.Physics
                 sepv += MoveOut(o);
             }
 
+            //
             // Tile Collision
+            //
+
+            if (gameObject.tags.Contains("ignore_tile"))
+                goto cleanup;
+
             Vector2[] possibleTileCollisions = corners;
             Box tileBox = new Box(Vector2.Zero, new Vector2(8, 8));
             foreach(Vector2 p in possibleTileCollisions)

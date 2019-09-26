@@ -17,13 +17,9 @@ namespace SharedCode.Physics
         {
             velocity = new Vector2(velocity.X, velocity.Y + gravity);
             velocity *= friction;
+            addedVelocity *= friction;
 
-            Move(velocity * (float)gameTime.ElapsedGameTime.TotalSeconds, gameObject);
-        }
-
-        public override void AddVelocity(Vector2 velocity)
-        {
-            this.velocity += velocity;
+            Move((velocity + addedVelocity) * (float)gameTime.ElapsedGameTime.TotalSeconds, gameObject);
         }
     }
 }

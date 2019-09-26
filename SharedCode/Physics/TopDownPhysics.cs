@@ -35,29 +35,29 @@ namespace SharedCode.Physics
                 Y = Misc.util.Lerp(velocity.Y, maxSpeed * targetDirection.Y, acceleration)
             };
 
+            Vector2 newaAddedVelocity = new Vector2(addedVelocity.X, addedVelocity.Y);
+
             if (Math.Sign(movingDirection.X) != Math.Sign(targetDirection.X) || targetDirection.X == 0)
             {
                 newVelocity.X *= friction;
+                newaAddedVelocity.X *= friction;
             }
 
             if (Math.Sign(movingDirection.Y) != Math.Sign(targetDirection.Y) || targetDirection.Y == 0)
             {
                 newVelocity.Y *= friction;
+                newaAddedVelocity.Y *= friction;
             }
 
             velocity = Misc.util.RoundIfNear(newVelocity, Vector2.Zero, 1e-2f);
+            addedVelocity = newaAddedVelocity;
 
             // Update moving direction.
             movingDirection = new Vector2(velocity.X, velocity.Y);
             movingDirection.Normalize();
 
-            Vector2 amount = new Vector2(velocity.X, velocity.Y) * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Vector2 amount = new Vector2(velocity.X + addedVelocity.X, velocity.Y + addedVelocity.Y) * (float)gameTime.ElapsedGameTime.TotalSeconds;
             Move(amount, gameObject);
-        }
-
-        public override void AddVelocity(Vector2 velocity)
-        {
-            this.velocity += velocity;
         }
     }
 }
