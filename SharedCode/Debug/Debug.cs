@@ -45,11 +45,13 @@ namespace SharedCode
 
         public static void Log(string message)
         {
+#if DEBUG
             using (var s = File.AppendText(logPath))
             {
                 s.WriteLine(message);
                 s.Close();
             }
+#endif
         }
     }
 }

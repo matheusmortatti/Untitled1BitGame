@@ -50,12 +50,17 @@ namespace SharedCode
         {
             tp.RemoveComponent<SimpleGravity>();
             tp.physics = (APhysics)tp.AddComponent(new TopDownPhysics(200, 25));
+            tp.collisionBox = new Box(tp.transform.position, new Vector2(2, 2), true);
         }
 
         void FollowingState(GameTime gameTime)
         {
-            var player = (Player)GameObjectManager.FindObjectWithTag("player");
-            tp.transform.direction = player.collisionBox.middle - tp.transform.position;
+            tp.transform.direction = tp.objectFollowing.collisionBox.middle - tp.transform.position;
+
+            if (tp.objectFollowing.done)
+            {
+                tp.done = true;
+            }
         }
     }
 
@@ -64,9 +69,9 @@ namespace SharedCode
         public APhysics physics;
         public double time = 0;
         private TimePieceStateMachine stateMachine;
-        public GameObject objectFollowing { get; private set; }
+        public GameObject objectFollowing { get; set; }
         public TimePiece(Vector2 position, Vector2 initialDirection, double time, GameObject follow = null, byte col = 9) 
-            : base(position, new Box(position, new Vector2(2, 2), true))
+            : base(position)
         {
             AddComponent(new LineTrail(position, col));
 

@@ -127,6 +127,7 @@ namespace SharedCode
             return Math.Ceiling(lifeTime > 0 ? hitAmount : hitAmount + lifeTime);
         }
 
+        protected List<TimePiece> timePiecesSpawned;
         public override void OnCollision(GameObject other)
         {
             base.OnCollisionEnter(other);
@@ -173,7 +174,7 @@ namespace SharedCode
                 }
 
                 other.GetComponent<APhysics>().velocity = repelDir * repelSpeed;
-                var tps = TimePiece.SpawnParticles(
+                timePiecesSpawned = TimePiece.SpawnParticles(
                     (int)inflicted, other.collisionBox == null ? other.transform.position : other.collisionBox.middle, 
                     null,
                     8);

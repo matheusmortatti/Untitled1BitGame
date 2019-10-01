@@ -1,0 +1,2 @@
+SharedCode.Goose Wondering State direction angle is 1.16410956393231
+Damage Inflicted to SharedCode.Goose : 10

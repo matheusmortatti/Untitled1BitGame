@@ -1,0 +1,7 @@
+SharedCode.Goose Wondering State direction angle is -0.758499956429493
+SharedCode.Goose Wondering State direction angle is 0.854721232408094
+SharedCode.Goose Wondering State direction angle is 3.52232631052069
+SharedCode.Goose Wondering State direction angle is 5.70601214716057
+SharedCode.Goose Wondering State direction angle is 4.15776053709983
+SharedCode.Goose Wondering State direction angle is 0.406545701718189
+SharedCode.Goose Wondering State direction angle is -1.1924638450837

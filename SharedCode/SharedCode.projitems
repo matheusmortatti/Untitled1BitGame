@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment Effects\Chimney.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment Effects\FirePit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment Effects\TimePiece.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment\Gate.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\GameObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\GameObjectFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\GameObjectManager.cs" />

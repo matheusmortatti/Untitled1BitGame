@@ -5,6 +5,7 @@ using SharedCode.Physics;
 using SharedCode.Graphics;
 using SharedCode.Input;
 using Microsoft.Xna.Framework;
+using System.Reflection;
 
 namespace SharedCode
 {
@@ -65,6 +66,10 @@ namespace SharedCode
         private int fillp;
         private static int lastId = -1;
 
+        private Dictionary<string, MethodInfo> states;
+        public string currentState { get; private set; }
+        private const BindingFlags BINDING_FLAGS = BindingFlags.NonPublic | BindingFlags.Instance;
+
         public GameObject(Vector2 position, params Component[] comps)
         {
             components.AddRange(comps);
@@ -79,6 +84,25 @@ namespace SharedCode
 
             lastId += 1;
             id = lastId;
+
+            //
+            // Setup states
+            //
+
+            states = new Dictionary<string, MethodInfo>();
+
+            var ss = GetType().GetMethods(BINDING_FLAGS);
+            foreach(var s in ss)
+            {
+                if(s.Name.Contains("StateUpdate"))
+                {
+                    states[s.Name] = s;
+                }
+                else if (s.Name.Contains("StateInit"))
+                {
+                    states[s.Name] = s;
+                }
+            }
         }
 
         public GameObject(Vector2 position, Box collisionBox, params Component[] comps) 
@@ -87,6 +111,23 @@ namespace SharedCode
             this.collisionBox = collisionBox;
             if (collisionBox != null) this.collisionBox.position = transform.position;
         }
+
+        #region States
+
+        public void InitState(string stateName)
+        {
+            if (!states.ContainsKey(stateName + "StateUpdate") && !states.ContainsKey(stateName + "StateInit"))
+            {
+                throw new ArgumentException($"{stateName} is not a valid state!");
+            }
+
+            if (states.ContainsKey(stateName + "StateInit"))
+                states[stateName + "StateInit"].Invoke(this, new object[] { currentState });
+
+            this.currentState = stateName;
+        }
+
+        #endregion
 
         public T GetComponent<T>()
         {
@@ -228,6 +269,9 @@ namespace SharedCode
                     fillp = 0b1111111111111111;
                 }
             }
+
+            if (states.ContainsKey(currentState + "StateUpdate"))
+                states[currentState + "StateUpdate"].Invoke(this, new object[] { gameTime });
         }
 
         public virtual void Draw()

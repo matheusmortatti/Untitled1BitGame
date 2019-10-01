@@ -10,26 +10,65 @@ using SharedCode.Particles;
 
 namespace SharedCode
 {
-    public enum GooseStates { Wondering, Chasing }
+    public enum GooseStates { Wondering, Chasing, Following, Still }
 
     public class GooseStateMachine : StateMachine<GooseStates>
     {
         private Goose _goose;
-        public GooseStateMachine(Goose goose) : base(GooseStates.Chasing)
+        public GooseStateMachine(Goose goose) : base(GooseStates.Wondering)
         {
             _goose = goose;
-            this.Init(GooseStates.Chasing);
+            this.Init(GooseStates.Wondering);
         }
 
-        Vector2 targetPosition, targetDir;
-        void WonderingInit(GooseStates previous)
+        void StillInit(GooseStates previous)
         {
             _goose.transform.direction = Vector2.Zero;
 
-            var player = GameObjectManager.FindObjectWithTag("player");
-            if (player != null)
+            TaskScheduler.AddTask(() => { if(State == GooseStates.Still) Init(GooseStates.Wondering); }, 2, 2);
+        }
+
+        void StillState(GameTime gameTime)
+        {
+            
+        }
+
+        Vector2 targetPosition, targetDir;
+        TaskScheduler.Task wonderingDirTask;
+        double changeDirTime = 5;
+        void WonderingInit(GooseStates previous)
+        {
+            var physics = _goose.GetComponent<APhysics>();
+            if (physics!= null)
+                physics.maxSpeed = _goose.baseSpeed;
+
+            _goose.transform.direction = Vector2.Zero;
+
+            Action wonderingDirFunc = () =>
             {
-                var awayDir = _goose.transform.position - player.transform.position;
+
+                // Find a random direction vector that is the direction away from the player rotated
+                // by at most 90 or -90 degrees, making sure that the resulting vector is still facing
+                // away from the player.
+                var randAngle = GameManager.random.NextDouble() * 2 * Math.PI;
+                targetDir = new Vector2((float)Math.Sin(randAngle), (float)Math.Cos(randAngle));
+                targetDir.Normalize();
+
+                Debug.Log($"{_goose.GetType().FullName} Wondering State direction angle is {randAngle}");
+
+                targetPosition = _goose.transform.position + targetDir * 20;
+            };
+
+            wonderingDirTask = TaskScheduler.AddTask(wonderingDirFunc, changeDirTime, -1);
+
+            //
+            // Choose a direction away from the player at first.
+            //
+
+            var p = GameObjectManager.FindObjectWithTag("player");
+            if (p != null)
+            {
+                var awayDir = _goose.transform.position - p.transform.position;
 
                 // Find a random direction vector that is the direction away from the player rotated
                 // by at most 90 or -90 degrees, making sure that the resulting vector is still facing
@@ -40,16 +79,20 @@ namespace SharedCode
                     awayDir.X * (float)Math.Sin(randAngle) + awayDir.Y * (float)Math.Cos(randAngle));
                 targetDir.Normalize();
 
+                Debug.Log($"{_goose.GetType().FullName} Wondering State direction angle is {randAngle}");
+
                 targetPosition = _goose.transform.position + targetDir * 10;
             }
+
         }
 
         void WonderingState(GameTime gameTime)
         {
             var player = GameObjectManager.FindObjectWithTag("player");
-            if (player != null && Vector2.Dot(player.GetComponent<APhysics>().facingDirection, player.transform.position - _goose.transform.position) >= 0)
+            if (player != null && Vector2.Dot(player.GetComponent<APhysics>().facingDirection, player.transform.position - _goose.transform.position) >= 0 && GameManager.random.NextDouble() < 0.005)
             {
-                Init(GooseStates.Chasing);
+                Init(GooseStates.Following);
+                TaskScheduler.RemoveTask(wonderingDirTask);
             }
 
             _goose.transform.direction = targetPosition - _goose.transform.position;
@@ -62,7 +105,9 @@ namespace SharedCode
 
         void ChasingInit(GooseStates previous)
         {
-
+            var physics = _goose.GetComponent<APhysics>();
+            if (physics != null)
+                physics.maxSpeed = _goose.baseSpeed * 2;
         }
 
         void ChasingState(GameTime gameTime)
@@ -74,9 +119,36 @@ namespace SharedCode
 
             _goose.transform.direction = player.transform.position - _goose.transform.position;
 
-            if (Vector2.Dot(player.GetComponent<APhysics>().facingDirection, player.transform.position - _goose.transform.position) < 0)
+            //if (Vector2.Dot(player.GetComponent<APhysics>().facingDirection, player.transform.position - _goose.transform.position) < 0)
+            //{
+            //    Init(GooseStates.Wondering);
+            //}
+
+            if (GameManager.random.NextDouble() < 0.05)
             {
-                //Init(GooseStates.Wondering);
+                ParticleManager.AddParticle(new TextParticle(_goose.transform.position + new Vector2(-8, -8), "HONK", 7));
+            }
+        }
+
+        void FollowingInit(GooseStates previous)
+        {
+            var physics = _goose.GetComponent<APhysics>();
+            if (physics != null)
+                physics.maxSpeed = _goose.baseSpeed * 2;
+        }
+
+        void FollowingState(GameTime gameTime)
+        {
+            var player = GameObjectManager.FindObjectWithTag("player");
+
+            if (player == null)
+                return;
+
+            _goose.transform.direction = player.transform.position - _goose.transform.position;
+
+            if ((player.transform.position - _goose.transform.position).LengthSquared() < 500)
+            {
+                Init(GooseStates.Still);
             }
 
             if (GameManager.random.NextDouble() < 0.05)
@@ -84,11 +156,18 @@ namespace SharedCode
                 ParticleManager.AddParticle(new TextParticle(_goose.transform.position + new Vector2(-8, -8), "HONK", 7));
             }
         }
+
+        public void CleanUp()
+        {
+            TaskScheduler.RemoveTask(wonderingDirTask);
+        }
     }
 
     public class Goose : Enemy
     {
         private GooseStateMachine gooseStateMachine;
+
+        public float baseSpeed { get; private set; } = 10;
 
         public Goose(Vector2 position) : base(position, new Box(position, new Vector2(8, 8)))
         {
@@ -115,7 +194,7 @@ namespace SharedCode
             anim.IdleRight = new SpriteAnimation(new List<P8Sprite>() { new P8StrechedSprite(104, 22, 10, 10, 10, 10, true, false) }, 0);
 
             AddComponent(anim);
-            AddComponent(new TopDownPhysics(15, 10));
+            AddComponent(new TopDownPhysics(15, 10, 0.9999f));
         }
 
         public override void Update(GameTime gameTime)
@@ -128,6 +207,32 @@ namespace SharedCode
         public override void Draw()
         {
             base.Draw();
+        }
+
+        public override void OnCollision(GameObject other)
+        {
+            base.OnCollision(other);
+
+            if (timePiecesSpawned != null)
+            {
+                foreach(var tp in timePiecesSpawned )
+                {
+                    tp.objectFollowing = this;
+                }
+            }
+
+            if (other.tags.Contains("player_attack"))
+            {
+                gooseStateMachine.Init(GooseStates.Still);
+                TaskScheduler.AddTask(() => gooseStateMachine.Init(GooseStates.Chasing), 1, 1);
+            }
+        }
+
+        public override void CleanUp()
+        {
+            base.CleanUp();
+
+            gooseStateMachine.CleanUp();
         }
     }
 }

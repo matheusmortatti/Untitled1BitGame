@@ -76,7 +76,7 @@ namespace SharedCode.Physics
             Box col = gameObject.collisionBox;
             if (col == null)
             {
-                gameObject.transform.MoveTo(gameObject.transform.position + velocity);
+                gameObject.transform.MoveTo(gameObject.transform.position + amount);
                 return;
             }
 

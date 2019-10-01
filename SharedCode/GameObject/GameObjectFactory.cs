@@ -40,6 +40,8 @@ namespace SharedCode
                     return GameObjectManager.AddObject(new Spike(position));
                 case 42:
                     return GameObjectManager.AddObject(new Goose(position));
+                case 11:
+                    return GameObjectManager.AddObject(new Gate(position));
                 default:
                     return GameObjectManager.AddObject(new GameObject(position, new Graphics.P8Sprite(spriteValue)));
             }

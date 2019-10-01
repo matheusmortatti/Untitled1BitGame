@@ -29,6 +29,10 @@ namespace SharedCode
             collisionBox = new Box(position, new Vector2(8, 8), true);
             collisionBox.isTrigger = true;
             depth = 1000;
+
+            List<string> newTags = new List<string>(tags);
+            newTags.Add("player_attack");
+            tags = newTags;
         }
 
         public override void Update(GameTime gameTime)
