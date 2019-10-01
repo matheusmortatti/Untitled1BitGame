@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Enemies\Spike.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Enemies\Tortuga.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment Effects\Chimney.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment Effects\Explosion.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment Effects\FirePit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment Effects\TimePiece.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment\Gate.cs" />
