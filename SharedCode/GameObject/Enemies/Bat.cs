@@ -15,11 +15,18 @@ namespace SharedCode
         private Bat _bat;
         public BatStateMachine(Bat bat) : base(BatStates.Wondering) { _bat = bat; }
 
+        public Vector2 targetPosition;
+        Vector2 targetDir;
+        float wonderingLengthMin = 10, wonderingLengthMax = 20;
+        double newPositionInterval = 4;
+        TaskScheduler.Task targetPosTask;
+
         void WonderingInit(BatStates previous)
         {
             var physics = _bat.GetComponent<APhysics>();
             physics.friction = 0.99f;
-            physics.acceleration = 0;
+            physics.maxSpeed = _bat.baseSpeed / 4;
+            physics.acceleration = physics.maxSpeed / 4;
 
             _bat.transform.direction = Vector2.Zero;
 
@@ -33,10 +40,36 @@ namespace SharedCode
             _bat.flyingAnim.animationFrameLength = _bat.animationLength / (_bat.flyingAnim.spriteList.Count);
 
             _bat.AddComponent(_bat.flyingAnim);
+
+            //
+            // Chooses a new position after some time.
+            //
+
+            targetPosition = _bat.transform.position;
+
+            Action func = () =>
+            {
+                var dir = GameManager.random.NextDouble() * 2 * Math.PI;
+                var length = (float)GameManager.random.NextDouble() * (wonderingLengthMax - wonderingLengthMin) + wonderingLengthMin;
+                targetPosition = new Vector2((float)Math.Sin(dir), (float)Math.Cos(dir)) * length + _bat.transform.position;
+                targetDir = targetPosition - _bat.transform.position;
+                if (targetDir != Vector2.Zero) targetDir.Normalize();
+            };
+
+            func();
+
+            targetPosTask = TaskScheduler.AddTask(func, newPositionInterval, -1);
         }
 
         void WonderingState(GameTime gameTime)
         {
+            _bat.transform.direction = targetPosition - _bat.transform.position;
+
+            if (Vector2.Dot(_bat.transform.direction, targetDir) < 0)
+            {
+                _bat.transform.direction = Vector2.Zero;
+            }
+
             _bat.transform.position += (
                 new Vector2(
                     0,
@@ -49,7 +82,10 @@ namespace SharedCode
                 return;
 
             if ((player.transform.position - _bat.transform.position).LengthSquared() < 1000)
+            {
                 Init(BatStates.Charging);
+                TaskScheduler.RemoveTask(targetPosTask);
+            }
         }
 
         void ChargingInit(BatStates previous)

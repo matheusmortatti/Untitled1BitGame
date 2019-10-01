@@ -17,7 +17,7 @@ namespace SharedCode.Particles
 
         public Smoke(Vector2 position) : base(new TopDownPhysics(0.5f, 0.5f, 0.95f), new Circfill(2, 8), position, -1)
         {
-            radiusDecreaseSpeed = 3f;
+            radiusDecreaseSpeed = 2f + (float)GameManager.random.NextDouble() * 2;
             maxRadius = 2.5f;
             minRadius = 1.8f;
 

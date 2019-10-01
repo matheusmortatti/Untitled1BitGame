@@ -186,10 +186,8 @@ namespace SharedCode.Graphics
 
         private float _previousSide;
 
-        public P8TopDownAnimator(APhysics physics, AnimationMode mode)
+        public P8TopDownAnimator(AnimationMode mode)
         {
-            _physics = physics;
-
             // Create animations for side, up and down directions.
             _animations = new SpriteAnimation[(int)AnimationIndex.MAX_VALUE];
             currentlyPlaying = AnimationIndex.IDLE_LEFT;
@@ -202,6 +200,11 @@ namespace SharedCode.Graphics
 
         public override void Update(GameObject gameObject, GameTime gameTime)
         {
+            _physics = gameObject.GetComponent<APhysics>();
+
+            if (_physics == null)
+                return;
+
             AnimationIndex nextIndex = currentlyPlaying;
 
             var physics = gameObject.GetComponent<TopDownPhysics>();
@@ -288,7 +291,7 @@ namespace SharedCode.Graphics
         private double ticks;
         public bool isPlaying;
 
-        public SpriteAnimation(List<P8Sprite> spriteList, int animationFrameLength)
+        public SpriteAnimation(List<P8Sprite> spriteList, float animationFrameLength)
         {
             this.spriteList = spriteList;
             this.currentIndex = 0;

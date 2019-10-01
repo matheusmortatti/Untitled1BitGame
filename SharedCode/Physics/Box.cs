@@ -282,6 +282,12 @@ namespace SharedCode.Physics
                 return;
             }
 
+            if (bucketBoxes.Count == 0)
+            {
+                buckets.Remove(bucketKey);
+                return;
+            }
+
             bucketBoxes.Remove(this);
 
             if (bucketBoxes.Count == 0)

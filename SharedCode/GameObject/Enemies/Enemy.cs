@@ -63,21 +63,9 @@ namespace SharedCode
         protected float repelSpeed = 200;
         protected double damage = 5;
 
-        protected double _lifeTime = 30 + (new Random()).NextDouble() * 5;
         protected EnemyStateMachine stateMachine;
 
         protected Vector2 startPosition;
-        public double lifeTime
-        {
-            get
-            {
-                return _lifeTime;
-            }
-            set
-            {
-                _lifeTime = value;
-            }
-        }
 
         public Enemy(Vector2 position, Box collisionBox) : base(position, collisionBox)
         {
@@ -90,6 +78,8 @@ namespace SharedCode
             ignoreSolidCollision.Add("enemy");
 
             startPosition = new Vector2(position.X, position.Y);
+
+            lifeTime = 30 + (new Random()).NextDouble() * 5;
         }
 
         public override void Update(GameTime gameTime)
@@ -123,7 +113,7 @@ namespace SharedCode
             base.Draw();
         }
 
-        public double TakeHit(double hitAmount)
+        public virtual double TakeHit(double hitAmount)
         {
             if (isInvincible)
                 return 0;
@@ -146,10 +136,46 @@ namespace SharedCode
                 var inflicted = ((Player)other).TakeHit(damage);
                 if (inflicted <= 0) return;
 
-                other.GetComponent<APhysics>().velocity = ((transform.direction == Vector2.Zero ? -other.transform.direction : transform.direction) * repelSpeed);
+                var repelDir = Vector2.Zero;
+
+                if (transform.direction == Vector2.Zero)
+                {
+                    // if enemy is still, try to use the other GO's direction.
+                    if (other.transform.direction == Vector2.Zero)
+                    {
+                        var dir = other.transform.position - transform.position;
+
+                        // First try to use the direction between the two GOs
+                        // positions. If that is zero, use the other GO's
+                        // facing direction.
+                        if (dir == Vector2.Zero)
+                        {
+                            var physics = other.GetComponent<APhysics>();
+                            if (physics != null)
+                            {
+                                repelDir = -physics.facingDirection;
+                            }
+                        }
+                        else
+                        {
+                            dir.Normalize();
+                            repelDir = dir;
+                        }
+                    }
+                    else
+                    {
+                        repelDir = -other.transform.direction;
+                    }
+                }
+                else
+                {
+                    repelDir = transform.direction;
+                }
+
+                other.GetComponent<APhysics>().velocity = repelDir * repelSpeed;
                 var tps = TimePiece.SpawnParticles(
                     (int)inflicted, other.collisionBox == null ? other.transform.position : other.collisionBox.middle, 
-                    false,
+                    null,
                     8);
 
                 ((Camera)GameObjectManager.FindObjectWithTag("camera")).AddShake(0.1);

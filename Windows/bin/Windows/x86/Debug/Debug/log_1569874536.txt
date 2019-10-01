@@ -1,0 +1,12 @@
+Damage Inflicted to SharedCode.Tortuga : 10
+Damage Inflicted to SharedCode.Bat : 10
+Damage Inflicted to SharedCode.Bat : 10
+Damage Inflicted to SharedCode.Bat : 10
+Damage Inflicted to SharedCode.Bat : 10
+Damage Inflicted to SharedCode.Bat : 10
+Damage Inflicted to SharedCode.Bat : 10
+Damage Inflicted to SharedCode.Bat : 2
+Damage Inflicted to SharedCode.Bat : 10
+Damage Inflicted to SharedCode.Bat : 10
+Damage Inflicted to SharedCode.Bat : 5
+Damage Inflicted to SharedCode.Bat : 8

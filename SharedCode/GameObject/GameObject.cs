@@ -17,7 +17,11 @@ namespace SharedCode
         public float depth { get; protected set; }
         public Transform transform { get; protected set; }
 
+        public double lifeTime { get; set; }
+
         private Box _collisionBox;
+        
+        public int id { get; private set; }
         public Box collisionBox
         {
             get { return _collisionBox; }
@@ -59,6 +63,7 @@ namespace SharedCode
         public double fadeOutTime;
         public bool fadeOut;
         private int fillp;
+        private static int lastId = -1;
 
         public GameObject(Vector2 position, params Component[] comps)
         {
@@ -71,6 +76,9 @@ namespace SharedCode
             _tags = new List<string>();
 
             depth = position.Y;
+
+            lastId += 1;
+            id = lastId;
         }
 
         public GameObject(Vector2 position, Box collisionBox, params Component[] comps) 
@@ -241,7 +249,7 @@ namespace SharedCode
         public virtual void OnCollisionEnter(GameObject other) {  }
         public virtual void OnCollisionExit(GameObject other) {  }
 
-        public void CleanUp()
+        public virtual void CleanUp()
         {
             _collisionBox?.CleanUp();
         }

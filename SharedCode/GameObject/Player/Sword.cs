@@ -13,7 +13,7 @@ namespace SharedCode
     {
         private double timePassed;
 
-        private double lifetime = 0.5;
+        private new double lifeTime = 0.5;
         private float repelSpeed = 80;
 
         public float damage { get; set; } = 10;
@@ -37,15 +37,15 @@ namespace SharedCode
 
             timePassed += gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (timePassed > lifetime)
+            if (timePassed > lifeTime)
             {
                 done = true;
             }
 
-            if (timePassed > 2 * lifetime / 3 && !fadeOut)
+            if (timePassed > 2 * lifeTime / 3 && !fadeOut)
             {
                 fadeOut = true;
-                fadeOutTime = lifetime - timePassed;
+                fadeOutTime = lifeTime - timePassed;
 
                 this.collisionBox = null;
             }
@@ -66,9 +66,18 @@ namespace SharedCode
 
                 inflicted = Math.Floor(inflicted);
 
-                ((Camera)GameObjectManager.FindObjectWithTag("camera")).AddShake(0.1);
+                //
+                // Camera shake, brief pause and time particles.
+                //
 
-                TimePiece.SpawnParticles((int)Math.Ceiling(inflicted), other.collisionBox == null ? other.transform.position : other.collisionBox.middle);
+                ((Camera)GameObjectManager.FindObjectWithTag("camera"))?.AddShake(0.1);
+
+                if (other.lifeTime <= 0)
+                {
+                    GameObjectManager.AddPause(0.2f);
+                }
+
+                TimePiece.SpawnParticles((int)Math.Ceiling(inflicted), other.collisionBox == null ? other.transform.position : other.collisionBox.middle, GameObjectManager.playerInstance);
 
 #if DEBUG
                 Debug.Log($"Damage Inflicted to {other.GetType().FullName} : {Math.Ceiling(inflicted).ToString()}");

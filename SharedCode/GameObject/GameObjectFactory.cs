@@ -34,6 +34,12 @@ namespace SharedCode
                     return GameObjectManager.AddObject(new Blob(position));
                 case 55:
                     return GameObjectManager.AddObject(new Bat(position));
+                case 21:
+                    return GameObjectManager.AddObject(new Tortuga(position));
+                case 122:
+                    return GameObjectManager.AddObject(new Spike(position));
+                case 42:
+                    return GameObjectManager.AddObject(new Goose(position));
                 default:
                     return GameObjectManager.AddObject(new GameObject(position, new Graphics.P8Sprite(spriteValue)));
             }

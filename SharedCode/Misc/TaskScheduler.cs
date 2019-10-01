@@ -51,5 +51,12 @@ namespace SharedCode.Misc
             nextTasks.Add(t);
             return t;
         }
+
+        public static Task RemoveTask(Task task)
+        {
+            if (task != null && currentTasks.Contains(task))
+                currentTasks.Remove(task);
+            return task;
+        }
     }
 }

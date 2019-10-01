@@ -16,6 +16,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Enemies\Bat.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Enemies\Blob.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Enemies\Enemy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Enemies\Goose.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Enemies\Spike.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Enemies\Tortuga.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment Effects\Chimney.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment Effects\FirePit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment Effects\TimePiece.cs" />
@@ -30,6 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)GameManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\UI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\LineTrail.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\P8StrechedSprite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Print.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Circfill.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\AGraphics.cs" />

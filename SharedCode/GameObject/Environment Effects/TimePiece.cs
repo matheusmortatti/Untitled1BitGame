@@ -30,7 +30,7 @@ namespace SharedCode
             var time = 0.7 + GameManager.random.NextDouble() * 0.4;
             TaskScheduler.AddTask(() => 
             {
-                if (tp.shouldGoToPlayer)
+                if (tp.objectFollowing != null)
                     Init(TimePieceStates.Following);
                 else
                     tp.done = true;
@@ -64,8 +64,8 @@ namespace SharedCode
         public APhysics physics;
         public double time = 0;
         private TimePieceStateMachine stateMachine;
-        public bool shouldGoToPlayer { get; private set; }
-        public TimePiece(Vector2 position, Vector2 initialDirection, double time, bool shouldGoToPlayer = true, byte col = 9) 
+        public GameObject objectFollowing { get; private set; }
+        public TimePiece(Vector2 position, Vector2 initialDirection, double time, GameObject follow = null, byte col = 9) 
             : base(position, new Box(position, new Vector2(2, 2), true))
         {
             AddComponent(new LineTrail(position, col));
@@ -73,7 +73,7 @@ namespace SharedCode
             transform.direction = initialDirection;
 
             this.time = time;
-            this.shouldGoToPlayer = shouldGoToPlayer;
+            objectFollowing = follow;
 
             stateMachine = new TimePieceStateMachine(this);
             stateMachine.Init(TimePieceStates.Exploding);
@@ -90,21 +90,21 @@ namespace SharedCode
         {
             base.OnCollisionEnter(other);
 
-            if (shouldGoToPlayer && other.tags.Contains("player"))
+            if (objectFollowing != null && other.id == objectFollowing.id)
             {
-                ((Player)other).lifeTime += time;
+                objectFollowing.lifeTime += time;
                 done = true;
             }
         }
 
-        public static List<TimePiece> SpawnParticles(int amount, Vector2 position, bool shouldGoToPlayer = true, byte col = 9)
+        public static List<TimePiece> SpawnParticles(int amount, Vector2 position, GameObject follow = null, byte col = 9)
         {
             List<TimePiece> l = new List<TimePiece>();
             for (int i = 0; i < amount; ++i)
             {
                 var angle = GameManager.random.NextDouble() * Math.PI + Math.PI / 2;
                 var dir = new Vector2((float)Math.Sin(angle), (float)Math.Cos(angle));
-                var tp = new TimePiece(position, dir, 1, shouldGoToPlayer, col);
+                var tp = new TimePiece(position, dir, 1, follow, col);
                 l.Add((TimePiece)GameObjectManager.AddObject(tp));
             }
 

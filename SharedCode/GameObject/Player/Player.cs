@@ -30,7 +30,7 @@ namespace SharedCode
 
             walkingInput = new PlayerInput();
             walkingPhysics = new TopDownPhysics(20, 10, 0.9f);
-            walkingGraphics = new P8TopDownAnimator((TopDownPhysics)walkingPhysics, P8TopDownAnimator.AnimationMode.SIDES_ONLY);
+            walkingGraphics = new P8TopDownAnimator(P8TopDownAnimator.AnimationMode.SIDES_ONLY);
             ((P8TopDownAnimator)walkingGraphics).RunLeft = new SpriteAnimation(new P8Sprite(33, 1, 1, true, false), 4, 0.3f);
             ((P8TopDownAnimator)walkingGraphics).IdleLeft = new SpriteAnimation(new P8Sprite(32, 1, 1, true, false), 1, 0.3f);
             ((P8TopDownAnimator)walkingGraphics).RunRight = new SpriteAnimation(new P8Sprite(33, 1, 1, false, false), 4, 0.3f);
@@ -79,7 +79,6 @@ namespace SharedCode
     {
         public Sword swordInstance { get; set; }
         public PlayerStateMachine stateMachine { get; private set; }
-        public double lifeTime { get; set; } = 120;
 
         protected bool isInvincible = false;
         protected double invTime = 1;
@@ -95,6 +94,8 @@ namespace SharedCode
 
             stateMachine = new PlayerStateMachine(this);
             stateMachine.Init(PlayerStates.Walking);
+
+            lifeTime = 120;
         }
 
         public override void Update(GameTime gameTime)

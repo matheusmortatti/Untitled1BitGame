@@ -19,6 +19,8 @@ namespace SharedCode
 
         private static Dictionary<string, List<GameObject>> taggedObjects;
 
+        private static double _globalPause;
+
         public static void Init(in Pico8<Color> p8)
         {
             if (activeObjects == null)
@@ -46,6 +48,12 @@ namespace SharedCode
 
         public static void UpdateObjects(GameTime gameTime)
         {
+            if (_globalPause > 0)
+            {
+                _globalPause -= gameTime.ElapsedGameTime.TotalSeconds;
+                return;
+            }
+
             foreach(var go in activeObjects)
             {
                 if (go.isPaused) continue;
@@ -134,6 +142,11 @@ namespace SharedCode
             {
                 obj.done = true;
             }
+        }
+
+        public static void AddPause(double time)
+        {
+            _globalPause = Math.Max(_globalPause, time);
         }
 
     }

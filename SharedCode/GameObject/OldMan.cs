@@ -14,7 +14,7 @@ namespace SharedCode
         public OldMan(Vector2 position) : base(position, new Box(position, new Vector2(8, 8)))
         {
             AddComponent(new TopDownPhysics(0, 0, 0.95f));
-            var graphics = new P8TopDownAnimator(GetComponent<TopDownPhysics>(), P8TopDownAnimator.AnimationMode.SIDES_ONLY);
+            var graphics = new P8TopDownAnimator(P8TopDownAnimator.AnimationMode.SIDES_ONLY);
             AddComponent(graphics);
             graphics.RunLeft = new SpriteAnimation(new P8Sprite(0, 1, 1, true, false), 3, 0.4f);
             graphics.IdleLeft = graphics.RunLeft;

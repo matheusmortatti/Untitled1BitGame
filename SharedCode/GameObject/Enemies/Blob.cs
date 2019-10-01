@@ -18,7 +18,7 @@ namespace SharedCode
             var physics = new TopDownPhysics(baseSpeed, baseSpeed / 2, 0.95f);
             AddComponent(physics);
 
-            var anim = new P8TopDownAnimator(physics, P8TopDownAnimator.AnimationMode.SIDES_ONLY);
+            var anim = new P8TopDownAnimator(P8TopDownAnimator.AnimationMode.SIDES_ONLY);
             anim.RunLeft = new SpriteAnimation(new P8Sprite(7), 3, 0.3f);
             anim.RunRight = anim.RunLeft;
             anim.IdleLeft = new SpriteAnimation(new P8Sprite(7), 1, 0.3f);
