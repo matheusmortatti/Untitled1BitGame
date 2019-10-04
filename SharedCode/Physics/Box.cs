@@ -145,13 +145,16 @@ namespace SharedCode.Physics
         public List<Box> CheckCollision()
         {
             List<Box> list = new List<Box>();
-            foreach (var bk in bucketKeys)
+            lock (buckets)
             {
-                if (!buckets.ContainsKey(bk)) continue;
-                foreach (var o in buckets[bk])
+                foreach (var bk in bucketKeys)
                 {
-                    if (o != this && !list.Contains(o) && Collided(o))
-                        list.Add(o);
+                    if (!buckets.ContainsKey(bk)) continue;
+                    foreach (var o in buckets[bk])
+                    {
+                        if (o != this && !list.Contains(o) && Collided(o))
+                            list.Add(o);
+                    }
                 }
             }
 
@@ -263,36 +266,42 @@ namespace SharedCode.Physics
 
         private void AddToBucket(Vector2 bucketKey)
         {
-            if (!buckets.ContainsKey(bucketKey))
+            lock (buckets)
             {
-                buckets.Add(bucketKey, new List<Box>());
-            }
+                if (!buckets.ContainsKey(bucketKey))
+                {
+                    buckets.Add(bucketKey, new List<Box>());
+                }
 
-            if (!buckets[bucketKey].Contains(this))
-                buckets[bucketKey].Add(this);
+                if (!buckets[bucketKey].Contains(this))
+                    buckets[bucketKey].Add(this);
+            }
         }
 
         private void RemoveFromBucket(Vector2 bucketKey)
         {
-            List<Box> bucketBoxes;
-            buckets.TryGetValue(bucketKey, out bucketBoxes);
-
-            if (bucketBoxes == null)
+            lock (buckets)
             {
-                return;
-            }
+                List<Box> bucketBoxes;
+                buckets.TryGetValue(bucketKey, out bucketBoxes);
 
-            if (bucketBoxes.Count == 0)
-            {
-                buckets.Remove(bucketKey);
-                return;
-            }
+                if (bucketBoxes == null)
+                {
+                    return;
+                }
 
-            bucketBoxes.Remove(this);
+                if (bucketBoxes.Count == 0)
+                {
+                    buckets.Remove(bucketKey);
+                    return;
+                }
 
-            if (bucketBoxes.Count == 0)
-            {
-                buckets.Remove(bucketKey);
+                bucketBoxes.Remove(this);
+
+                if (bucketBoxes.Count == 0)
+                {
+                    buckets.Remove(bucketKey);
+                }
             }
         }
 

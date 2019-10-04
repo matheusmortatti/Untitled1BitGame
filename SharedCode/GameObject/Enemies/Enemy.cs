@@ -32,11 +32,11 @@ namespace SharedCode
         private double deadTime = 1;
         void DeadInit(EnemyStates prev)
         {
-            TaskScheduler.AddTask(() => _enemy.done = true, deadTime, deadTime);
+            TaskScheduler.AddTask(() => _enemy.done = true, deadTime, deadTime, _enemy.id);
             TaskScheduler.AddTask(() => {
                 _enemy.fadeOut = true;
                 _enemy.fadeOutTime = 2 * deadTime / 3;
-            }, deadTime / 3, deadTime / 3);
+            }, deadTime / 3, deadTime / 3, _enemy.id);
 
             var p = _enemy.GetComponent<APhysics>();
             if (p == null)
@@ -44,7 +44,7 @@ namespace SharedCode
 
             p.maxSpeed /= 2;
 
-            //_enemy.collisionBox = null;
+            _enemy.collisionBox = null;
         }
 
         void DeadState(GameTime gameTime)
@@ -67,7 +67,11 @@ namespace SharedCode
 
         protected Vector2 startPosition;
 
-        public Enemy(Vector2 position, Box collisionBox) : base(position, collisionBox)
+        protected int spriteIndex;
+
+        protected double respawnTime = 20;
+
+        public Enemy(Vector2 position, Box collisionBox, int spriteIndex) : base(position, collisionBox)
         {
             tags = new List<string> { "enemy", "nonpersistent" };
             ignoreSolidCollision.Add("player");
@@ -79,14 +83,16 @@ namespace SharedCode
 
             startPosition = new Vector2(position.X, position.Y);
 
-            lifeTime = 30 + (new Random()).NextDouble() * 5;
+            lifeTime = 15 + GameManager.random.NextDouble() * 5;
+
+            this.spriteIndex = spriteIndex;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
 
-            lifeTime -= gameTime.ElapsedGameTime.TotalSeconds;
+            lifeTime -= gameTime.ElapsedGameTime.TotalSeconds / 1.5;
             stateMachine.StateDo(gameTime);
 
             //
@@ -103,6 +109,8 @@ namespace SharedCode
                     (float)Math.Floor(startPosition.Y / 128) * 128,
                     (float)Math.Floor(startPosition.Y / 128) * 128 + 120)
                 );
+
+            depth = transform.position.Y;
         }
 
         public override void Draw()
@@ -119,8 +127,8 @@ namespace SharedCode
                 return 0;
 
             isInvincible = true;
-            TaskScheduler.AddTask(() => isInvincible = false, invTime, invTime);
-            TaskScheduler.AddTask(() => isInvisible = !isInvisible, invisibleTime, invTime);
+            TaskScheduler.AddTask(() => isInvincible = false, invTime, invTime, this.id);
+            TaskScheduler.AddTask(() => isInvisible = !isInvisible, invisibleTime, invTime, this.id);
 
             lifeTime -= hitAmount;
 
@@ -180,6 +188,26 @@ namespace SharedCode
                     8);
 
                 ((Camera)GameObjectManager.FindObjectWithTag("camera")).AddShake(0.1);
+            }
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            //
+            // Schedule a respawn only if it has previously died.
+            //
+
+            if (lifeTime <= 0)
+            {
+                var celPos = new Vector2((float)Math.Floor(startPosition.X / 8), (float)Math.Floor(startPosition.Y / 8));
+                GameManager.pico8.memory.Mset((int)celPos.X, (int)celPos.Y, 0);
+                TaskScheduler.AddTask(() =>
+                {
+                    GameManager.pico8.memory.Mset((int)celPos.X, (int)celPos.Y, (byte)spriteIndex);
+                }, respawnTime, respawnTime, -1
+                );
             }
         }
     }

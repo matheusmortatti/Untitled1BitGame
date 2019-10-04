@@ -34,7 +34,7 @@ namespace SharedCode
                     Init(TimePieceStates.Following);
                 else
                     tp.done = true;
-            }, time, time);
+            }, time, time, tp.id);
         }
 
         void ExplodingState(GameTime gameTime)
@@ -55,12 +55,13 @@ namespace SharedCode
 
         void FollowingState(GameTime gameTime)
         {
-            tp.transform.direction = tp.objectFollowing.collisionBox.middle - tp.transform.position;
-
-            if (tp.objectFollowing.done)
+            if (tp.objectFollowing.done || tp.objectFollowing.collisionBox == null)
             {
                 tp.done = true;
+                return;
             }
+
+            tp.transform.direction = tp.objectFollowing.collisionBox.middle - tp.transform.position;
         }
     }
 
@@ -91,7 +92,7 @@ namespace SharedCode
             stateMachine.StateDo(gameTime);
         }
 
-        public override void OnCollision(GameObject other)
+        public override void OnCollisionEnter(GameObject other)
         {
             base.OnCollisionEnter(other);
 

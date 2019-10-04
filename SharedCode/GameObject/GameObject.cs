@@ -37,7 +37,19 @@ namespace SharedCode
         /// <summary>
         /// Defines if object should stop existing or not.
         /// </summary>
-        public bool done { get; set; }
+
+        private bool _done;
+        public bool done
+        {
+            get
+            {
+                return _done;
+            }
+            set
+            {
+                _done = value;
+            }
+        }
 
         private List<string> _tags;
         public List<string> tags
@@ -56,6 +68,9 @@ namespace SharedCode
         public List<string> ignoreSolidCollision;
 
         public List<GameObject> collidedLast { get; protected set; }
+        public List<GameObject> collidedAlready { get; protected set; }
+        public List<GameObject> collidedEnterAlready { get; protected set; }
+        public List<GameObject> collidedExitAlready { get; protected set; }
 
         /// <summary>
         /// Fade out variables.
@@ -76,7 +91,12 @@ namespace SharedCode
 
             transform = new Transform(position);
             collisionBox = null;
+
             collidedLast = new List<GameObject>();
+            collidedAlready = new List<GameObject>();
+            collidedEnterAlready = new List<GameObject>();
+            collidedExitAlready = new List<GameObject>();
+
             ignoreSolidCollision = new List<string>();
             _tags = new List<string>();
 
@@ -237,24 +257,44 @@ namespace SharedCode
                 {
                     if (!collidedLast.Contains(other))
                     {
-                        OnCollisionEnter(other);
-                        other.OnCollisionEnter(this);
+                        if (!collidedEnterAlready.Contains(other))
+                        {
+                            OnCollisionEnter(other);
+                            other.OnCollisionEnter(this);
+
+                            other.collidedEnterAlready.Add(this);
+                        }
                     }
 
-                    OnCollision(other);
-                    other.OnCollision(this);
+                    if (!collidedAlready.Contains(other))
+                    {
+                        OnCollision(other);
+                        other.OnCollision(this);
+
+                        other.collidedAlready.Add(this);
+                    }
                 }
 
                 foreach (var other in collidedLast)
                 {
                     if (!collidedWith.Contains(other))
                     {
-                        OnCollisionExit(other);
-                        other.OnCollisionExit(this);
+                        if (!collidedExitAlready.Contains(other))
+                        {
+                            OnCollisionExit(other);
+                            other.OnCollisionExit(this);
+
+                            other.collidedExitAlready.Add(this);
+                        }
                     }
                 }
 
-                collidedLast = collidedWith;
+                collidedLast.Clear();
+                collidedLast.AddRange(collidedWith);
+                collidedLast.AddRange(collidedAlready);
+                collidedAlready.Clear();
+                collidedEnterAlready.Clear();
+                collidedExitAlready.Clear();
             }
 
             if (fadeOut)
@@ -293,9 +333,13 @@ namespace SharedCode
         public virtual void OnCollisionEnter(GameObject other) {  }
         public virtual void OnCollisionExit(GameObject other) {  }
 
+        public virtual void OnDestroy() { }
+
         public virtual void CleanUp()
         {
             _collisionBox?.CleanUp();
+
+            Misc.TaskScheduler.RemoveTasksUnderId(id);
         }
     }
 }

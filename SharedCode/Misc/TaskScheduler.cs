@@ -16,9 +16,20 @@ namespace SharedCode.Misc
             public double stopAfter;
             public double lifeTime;
             public bool done;
+
+            // Id that refers to the game object that created it.
+            public int id;
         }
         private static List<Task> currentTasks = new List<Task>();
         private static List<Task> nextTasks = new List<Task>();
+
+        public static int numberOfTasks
+        {
+            get
+            {
+                return currentTasks.Count;
+            }
+        }
 
         public static void Update(GameTime gameTime)
         {
@@ -45,9 +56,18 @@ namespace SharedCode.Misc
             nextTasks.Clear();
         }
 
-        public static Task AddTask(Action task, double triggerEvery, double stopAfter)
+        public static Task AddTask(Action task, double triggerEvery, double stopAfter, int id)
         {
-            var t = new Task() { func = task, timePassed = 0, triggerTime = triggerEvery, done = false, stopAfter = stopAfter, lifeTime = 0 };
+            var t = new Task()
+            {
+                func = task, timePassed = 0,
+                triggerTime = triggerEvery,
+                done = false,
+                stopAfter = stopAfter,
+                lifeTime = 0,
+                id = id
+            };
+
             nextTasks.Add(t);
             return t;
         }
@@ -57,6 +77,17 @@ namespace SharedCode.Misc
             if (task != null && currentTasks.Contains(task))
                 currentTasks.Remove(task);
             return task;
+        }
+
+        public static void RemoveTasksUnderId(int id)
+        {
+            for (int i = currentTasks.Count - 1; i >= 0; i -= 1)
+            {
+                if (currentTasks[i].id == id)
+                {
+                    currentTasks.RemoveAt(i);
+                }
+            }
         }
     }
 }

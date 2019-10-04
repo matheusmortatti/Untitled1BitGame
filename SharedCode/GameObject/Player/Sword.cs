@@ -16,7 +16,9 @@ namespace SharedCode
         private new double lifeTime = 0.5;
         private float repelSpeed = 80;
 
-        public float damage { get; set; } = 10;
+        private float timeGivenAdjustment = 2f;
+
+        public float damage { get; set; } = 5;
 
         public Sword(Vector2 position, Vector2 direction) : base(position, new TopDownPhysics(0, 0))
         {
@@ -68,8 +70,6 @@ namespace SharedCode
                 var inflicted = ((Enemy)other).TakeHit(damage);
                 if (inflicted <= 0) return;
 
-                inflicted = Math.Floor(inflicted);
-
                 //
                 // Camera shake, brief pause and time particles.
                 //
@@ -81,11 +81,9 @@ namespace SharedCode
                     GameObjectManager.AddPause(0.2f);
                 }
 
-                TimePiece.SpawnParticles((int)Math.Ceiling(inflicted), other.collisionBox == null ? other.transform.position : other.collisionBox.middle, GameObjectManager.playerInstance);
+                TimePiece.SpawnParticles((int)Math.Ceiling(inflicted / timeGivenAdjustment), other.collisionBox == null ? other.transform.position : other.collisionBox.middle, GameObjectManager.playerInstance);
 
-#if DEBUG
                 Debug.Log($"Damage Inflicted to {other.GetType().FullName} : {Math.Ceiling(inflicted).ToString()}");
-#endif
 
                 //
                 // Add force to repel enemy.
@@ -93,7 +91,11 @@ namespace SharedCode
 
                 Vector2 repelDir = transform.direction;
 
-                other.GetComponent<APhysics>().velocity = (repelDir * repelSpeed);
+                var physics = other.GetComponent<APhysics>();
+                if (physics == null)
+                    Debug.Log($"{other.GetType().FullName} does not have a physics component. Attacking it does not send it back.");
+                else
+                    physics.velocity = (repelDir * repelSpeed);
             }
         }
     }

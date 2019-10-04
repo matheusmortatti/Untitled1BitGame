@@ -11,7 +11,7 @@ namespace SharedCode
 {
     public class OldMan : Enemy
     {
-        public OldMan(Vector2 position) : base(position, new Box(position, new Vector2(8, 8)))
+        public OldMan(Vector2 position, int spritePosition) : base(position, new Box(position, new Vector2(8, 8)), spritePosition)
         {
             AddComponent(new TopDownPhysics(0, 0, 0.95f));
             var graphics = new P8TopDownAnimator(P8TopDownAnimator.AnimationMode.SIDES_ONLY);
@@ -28,7 +28,7 @@ namespace SharedCode
         {
             base.Update(gameTime);
 
-            depth = collisionBox.bottom;
+            depth = collisionBox == null ? transform.position.Y : collisionBox.bottom;
         }
     }
 }

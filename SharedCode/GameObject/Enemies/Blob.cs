@@ -13,7 +13,7 @@ namespace SharedCode
     {
         private Vector2 targetPosition;
         private float baseSpeed = 20f;
-        public Blob(Vector2 position) : base(position, new Box(position, new Vector2(7, 4), false, new Vector2(0, 4)))
+        public Blob(Vector2 position, int spriteIndex) : base(position, new Box(position, new Vector2(7, 4), false, new Vector2(0, 4)), spriteIndex)
         {
             var physics = new TopDownPhysics(baseSpeed, baseSpeed / 2, 0.95f);
             AddComponent(physics);
@@ -26,9 +26,30 @@ namespace SharedCode
             AddComponent(anim);
 
             targetPosition = Vector2.Zero;
+
+            InitState("Still");
         }
 
-        public override void Update(GameTime gameTime)
+        void StillStateInit(string previous)
+        {
+
+        }
+
+        void StillStateUpdate(GameTime gameTime)
+        {
+            var player = GameObjectManager.FindObjectWithTag("player");
+            if (player != null && (player.transform.position - transform.position).LengthSquared() < 800)
+            {
+                InitState("Following");
+            }
+        }
+
+        void FollowingStateInit(string previous)
+        {
+
+        }
+
+        void FollowingStateUpdate(GameTime gameTime)
         {
             if (GameObjectManager.playerInstance == null)
                 return;
@@ -38,9 +59,15 @@ namespace SharedCode
 
             var physics = GetComponent<APhysics>();
 
-            physics.maxSpeed = baseSpeed * ((float)Math.Sin(gameTime.TotalGameTime.TotalSeconds * (2 * Math.PI) / 0.9f ) + 1) / 2;
-            physics.acceleration = physics.maxSpeed / 2;
+            if (physics == null)
+                return;
 
+            physics.maxSpeed = baseSpeed * ((float)Math.Sin(gameTime.TotalGameTime.TotalSeconds * (2 * Math.PI) / 0.9f) + 1) / 2;
+            physics.acceleration = physics.maxSpeed / 2;
+        }
+
+        public override void Update(GameTime gameTime)
+        {
             base.Update(gameTime);
         }
     }

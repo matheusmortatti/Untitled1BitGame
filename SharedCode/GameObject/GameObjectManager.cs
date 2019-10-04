@@ -21,6 +21,16 @@ namespace SharedCode
 
         private static double _globalPause;
 
+        public static int numberOfObjects
+        {
+            get
+            {
+                if (activeObjects == null)
+                    return 0;
+                return activeObjects.Count;
+            }
+        }
+
         public static void Init(in Pico8<Color> p8)
         {
             if (activeObjects == null)
@@ -66,6 +76,8 @@ namespace SharedCode
             {
                 if (activeObjects[i].done)
                 {
+                    Debug.Log($"Remove instance of {activeObjects[i].GetType().FullName}");
+                    activeObjects[i].OnDestroy();
                     activeObjects[i].CleanUp();
                     RemoveFromTagList(activeObjects[i]);
                     activeObjects.RemoveAt(i);
@@ -76,7 +88,7 @@ namespace SharedCode
             activeObjects.Sort((x, y) => x.depth.CompareTo(y.depth));
             nextObjects.Clear();
 
-            GC.Collect();
+            //GC.Collect();
         }
 
         public static void DrawObjects()
@@ -123,12 +135,14 @@ namespace SharedCode
 
         public static GameObject FindObjectWithTag(string tag)
         {
-            return taggedObjects.ContainsKey(tag) ? taggedObjects[tag][0] : null;
+            return taggedObjects.ContainsKey(tag) && taggedObjects[tag] != null && taggedObjects[tag].Count > 0 ? 
+                taggedObjects[tag][0] : 
+                null;
         }
 
         public static List<GameObject> FindObjectsWithTag(string tag)
         {
-            return taggedObjects.ContainsKey(tag) ? taggedObjects[tag] : null;
+            return taggedObjects.ContainsKey(tag) ? taggedObjects[tag] : new List<GameObject>();
         }
 
         public static void RemoveObjectsWithTag(string tag)
@@ -147,6 +161,24 @@ namespace SharedCode
         public static void AddPause(double time)
         {
             _globalPause = Math.Max(_globalPause, time);
+        }
+
+        public static void RemoveAllObjects()
+        {
+            foreach(var obj in activeObjects)
+            {
+                obj.CleanUp();
+            }
+
+            foreach (var obj in nextObjects)
+            {
+                obj.CleanUp();
+            }
+
+            activeObjects.Clear();
+            nextObjects.Clear();
+            taggedObjects.Clear();
+            playerInstance = null;
         }
 
     }

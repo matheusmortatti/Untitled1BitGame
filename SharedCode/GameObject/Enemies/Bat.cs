@@ -58,7 +58,7 @@ namespace SharedCode
 
             func();
 
-            targetPosTask = TaskScheduler.AddTask(func, newPositionInterval, -1);
+            targetPosTask = TaskScheduler.AddTask(func, newPositionInterval, -1, _bat.id);
         }
 
         void WonderingState(GameTime gameTime)
@@ -90,7 +90,7 @@ namespace SharedCode
 
         void ChargingInit(BatStates previous)
         {
-            TaskScheduler.AddTask(() => Init(BatStates.Attacking), 1.5f, 1.5f);
+            TaskScheduler.AddTask(() => Init(BatStates.Attacking), 1.5f, 1.5f, _bat.id);
 
             var physics = _bat.GetComponent<APhysics>();
             physics.friction = 0.98f;
@@ -171,7 +171,7 @@ namespace SharedCode
 
         public SpriteAnimation flyingAnim, chargingAnim;
 
-        public Bat(Vector2 position) : base(position, new Box(position, new Vector2(8, 8)))
+        public Bat(Vector2 position, int spriteIndex) : base(position, new Box(position, new Vector2(8, 8)), spriteIndex)
         {
             var physics = new TopDownPhysics(baseSpeed, 0, 1f);
             flyingAnim = new SpriteAnimation(new P8Sprite(53), 2, animationLength / 2);

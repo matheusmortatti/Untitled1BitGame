@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Audio;
 
 using IndependentResolutionRendering;
 using Pico8_Emulator;
+using System.Diagnostics;
 
 #endregion
 
@@ -54,8 +55,8 @@ namespace SharedCode
             Resolution.SetVirtualResolution(128, 128);
             Resolution.SetResolution(600, 600, false);
 
-            this.IsFixedTimeStep = true;//false;
             this.TargetElapsedTime = TimeSpan.FromSeconds(1d / 60d); //60);
+            this.IsFixedTimeStep = true;
         }
 
         /// <summary>
@@ -145,6 +146,7 @@ namespace SharedCode
             }
 #endif
 
+            Stopwatch clock = Stopwatch.StartNew();
             GameManager.Update(gameTime);
             pico8.Update();
 
@@ -174,6 +176,9 @@ namespace SharedCode
                 }
                 soundEffectInstance.SubmitBuffer(audioBuffer);
             }
+            clock.Stop();
+            if (clock.Elapsed.TotalSeconds > 1d / 60d)
+                GameManager.framerate = 1d / clock.Elapsed.TotalSeconds;
 
 
             // TODO: Add your update logic here			
@@ -190,12 +195,21 @@ namespace SharedCode
 
             GraphicsDevice.Clear(Color.Black);
 
-            spriteBatch.Begin(SpriteSortMode.Immediate, null, SamplerState.PointClamp, null, rasterizerState, null, Resolution.getTransformationMatrix());
+            spriteBatch.Begin(
+                SpriteSortMode.Immediate, 
+                null, 
+                SamplerState.PointClamp, 
+                null, 
+                rasterizerState, 
+                null, 
+                Resolution.getTransformationMatrix());
+
             GameManager.Draw();
             pico8.Draw();
             pico8.memory.Cls();
             screenTexture.SetData(screenColorData);
             spriteBatch.Draw(screenTexture, new Rectangle(0, 0, 128, 128), Color.White);
+
             spriteBatch.End();
 
             base.Draw(gameTime);

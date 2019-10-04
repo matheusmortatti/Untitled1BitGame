@@ -13,6 +13,7 @@ namespace SharedCode
     public class FirePit : GameObject
     {
         int particleNumber;
+        Misc.TaskScheduler.Task fireParticleTask;
         public FirePit(Vector2 position) : base(position)
         {
             particleNumber = 1;
@@ -23,7 +24,7 @@ namespace SharedCode
             // Create object that will instantiate smoke particles every 30 milliseconds.
             //
 
-            Misc.TaskScheduler.AddTask(() =>
+            fireParticleTask = Misc.TaskScheduler.AddTask(() =>
             {
                 for (int i = 0; i < particleNumber; i += 1)
                 {
@@ -31,8 +32,16 @@ namespace SharedCode
                     smoke.SetColor(Misc.util.Choose<byte>(7, 9));
                     ParticleManager.AddParticle(smoke);
                 }
-            }, 0.04, -1);
+            }, 0.04, -1, this.id);
 
+        }
+
+        public override void CleanUp()
+        {
+            base.CleanUp();
+
+            Misc.TaskScheduler.RemoveTask(fireParticleTask);
+            fireParticleTask = null;
         }
     }
 }

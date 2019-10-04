@@ -1,6 +1,0 @@
-Damage Inflicted to SharedCode.Blob : 10
-Damage Inflicted to SharedCode.Blob : 10
-Damage Inflicted to SharedCode.Blob : 10
-Damage Inflicted to SharedCode.Blob : 10
-Damage Inflicted to SharedCode.Bat : 2
-Damage Inflicted to SharedCode.Blob : 10

@@ -16,12 +16,16 @@ namespace SharedCode
     internal class GameStateMachine : StateMachine<GameStates>
     {
         public GameStateMachine() : base(GameStates.Overworld) {  }
+        public bool resetOverworld;
 
         void OverworldInit (GameStates previous)
         {
+            GameObjectManager.RemoveAllObjects();
+            ParticleManager.RemoveAllParticles();
+
             GameManager.pico8.LoadGame("untitled1bitgame.p8", new NLuaInterpreter());
 
-             Vector2 playerPosition = Map.FindPlayerInMapSheet();
+            Vector2 playerPosition = Map.FindPlayerInMapSheet();
             GameObjectManager.AddObject(new Camera(playerPosition));
             GameObjectManager.AddObject(new Map(playerPosition));
             GameObjectManager.AddObject(new UI());
@@ -29,7 +33,11 @@ namespace SharedCode
 
         void OverworldState(GameTime gameTime)
         {
-
+            if (resetOverworld)
+            {
+                Init(GameStates.Overworld);
+                resetOverworld = false;
+            }
         }
     }
 
@@ -39,7 +47,7 @@ namespace SharedCode
 
         public static Pico8<Color> pico8 { get; private set; }
 
-        private static double framerate;
+        public static double framerate;
 
         public static Random random = new Random();
 
@@ -69,8 +77,6 @@ namespace SharedCode
             TaskScheduler.Update(gameTime);
 
             stateMachine.StateDo(gameTime);
-
-            framerate = 1 / gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public static void Draw()
@@ -78,11 +84,23 @@ namespace SharedCode
             GameObjectManager.DrawObjects();
             ParticleManager.Draw();
 
+            ((Camera)GameObjectManager.FindObjectWithTag("camera"))?.ResetCamera();
+
             if (Debug.debugMode)
             {
-                //pico8.graphics.Rectfill(0, 0, 64, 16, 0);
-                pico8.Print(framerate.ToString("0.##"), 0, 0, 10);
+                pico8.graphics.Rectfill(3, 119, 64, 125, 0);
+                pico8.Print(framerate.ToString("0.##"), 4, 120, 14);
+                pico8.Print(GameObjectManager.numberOfObjects, 32, 120, 14);
+                pico8.Print(TaskScheduler.numberOfTasks, 42, 120, 14);
+                pico8.Print(ParticleManager.numberOfParticles, 52, 120, 14);
             }
+
+            ((Camera)GameObjectManager.FindObjectWithTag("camera"))?.RestoreCamera();
+        }
+
+        public static void ResetOverworld()
+        {
+            stateMachine.resetOverworld = true;
         }
     }
 }

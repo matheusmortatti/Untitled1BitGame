@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
 namespace SharedCode.Particles
@@ -11,12 +11,17 @@ namespace SharedCode.Particles
         private static List<Particle> activeParticles = new List<Particle>();
         private static List<Particle> nextParticles = new List<Particle>();
 
+        public static int numberOfParticles
+        {
+            get
+            {
+                return activeParticles.Count;
+            }
+        }
+
         public static void Update(GameTime gameTime)
         {
-            foreach(var particle in activeParticles)
-            {
-                particle.Update(gameTime);
-            }
+            Parallel.ForEach(activeParticles, (particle) => { particle.Update(gameTime); });
 
             for(int i = activeParticles.Count - 1; i >= 0; --i)
             {
@@ -38,6 +43,22 @@ namespace SharedCode.Particles
         {
             nextParticles.Add(particle);
             return particle;
+        }
+
+        public static void RemoveAllParticles()
+        {
+            foreach(var p in activeParticles)
+            {
+                p.CleanUp();
+            }
+
+            foreach (var p in nextParticles)
+            {
+                p.CleanUp();
+            }
+
+            activeParticles.Clear();
+            nextParticles.Clear();
         }
 
     }

@@ -16,7 +16,7 @@ namespace SharedCode
                     return GameObjectManager.InstantiatePlayer(position);
                 case 1:
                     return GameObjectManager.AddObject(
-                        new OldMan(position)
+                        new OldMan(position, spriteValue)
                         );
                 case 98:
                     return GameObjectManager.AddObject(
@@ -31,17 +31,25 @@ namespace SharedCode
                             )
                         );
                 case 7:
-                    return GameObjectManager.AddObject(new Blob(position));
+                    return GameObjectManager.AddObject(new Blob(position, spriteValue));
                 case 55:
-                    return GameObjectManager.AddObject(new Bat(position));
+                    return GameObjectManager.AddObject(new Bat(position, spriteValue));
                 case 21:
-                    return GameObjectManager.AddObject(new Tortuga(position));
+                    return GameObjectManager.AddObject(new Tortuga(position, spriteValue));
                 case 122:
-                    return GameObjectManager.AddObject(new Spike(position));
+                    return GameObjectManager.AddObject(new Spike(position, spriteValue));
                 case 42:
-                    return GameObjectManager.AddObject(new Goose(position));
+                    return GameObjectManager.AddObject(new Goose(position, spriteValue));
                 case 11:
                     return GameObjectManager.AddObject(new Gate(position));
+                case 12:
+                    return GameObjectManager.AddObject(new Gate(position, Gate.OpenCondition.NO_ENEMIES));
+                case 19:
+                    return GameObjectManager.AddObject(new Snake(position, spriteValue));
+                case 105:
+                    return GameObjectManager.AddObject(new Key(position));
+                case 78:
+                    return GameObjectManager.AddObject(new Altar(position));
                 default:
                     return GameObjectManager.AddObject(new GameObject(position, new Graphics.P8Sprite(spriteValue)));
             }

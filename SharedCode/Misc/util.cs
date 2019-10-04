@@ -40,5 +40,10 @@ namespace SharedCode.Misc
         {
             return value / max;
         }
+
+        public static Vector2 CorrespondingMapIndex(Vector2 position)
+        {
+            return new Vector2((float)Math.Floor(position.X / 128) * 128, (float)Math.Floor(position.Y / 128) * 128);
+        }
     }
 }

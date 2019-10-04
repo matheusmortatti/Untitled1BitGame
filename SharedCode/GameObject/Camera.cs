@@ -8,7 +8,7 @@ namespace SharedCode
 {
     public class Camera : GameObject
     {
-        private float speed = 10.0f;
+        private float speed = 15.0f;
         private double _shake;
         private int shakeSize = 2;
 

@@ -15,6 +15,7 @@ namespace SharedCode
     public class SpikeStateMachine : StateMachine<SpikeStates>
     {
         private Spike _spike;
+        private TaskScheduler.Task task;
         public SpikeStateMachine(Spike spike) : base(SpikeStates.Down)
         {
             _spike = spike;
@@ -28,7 +29,7 @@ namespace SharedCode
             _spike.sprite.index = 120;
             _spike.collisionBox = null;
 
-            TaskScheduler.AddTask(() => Init(SpikeStates.Half), changeStateTime, changeStateTime);
+            task = TaskScheduler.AddTask(() => Init(SpikeStates.Half), changeStateTime, changeStateTime, _spike.id);
         }
 
         void DownState(GameTime gameTime)
@@ -41,7 +42,7 @@ namespace SharedCode
             _spike.sprite.index = 121;
             _spike.collisionBox = null;
 
-            TaskScheduler.AddTask(() => Init(SpikeStates.Full), changeStateTime, changeStateTime);
+            task = TaskScheduler.AddTask(() => Init(SpikeStates.Full), changeStateTime, changeStateTime, _spike.id);
         }
 
         void HalfState(GameTime gameTime)
@@ -59,7 +60,7 @@ namespace SharedCode
                 var smoke = 
                     new Smoke(_spike.transform.position + new Vector2(1 + GameManager.random.Next(6), GameManager.random.Next(6)));
                 smoke.SetRadius(1, 1.5f);
-                smoke.SetMaxMoveSpeed(0.2f + (float)GameManager.random.NextDouble() * 0.5f);
+                smoke.SetMaxMoveSpeed(10f + (float)GameManager.random.NextDouble() * 5f);
                 smoke.SetRadiusDecreaseSpeed(3f + (float)GameManager.random.NextDouble());
                 ParticleManager.AddParticle(smoke);
             }
@@ -68,12 +69,17 @@ namespace SharedCode
 
             ((Camera)GameObjectManager.FindObjectWithTag("camera"))?.AddShake(0.1);
 
-            TaskScheduler.AddTask(() => Init(SpikeStates.Down), changeStateTime, changeStateTime);
+            task = TaskScheduler.AddTask(() => Init(SpikeStates.Down), changeStateTime, changeStateTime, _spike.id);
         }
 
         void FullState(GameTime gameTime)
         {
 
+        }
+
+        public void CleanUp()
+        {
+            TaskScheduler.RemoveTask(task);
         }
     }
 
@@ -83,7 +89,7 @@ namespace SharedCode
 
         public P8Sprite sprite { get; private set; }
 
-        public Spike(Vector2 position) : base(position, null)
+        public Spike(Vector2 position, int spriteIndex) : base(position, null, spriteIndex)
         {
             sprite = new P8Sprite(120);
             AddComponent(sprite);
@@ -98,12 +104,22 @@ namespace SharedCode
             // never dies, nor takes damage
             lifeTime = double.MaxValue;
 
-            spikeStateMachine.StateDo(gameTime);
+            spikeStateMachine?.StateDo(gameTime);
+
+            depth = -1000;
         }
 
         public override double TakeHit(double hitAmount)
         {
             return 0;
+        }
+
+        public override void CleanUp()
+        {
+            base.CleanUp();
+
+            spikeStateMachine.CleanUp();
+            spikeStateMachine = null;
         }
     }
 }

@@ -10,7 +10,7 @@ using SharedCode.Misc;
 
 namespace SharedCode
 {
-    public enum PlayerStates { Walking, Attacking }
+    public enum PlayerStates { Walking, Attacking, Dying, Dead }
 
     public class PlayerStateMachine : StateMachine<PlayerStates>
     {
@@ -51,15 +51,36 @@ namespace SharedCode
 
         void AttackingInit(PlayerStates previous)
         {
+            //
+            // Remove input so it can't move while atacking
+            //
+
             _player.RemoveComponent<AInput>();
 
-            _player.transform.direction = Vector2.Zero;
+            //
+            // Stop player.
+            //
+
             var physics = _player.GetComponent<TopDownPhysics>();
             physics.velocity = Vector2.Zero;
 
-            Vector2 facingDir = physics.facingDirection;
+            //
+            // Figure out sword's direction.
+            //
+
+            Vector2 facingDir = _player.transform.direction == Vector2.Zero ? physics.facingDirection : _player.transform.direction;
             if (facingDir.X != 0) facingDir.Y = 0;
             if (facingDir != Vector2.Zero) facingDir.Normalize();
+
+            //
+            // Reset player's direction so it doesn't keep moving to the previous set direction.
+            //
+
+            _player.transform.direction = Vector2.Zero;
+
+            //
+            // Instantiate sword.
+            //
 
             _player.swordInstance = new Sword(_player.transform.position + 8 * facingDir, facingDir);
             GameObjectManager.AddObject(_player.swordInstance);
@@ -72,6 +93,27 @@ namespace SharedCode
                 _player.swordInstance = null;
                 base.Init(PlayerStates.Walking);
             }
+        }
+
+        private double deadTime = 1;
+        void DyingInit(PlayerStates prev)
+        {
+            _player.RemoveComponent<AInput>();
+
+            TaskScheduler.AddTask(() => {
+                _player.fadeOut = true;
+                _player.fadeOutTime = 2 * deadTime / 3;
+            }, deadTime / 3, deadTime / 3, _player.id);
+
+            TaskScheduler.AddTask(() => {
+                Init(PlayerStates.Dead);
+            }, deadTime, deadTime, _player.id);
+        }
+
+        void DeadState(GameTime gameTime)
+        {
+            _player.done = true;
+            GameManager.ResetOverworld();
         }
     }
 
@@ -87,7 +129,7 @@ namespace SharedCode
 
         public static int spriteIndex { get; } = 32;
         public Player(Vector2 position)
-            : base(position, new Box(position, new Vector2(8, 4), false, new Vector2(0, 4)))
+            : base(position, new Box(position, new Vector2(8, 3), false, new Vector2(0, 4)))
         {
             tags = new List<string>{"player"};
             swordInstance = null;
@@ -95,7 +137,7 @@ namespace SharedCode
             stateMachine = new PlayerStateMachine(this);
             stateMachine.Init(PlayerStates.Walking);
 
-            lifeTime = 120;
+            lifeTime = 100;
         }
 
         public override void Update(GameTime gameTime)
@@ -108,6 +150,12 @@ namespace SharedCode
 
             var decrease = lifeTime < 10 ? gameTime.ElapsedGameTime.TotalSeconds / 1.5 : gameTime.ElapsedGameTime.TotalSeconds;
             lifeTime -= decrease;
+
+            if (lifeTime <= 0)
+            {
+                lifeTime = 0;
+                stateMachine.Init(PlayerStates.Dying);
+            }
         }
 
         public override void Draw()
@@ -124,12 +172,17 @@ namespace SharedCode
                 return 0;
 
             isInvincible = true;
-            TaskScheduler.AddTask(() => isInvincible = false, invTime, invTime);
-            TaskScheduler.AddTask(() => isInvisible = !isInvisible, invisibleTime, invTime);
+            TaskScheduler.AddTask(() => isInvincible = false, invTime, invTime, this.id);
+            TaskScheduler.AddTask(() => isInvisible = !isInvisible, invisibleTime, invTime, this.id);
 
             lifeTime -= hitAmount;
 
             return lifeTime > 0 ? hitAmount : hitAmount + lifeTime;
+        }
+
+        public override void OnCollisionEnter(GameObject other)
+        {
+            base.OnCollisionEnter(other);
         }
 
     }

@@ -1,0 +1,3 @@
+Got into map index ( 2, 1 )
+SharedCode.OldMan is done
+Remove instance of SharedCode.OldMan

@@ -17,7 +17,7 @@ namespace SharedCode.Particles
                 transform.direction = Vector2.Zero;
                 fadeOut = true;
                 fadeOutTime = lifetime / 2;
-                }, lifetime / 2, lifetime / 2);
+                }, lifetime / 2, lifetime / 2, this.id);
             transform.direction = new Vector2(0, -1);
         }
     }

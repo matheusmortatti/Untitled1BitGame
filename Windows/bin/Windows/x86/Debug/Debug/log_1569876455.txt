@@ -1,3 +1,0 @@
-Damage Inflicted to SharedCode.OldMan : 10
-Damage Inflicted to SharedCode.OldMan : 5
-Damage Inflicted to SharedCode.OldMan : 9

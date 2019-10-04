@@ -12,9 +12,39 @@ namespace SharedCode
     {
         private int keysLeft = 0;
 
-        public Gate(Vector2 position) : base(position, new Box(position, new Vector2(16, 16)))
+        public enum OpenCondition { KEYS, NO_ENEMIES }
+
+        Func<bool> openedCondition;
+
+        public Gate(Vector2 position, OpenCondition condition = OpenCondition.KEYS) : base(position, new Box(position, new Vector2(16, 16)))
         {
             InitState("Closed");
+
+            AddComponent(new TopDownPhysics(0, 0));
+
+            List<string> newTags = tags;
+            newTags.Add("gate");
+            tags = newTags;
+
+            switch(condition)
+            {
+                case OpenCondition.KEYS:
+                    openedCondition = () => { return keysLeft <= 0; };
+                    keysLeft = 1;
+                    break;
+                case OpenCondition.NO_ENEMIES:
+                    openedCondition = () => { return GameObjectManager.FindObjectsWithTag("enemy").Count <= 0; };
+                    break;
+                default:
+                    openedCondition = () => { return keysLeft <= 0; };
+                    keysLeft = 1;
+                    break;
+            }
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
         }
 
         void ClosedStateInit(string previous)
@@ -24,7 +54,7 @@ namespace SharedCode
 
         void ClosedStateUpdate(GameTime gameTime)
         {
-            if (keysLeft <= 0)
+            if (openedCondition())
                 InitState("Opened");
         }
 
@@ -39,7 +69,7 @@ namespace SharedCode
                             8 + (float)GameManager.random.NextDouble() * 8 - 4)));
                 ((Camera)GameObjectManager.FindObjectWithTag("camera"))?.AddShake(0.1);
             },
-            0.3, 1.8
+            0.3, 1.8, this.id
             );
 
             TaskScheduler.AddTask(() =>
@@ -55,7 +85,7 @@ namespace SharedCode
                 }
                 ((Camera)GameObjectManager.FindObjectWithTag("camera"))?.AddShake(0.4);
             },
-            2, 2
+            2, 2, this.id
             );
         }
 
@@ -82,11 +112,11 @@ namespace SharedCode
             }
         }
 
-        public override void OnCollision(GameObject other)
+        public override void OnCollisionEnter(GameObject other)
         {
-            base.OnCollision(other);
+            base.OnCollisionEnter(other);
 
-            if (other.tags.Contains("key"))
+            if (other is Key)
             {
                 keysLeft -= 1;
             }

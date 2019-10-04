@@ -42,7 +42,7 @@ namespace SharedCode
                 if (targetDir != Vector2.Zero) targetDir.Normalize();
             };
 
-            targetPosTask = TaskScheduler.AddTask(func, newPositionInterval, -1);
+            targetPosTask = TaskScheduler.AddTask(func, newPositionInterval, -1, _tortuga.id);
         }
 
         void WonderingState(GameTime gameTime)
@@ -67,7 +67,7 @@ namespace SharedCode
         void RunningInit(TortugaStates previous)
         {
             _tortuga.GetComponent<APhysics>().maxSpeed = 15f;
-            vanishingStateTask = TaskScheduler.AddTask(() => Init(TortugaStates.Vanishing), vanishingTime, vanishingTime);
+            vanishingStateTask = TaskScheduler.AddTask(() => Init(TortugaStates.Vanishing), vanishingTime, vanishingTime, _tortuga.id);
 
             //
             // Choose a direction away from the player.
@@ -92,7 +92,7 @@ namespace SharedCode
 
             directionChooser();
 
-            directionChooserTask = TaskScheduler.AddTask(directionChooser, changeDirectionTime, -1);
+            directionChooserTask = TaskScheduler.AddTask(directionChooser, changeDirectionTime, -1, _tortuga.id);
         }
 
         void RunningState(GameTime gameTime)
@@ -142,7 +142,7 @@ namespace SharedCode
         private TortugaStateMachine _tortugaStateMachine;
         private float _animationLength = 0.3f;
 
-        public Tortuga(Vector2 position) : base(position, new Box(position, new Vector2(8, 8)))
+        public Tortuga(Vector2 position, int spriteIndex) : base(position, new Box(position, new Vector2(8, 8)), spriteIndex)
         {
 
             AddComponent(new TopDownPhysics(10, 10));

@@ -25,7 +25,7 @@ namespace SharedCode
         {
             _goose.transform.direction = Vector2.Zero;
 
-            TaskScheduler.AddTask(() => { if(State == GooseStates.Still) Init(GooseStates.Wondering); }, 2, 2);
+            TaskScheduler.AddTask(() => { if(State == GooseStates.Still) Init(GooseStates.Wondering); }, 2, 2, _goose.id);
         }
 
         void StillState(GameTime gameTime)
@@ -59,7 +59,7 @@ namespace SharedCode
                 targetPosition = _goose.transform.position + targetDir * 20;
             };
 
-            wonderingDirTask = TaskScheduler.AddTask(wonderingDirFunc, changeDirTime, -1);
+            wonderingDirTask = TaskScheduler.AddTask(wonderingDirFunc, changeDirTime, -1, _goose.id);
 
             //
             // Choose a direction away from the player at first.
@@ -169,7 +169,7 @@ namespace SharedCode
 
         public float baseSpeed { get; private set; } = 10;
 
-        public Goose(Vector2 position) : base(position, new Box(position, new Vector2(8, 8)))
+        public Goose(Vector2 position, int spriteIndex) : base(position, new Box(position, new Vector2(8, 8)), spriteIndex)
         {
             gooseStateMachine = new GooseStateMachine(this);
 
@@ -223,8 +223,11 @@ namespace SharedCode
 
             if (other.tags.Contains("player_attack"))
             {
-                gooseStateMachine.Init(GooseStates.Still);
-                TaskScheduler.AddTask(() => gooseStateMachine.Init(GooseStates.Chasing), 1, 1);
+                if (gooseStateMachine.State != GooseStates.Chasing)
+                {
+                    gooseStateMachine.Init(GooseStates.Still);
+                    TaskScheduler.AddTask(() => gooseStateMachine.Init(GooseStates.Chasing), 1, 1, this.id);
+                }
             }
         }
 

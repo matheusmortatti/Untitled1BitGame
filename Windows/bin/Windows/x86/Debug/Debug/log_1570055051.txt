@@ -1,0 +1,37 @@
+Got into map index ( 2, 1 )
+Got into map index ( 3, 1 )
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.OldMan
+SharedCode.OldMan is done
+Got into map index ( 2, 1 )
+SharedCode.Snake is done
+SharedCode.Snake is done
+SharedCode.Snake is done
+SharedCode.OldMan is done
+Got into map index ( 3, 1 )
+Got into map index ( 2, 1 )
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.OldMan
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.OldMan
+SharedCode.OldMan is done
+Got into map index ( 3, 1 )
+SharedCode.Snake is done
+SharedCode.Snake is done
+SharedCode.Snake is done
+SharedCode.OldMan is done
+SharedCode.OldMan is done
+SharedCode.Snake is done
+SharedCode.Snake is done
+SharedCode.Snake is done
+SharedCode.OldMan is done
+Got into map index ( 2, 1 )
+SharedCode.Snake is done
+SharedCode.Snake is done
+SharedCode.Snake is done
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Snake
