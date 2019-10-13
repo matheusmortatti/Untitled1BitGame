@@ -21,7 +21,7 @@ namespace SharedCode
             graphics.RunRight = new SpriteAnimation(new P8Sprite(0, 1, 1, false, false), 3, 0.4f);
             graphics.IdleRight = graphics.RunRight;
 
-            tags = new List<string>() { "enemy", "nonpersistent" };
+            doesDamage = false;
         }
 
         public override void Update(GameTime gameTime)

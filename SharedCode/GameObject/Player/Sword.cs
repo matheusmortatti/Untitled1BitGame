@@ -16,7 +16,7 @@ namespace SharedCode
         private new double lifeTime = 0.5;
         private float repelSpeed = 80;
 
-        private float timeGivenAdjustment = 2f;
+        private float timeGivenAdjustment = 1.5f;
 
         public float damage { get; set; } = 5;
 
@@ -61,7 +61,7 @@ namespace SharedCode
         {
             base.OnCollision(other);
 
-            if (other.tags.Contains("enemy"))
+            if (other.tags.Contains("attackable"))
             {
                 //
                 // TODO(matheusmortatti) remove time from enemy and give to the player.

@@ -149,41 +149,27 @@ namespace SharedCode
 
         #endregion
 
-        public T GetComponent<T>()
+        public T GetComponent<T>() where T : Component
         {
             foreach(var c in components)
             {
                 if (c is T)
                 {
-                    try
-                    {
-                        return (T)((object)c);
-                    }
-                    catch (InvalidCastException)
-                    {
-                        return default;
-                    }
+                    return (T)c;
                 }
             }
 
             return default;
         }
 
-        public List<T> GetComponents<T>()
+        public List<T> GetComponents<T>() where T : Component
         {
             List<T> res = new List<T>();
             foreach (var c in components)
             {
                 if (c is T)
                 {
-                    try
-                    {
-                        res.Add((T)((object)c));
-                    }
-                    catch (InvalidCastException)
-                    {
-                        // Do nothing
-                    }
+                    res.Add((T)c);
                 }
             }
 
@@ -299,15 +285,7 @@ namespace SharedCode
 
             if (fadeOut)
             {
-                foTimePassed += gameTime.ElapsedGameTime.TotalSeconds;
-                if (foTimePassed < fadeOutTime / 2)
-                {
-                    fillp = 0b1010010110100101;
-                }
-                else
-                {
-                    fillp = 0b1111111111111111;
-                }
+                fillp = 0b1010010110100101;
             }
 
             if (states.ContainsKey(currentState + "StateUpdate"))

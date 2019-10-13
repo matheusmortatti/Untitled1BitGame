@@ -45,6 +45,76 @@ namespace SharedCode
         internal DynamicSoundEffectInstance soundEffectInstance;
         internal byte[] audioBuffer;
 
+        public Color[] pico8Palette = {
+            // Black
+            new Color( 0, 0, 0 ),
+            // Dark-blue
+            new Color( 29, 43, 83 ),
+            // Dark-purple
+            new Color( 126, 37, 83 ),
+            // Dark-green
+            new Color( 0, 135, 81 ),
+            // Brown
+            new Color( 171, 82, 54 ),
+            // Dark-gray
+            new Color( 95, 87, 79 ),
+            // Light-gray
+            new Color( 194, 195, 199 ),
+            // White
+            new Color( 255, 241, 232 ),
+            // Red
+            new Color( 255, 0, 77 ),
+            // Orange
+            new Color( 255, 163, 0 ),
+            // Yellow
+            new Color( 255, 236, 39 ),
+            // Green
+            new Color( 0, 228, 54 ),
+            // Blue
+            new Color( 41, 173, 255 ),
+            // Indigo
+            new Color( 131, 118, 156 ),
+            // Pink
+            new Color( 255, 119, 168 ),
+            // Peach
+            new Color( 255, 204, 170 ),
+
+            // Alternative Palette:
+
+            new Color( 42, 24, 22 ),
+
+            new Color( 17, 29, 53 ),
+
+            new Color( 66, 33, 54 ),
+
+            new Color( 15, 84, 91 ),
+
+            new Color( 116, 47, 40 ),
+
+            new Color( 72, 50, 63 ),
+
+            new Color( 162, 136, 121 ),
+
+            new Color( 242, 239, 124 ),
+
+            new Color( 190, 17, 80 ),
+
+            new Color( 255, 109, 36 ),
+
+            new Color( 169, 231, 46 ),
+
+            new Color( 0, 181, 68 ),
+
+            new Color( 6, 89, 181 ),
+
+            new Color( 117, 70, 102 ),
+
+            new Color( 255, 110, 89 ),
+
+            new Color( 255, 157, 128 )
+
+        };
+
         public Untitled1BitGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -86,7 +156,7 @@ namespace SharedCode
 
             pico8 = new Pico8<Color>();
             pico8.screenColorData = screenColorData;
-            pico8.rgbToColor = (r, g, b) => new Color(r, g, b);
+            pico8.indexToColor = (i) => pico8Palette[i];
 
             //
             // Keyboard input

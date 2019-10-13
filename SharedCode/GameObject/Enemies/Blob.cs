@@ -28,6 +28,8 @@ namespace SharedCode
             targetPosition = Vector2.Zero;
 
             InitState("Still");
+
+            AddComponent(new FillBar(new Vector2(0, -2), 8, 0, lifeTime));
         }
 
         void StillStateInit(string previous)

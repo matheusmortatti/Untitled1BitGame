@@ -129,7 +129,7 @@ namespace SharedCode
 
         public static int spriteIndex { get; } = 32;
         public Player(Vector2 position)
-            : base(position, new Box(position, new Vector2(8, 3), false, new Vector2(0, 4)))
+            : base(position, new Box(position, new Vector2(6, 3), false, new Vector2(1, 4)))
         {
             tags = new List<string>{"player"};
             swordInstance = null;

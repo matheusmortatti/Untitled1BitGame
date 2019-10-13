@@ -1,0 +1,27 @@
+Got into map index ( 2, 1 )
+SharedCode.OldMan is done
+SharedCode.OldMan is done
+Remove instance of SharedCode.OldMan
+Remove instance of SharedCode.OldMan
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instanc

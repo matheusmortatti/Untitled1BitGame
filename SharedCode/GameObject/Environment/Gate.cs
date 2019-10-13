@@ -13,6 +13,7 @@ namespace SharedCode
         private int keysLeft = 0;
 
         public enum OpenCondition { KEYS, NO_ENEMIES }
+        private OpenCondition _openCondition;
 
         Func<bool> openedCondition;
 
@@ -24,9 +25,10 @@ namespace SharedCode
 
             List<string> newTags = tags;
             newTags.Add("gate");
-            tags = newTags;
 
-            switch(condition)
+            _openCondition = condition;
+
+            switch (condition)
             {
                 case OpenCondition.KEYS:
                     openedCondition = () => { return keysLeft <= 0; };
@@ -34,12 +36,15 @@ namespace SharedCode
                     break;
                 case OpenCondition.NO_ENEMIES:
                     openedCondition = () => { return GameObjectManager.FindObjectsWithTag("enemy").Count <= 0; };
+                    newTags.Add("nonpersistent");
                     break;
                 default:
                     openedCondition = () => { return keysLeft <= 0; };
                     keysLeft = 1;
                     break;
             }
+
+            tags = newTags;
         }
 
         public override void Update(GameTime gameTime)
@@ -84,6 +89,13 @@ namespace SharedCode
                             8 + (float)GameManager.random.NextDouble() * 8 - 4)));
                 }
                 ((Camera)GameObjectManager.FindObjectWithTag("camera"))?.AddShake(0.4);
+
+                //
+                // Remove map cell.
+                //
+
+                var celPos = util.CorrespondingCelIndex(this.transform.position);
+                GameManager.pico8.memory.Mset((int)celPos.X, (int)celPos.Y, 0);
             },
             2, 2, this.id
             );
@@ -98,17 +110,26 @@ namespace SharedCode
         {
             base.Draw();
 
-            switch(keysLeft)
+            if (_openCondition == OpenCondition.KEYS)
             {
-                case 3:
-                    GameManager.pico8.graphics.Spr(13, (int)transform.position.X - 1, (int)transform.position.Y + 6);
-                    goto case 2;
-                case 2:
-                    GameManager.pico8.graphics.Spr(13, (int)transform.position.X + 1 + 8, (int)transform.position.Y + 6);
-                    goto case 1;
-                case 1:
-                    GameManager.pico8.graphics.Spr(13, (int)transform.position.X + 4, (int)transform.position.Y + 6);
-                    break;
+                switch (keysLeft)
+                {
+                    case 3:
+                        GameManager.pico8.graphics.Spr(13, (int)transform.position.X - 1, (int)transform.position.Y + 6);
+                        goto case 2;
+                    case 2:
+                        GameManager.pico8.graphics.Spr(13, (int)transform.position.X + 1 + 8, (int)transform.position.Y + 6);
+                        goto case 1;
+                    case 1:
+                        GameManager.pico8.graphics.Spr(13, (int)transform.position.X + 4, (int)transform.position.Y + 6);
+                        break;
+                }
+            }
+            else if(_openCondition == OpenCondition.NO_ENEMIES)
+            {
+                var x = (int)transform.position.X + 4;
+                var y = (int)transform.position.Y + 6;
+                util.PrintDigits(x, y, GameObjectManager.FindObjectsWithTag("enemy").Count, 8, false);
             }
         }
 

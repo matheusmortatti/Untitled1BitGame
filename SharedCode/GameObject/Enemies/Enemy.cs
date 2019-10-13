@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 
 using SharedCode.Misc;
 using SharedCode.Physics;
+using SharedCode.Graphics;
 
 namespace SharedCode
 {
@@ -29,14 +30,13 @@ namespace SharedCode
             }
         }
 
-        private double deadTime = 1;
+        private double deadTime = 0.7;
         void DeadInit(EnemyStates prev)
         {
             TaskScheduler.AddTask(() => _enemy.done = true, deadTime, deadTime, _enemy.id);
-            TaskScheduler.AddTask(() => {
-                _enemy.fadeOut = true;
-                _enemy.fadeOutTime = 2 * deadTime / 3;
-            }, deadTime / 3, deadTime / 3, _enemy.id);
+
+            _enemy.fadeOut = true;
+            _enemy.fadeOutTime = 2 * deadTime / 3;
 
             var p = _enemy.GetComponent<APhysics>();
             if (p == null)
@@ -44,7 +44,9 @@ namespace SharedCode
 
             p.maxSpeed /= 2;
 
-            _enemy.collisionBox = null;
+            if (_enemy.deathType == Enemy.DeathType.HIT)
+                _enemy.collisionBox = null;
+            _enemy.doesDamage = false;
         }
 
         void DeadState(GameTime gameTime)
@@ -59,6 +61,7 @@ namespace SharedCode
         protected double invTime = 1;
         protected bool isInvisible = false;
         protected double invisibleTime = 0.2;
+        public bool doesDamage = true;
 
         protected float repelSpeed = 200;
         protected double damage = 5;
@@ -71,9 +74,12 @@ namespace SharedCode
 
         protected double respawnTime = 20;
 
+        public enum DeathType { TIME, HIT }
+        public DeathType deathType { get; private set; }
+
         public Enemy(Vector2 position, Box collisionBox, int spriteIndex) : base(position, collisionBox)
         {
-            tags = new List<string> { "enemy", "nonpersistent" };
+            tags = new List<string> { "enemy", "nonpersistent", "attackable" };
             ignoreSolidCollision.Add("player");
 
             stateMachine = new EnemyStateMachine(this);
@@ -93,6 +99,10 @@ namespace SharedCode
             base.Update(gameTime);
 
             lifeTime -= gameTime.ElapsedGameTime.TotalSeconds / 1.5;
+
+            if (lifeTime <= 0)
+                deathType = DeathType.TIME;
+
             stateMachine.StateDo(gameTime);
 
             //
@@ -132,7 +142,14 @@ namespace SharedCode
 
             lifeTime -= hitAmount;
 
-            return Math.Ceiling(lifeTime > 0 ? hitAmount : hitAmount + lifeTime);
+            if (lifeTime <= 0)
+                deathType = DeathType.HIT;
+
+            //
+            // Give a bonus time in the last hit.
+            //
+
+            return Math.Ceiling(lifeTime > 0 ? hitAmount : hitAmount * 1.5f); //hitAmount + lifeTime);
         }
 
         protected List<TimePiece> timePiecesSpawned;
@@ -140,7 +157,7 @@ namespace SharedCode
         {
             base.OnCollisionEnter(other);
 
-            if (other.tags.Contains("player"))
+            if (doesDamage && other.tags.Contains("player"))
             {
                 var inflicted = ((Player)other).TakeHit(damage);
                 if (inflicted <= 0) return;

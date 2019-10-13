@@ -194,7 +194,15 @@ namespace SharedCode
             anim.IdleRight = new SpriteAnimation(new List<P8Sprite>() { new P8StrechedSprite(104, 22, 10, 10, 10, 10, true, false) }, 0);
 
             AddComponent(anim);
-            AddComponent(new TopDownPhysics(15, 10, 0.9999f));
+            AddComponent(new TopDownPhysics(15, 5, 0.9999f));
+
+            doesDamage = false;
+
+            AddComponent(new FillBar(new Vector2(0, -2), 8, 0, lifeTime));
+
+            var newTags = tags;
+            newTags.Remove("enemy");
+            tags = newTags;
         }
 
         public override void Update(GameTime gameTime)
@@ -202,11 +210,24 @@ namespace SharedCode
             base.Update(gameTime);
 
             gooseStateMachine.StateDo(gameTime);
+
+            if (!doesDamage && gooseStateMachine.State == GooseStates.Chasing)
+                doesDamage = true;
         }
 
         public override void Draw()
         {
+            if (gooseStateMachine.State == GooseStates.Chasing)
+            {
+                GameManager.pico8.graphics.Pal(7, 8);
+            }
+
             base.Draw();
+
+            if (gooseStateMachine.State == GooseStates.Chasing)
+            {
+                GameManager.pico8.graphics.Pal(7, 7);
+            }
         }
 
         public override void OnCollision(GameObject other)

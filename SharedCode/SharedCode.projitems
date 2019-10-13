@@ -37,6 +37,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Transform.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\UI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Graphics\FillBar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\LineTrail.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\P8StrechedSprite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\Print.cs" />

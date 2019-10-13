@@ -145,6 +145,33 @@ namespace SharedCode
             return taggedObjects.ContainsKey(tag) ? taggedObjects[tag] : new List<GameObject>();
         }
 
+        public static GameObject FindObjectOfType<T>() where T : GameObject
+        {
+            foreach (var obj in activeObjects)
+            {
+                if (obj is T)
+                {
+                    return (T)obj;
+                }
+            }
+
+            return default;
+        }
+
+        public static List<GameObject> FindObjectsOfType<T>() where T : GameObject
+        {
+            var list = new List<GameObject>();
+            foreach (var obj in activeObjects)
+            {
+                if (obj is T)
+                {
+                    list.Add((T)obj);
+                }
+            }
+
+            return list;
+        }
+
         public static void RemoveObjectsWithTag(string tag)
         {
             if (!taggedObjects.ContainsKey(tag))

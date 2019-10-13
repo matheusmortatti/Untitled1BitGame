@@ -1,0 +1,23 @@
+SharedCode.Goose Wondering State direction angle is -1.04593673695613
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 3.72538853299474
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 1.16241611556403
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiec

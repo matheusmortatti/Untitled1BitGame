@@ -37,7 +37,9 @@ namespace SharedCode
             // Adjust life time ( 1 hit kill )
             //
 
-            lifeTime = 10 + GameManager.random.NextDouble() * 5;
+            lifeTime = 5 + GameManager.random.NextDouble() * 5;
+
+            AddComponent(new FillBar(new Vector2(0, -2), 8, 0, lifeTime));
         }
     }
 }

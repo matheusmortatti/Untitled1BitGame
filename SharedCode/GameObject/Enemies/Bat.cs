@@ -34,7 +34,7 @@ namespace SharedCode
             // Set correct animation.
             //
 
-            _bat.RemoveComponent<AGraphics>();
+            _bat.RemoveComponent<SpriteAnimation>();
 
             _bat.flyingAnim.Reset();
             _bat.flyingAnim.animationFrameLength = _bat.animationLength / (_bat.flyingAnim.spriteList.Count);
@@ -140,7 +140,7 @@ namespace SharedCode
             // Set correct animation.
             //
 
-            _bat.RemoveComponent<AGraphics>();
+            _bat.RemoveComponent<SpriteAnimation>();
 
             _bat.flyingAnim.Reset();
             _bat.flyingAnim.animationFrameLength = _bat.animationLength / (3 * _bat.flyingAnim.spriteList.Count);
@@ -185,6 +185,8 @@ namespace SharedCode
             List<string> prevTags = tags;
             prevTags.Add("ignore_tile");
             tags = prevTags;
+
+            AddComponent(new FillBar(new Vector2(0, -2), 8, 0, lifeTime));
         }
 
         public override void Update(GameTime gameTime)

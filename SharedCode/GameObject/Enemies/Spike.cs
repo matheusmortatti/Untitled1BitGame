@@ -65,7 +65,7 @@ namespace SharedCode
                 ParticleManager.AddParticle(smoke);
             }
 
-            _spike.collisionBox = new Box(_spike.transform.position, new Vector2(8, 8));
+            _spike.collisionBox = new Box(_spike.transform.position, new Vector2(6, 6), false, new Vector2(1, 1));
 
             ((Camera)GameObjectManager.FindObjectWithTag("camera"))?.AddShake(0.1);
 
@@ -95,6 +95,10 @@ namespace SharedCode
             AddComponent(sprite);
 
             spikeStateMachine = new SpikeStateMachine(this);
+
+            var newTags = tags;
+            newTags.Remove("enemy");
+            tags = newTags;
         }
 
         public override void Update(GameTime gameTime)
