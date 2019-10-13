@@ -1,0 +1,683 @@
+Got into map index ( 2, 1 )
+SharedCode.OldMan is done
+SharedCode.OldMan is done
+Remove instance of SharedCode.OldMan
+Remove instance of SharedCode.OldMan
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Got into map index ( 2, 2 )
+SharedCode.Snake is done
+Remove instance of SharedCode.Snake
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 8
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Got into map index ( 2, 3 )
+SharedCode.Snake is done
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Damage Inflicted to SharedCode.Blob : 8
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Blob
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Got into map index ( 1, 3 )
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Blob is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Snake is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Damage Inflicted to SharedCode.Bat : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Bat : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Bat : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.Bat
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Bat : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Bat
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Got into map index ( 0, 3 )
+SharedCode.Goose Wondering State direction angle is -0.264057375401114
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.Sword
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Tortuga is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+Remove instance of SharedCode.Tortuga
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Damage Inflicted to SharedCode.Blob : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 1.15847122749319
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Bat : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Bat : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.Bat
+SharedCode.Goose Wondering State direction angle is 2.10982058656419
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Goose : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Goose
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Snake
+Damage Inflicted to SharedCode.Bat : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Bat
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Explosion
+Remove instance of SharedCode.Explosion
+Remove instance of SharedCode.Explosion
+Remove instance of SharedCode.Explosion
+Remove instance of SharedCode.Explosion
+Remove instance of SharedCode.Gate
+Remove instance of SharedCode.Explosion
+Remove instance of SharedCode.Explosion
+Remove instance of SharedCode.Explosion
+Remove instance of SharedCode.Explosion
+Got into map index ( 0, 2 )
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Got into map index ( 0, 3 )
+SharedCode.Goose Wondering State direction angle is -1.35650167593703
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 1.65879213740316
+Damage Inflicted to SharedCode.Snake : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 3.84890551821333
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 8
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Got into map index ( 1, 3 )
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Bat is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Goose is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+Remove instance of SharedCode.Goose
+Remove instance of SharedCode.Bat
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Bat : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Bat : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Bat : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Got into map index ( 2, 3 )
+Remove instance of SharedCode.Bat
+SharedCode.Bat is done
+SharedCode.Spike is done
+SharedCode.Snake is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Snake is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Bat is done
+SharedCode.Spike is done
+SharedCode.Tortuga is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+Remove instance of SharedCode.Bat
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Tortuga
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Damage Inflicted to SharedCode.Blob : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 8
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Got into map index ( 2, 2 )
+Remove instance of SharedCode.Snake
+Damage Inflicted to SharedCode.Blob : 5
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Blob is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Snake is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 8
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Got into map index ( 2, 1 )
+SharedCode.Snake is done
+SharedCode.Snake is done
+SharedCode.Blob is done
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Blob
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 8
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Remove instance of Sh

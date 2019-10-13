@@ -1,0 +1,7 @@
+Got into map index ( 2, 1 )
+Got into map index ( 3, 1 )
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.OldMan
+SharedCode.OldMan is done

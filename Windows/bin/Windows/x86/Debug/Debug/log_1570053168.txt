@@ -1,0 +1,1394 @@
+Damage Inflicted to SharedCode.OldMan : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.OldMan : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Got into map index ( 2, 1 )
+Damage Inflicted to SharedCode.Snake : 5
+SharedCode.OldMan is done
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.OldMan
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Got into map index ( 2, 2 )
+SharedCode.Snake is done
+SharedCode.Snake is done
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Snake
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 4
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 3
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Sword
+Got into map index ( 3, 2 )
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Bat : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Bat : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Bat : 3
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Bat
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 2
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 1
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Damage Inflicted to SharedCode.Bat : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Bat
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Got into map index ( 2, 2 )
+Damage Inflicted to SharedCode.Snake : 5
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+SharedCode.Spike is done
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Spike
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 4
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.Sword
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 2
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 1
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.TimePiece
+Got into map index ( 1, 2 )
+SharedCode.Goose Wondering State direction angle is 1.36904724445902
+Damage Inflicted to SharedCode.Bat : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 3.68174916294521
+SharedCode.Goose Wondering State direction angle is 3.11601391278351
+Damage Inflicted to SharedCode.Bat : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.Bat
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 3
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 5
+SharedCode.Goose Wondering State direction angle is 0.966836332858539
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Goose : 4
+SharedCode.Goose Wondering State direction angle is -0.547279076396523
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Goose
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Bat : 1
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Bat
+Got into map index ( 1, 1 )
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Got into map index ( 0, 1 )
+Got into map index ( 1, 1 )
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.Snake
+SharedCode.Blob is done
+SharedCode.Snake is done
+SharedCode.Blob is done
+Damage Inflicted to SharedCode.Snake : 5
+SharedCode.Blob is done
+SharedCode.Snake is done
+SharedCode.Blob is done
+Remove instance of SharedCode.Sword
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Snake : 4
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Damage Inflicted to SharedCode.Blob : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Got into map index ( 1, 2 )
+SharedCode.Goose Wondering State direction angle is 0.151478154680839
+SharedCode.Blob is done
+SharedCode.Snake is done
+SharedCode.Blob is done
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.Blob
+Remove instance of SharedCode.Snake
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.Sword
+SharedCode.Goose Wondering State direction angle is 1.21322930306376
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 5.81919889727859
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Damage Inflicted to SharedCode.Goose : 5
+SharedCode.Goose Wondering State direction angle is 1.51642341414809
+SharedCode.Goose Wondering State direction angle is -0.713004118466899
+SharedCode.Goose Wondering State direction angle is 1.44378543091927
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Bat : 5
+Damage Inflicted to SharedCode.Goose : 5
+SharedCode.Goose Wondering State direction angle is 0.0227360035135364
+SharedCode.Goose Wondering State direction angle is 1.13611544297177
+SharedCode.Goose Wondering State direction angle is 0.306877430865382
+SharedCode.Goose Wondering State direction angle is 0.457856536644313
+SharedCode.Goose Wondering State direction angle is 0.395333821481724
+SharedCode.Goose Wondering State direction angle is -1.53433128402252
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 0.739381975348513
+SharedCode.Goose Wondering State direction angle is 0.216353065102897
+SharedCode.Goose Wondering State direction angle is -1.00284564373336
+SharedCode.Goose Wondering State direction angle is -1.21695838950549
+SharedCode.Goose Wondering State direction angle is -0.288946705821791
+SharedCode.Goose Wondering State direction angle is 1.36557689263475
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 0.0121502492894534
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 0.0723836951508636
+Remove instance of SharedCode.Sword
+SharedCode.Goose Wondering State direction angle is -0.0994334600661715
+SharedCode.Goose Wondering State direction angle is -1.29190613605486
+SharedCode.Goose Wondering State direction angle is 0.470693835901046
+SharedCode.Goose Wondering State direction angle is 0.76497393654548
+SharedCode.Goose Wondering State direction angle is 0.523939592111024
+SharedCode.Goose Wondering State direction angle is 1.30844327509507
+SharedCode.Goose Wondering State direction angle is -1.38547627531603
+SharedCode.Goose Wondering State direction angle is 0.400058199850389
+SharedCode.Goose Wondering State direction angle is -0.679745364953688
+SharedCode.Goose Wondering State direction angle is 0.87231809760207
+SharedCode.Goose Wondering State direction angle is -0.830708930153856
+SharedCode.Goose Wondering State direction angle is 0.853519089716323
+Remove instance of SharedCode.Snake
+SharedCode.Goose Wondering State direction angle is -0.106818674299141
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 4.11765366948627
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 1.14062253411802
+SharedCode.Goose Wondering State direction angle is -0.498753115232866
+SharedCode.Goose Wondering State direction angle is -0.310463597525288
+SharedCode.Goose Wondering State direction angle is -1.15470810918817
+SharedCode.Goose Wondering State direction angle is -0.0981807750176564
+SharedCode.Goose Wondering State direction angle is -0.315069912553228
+SharedCode.Goose Wondering State direction angle is -1.24525940580959
+SharedCode.Goose Wondering State direction angle is -1.21864035908706
+SharedCode.Goose Wondering State direction angle is 0.455196448331147
+SharedCode.Goose Wondering State direction angle is 0.258346699125867
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 0.778027797417261
+SharedCode.Goose Wondering State direction angle is 0.24575208773817
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 0.0400332243174093
+SharedCode.Goose Wondering State direction angle is 2.06566147390505
+SharedCode.Goose Wondering State direction angle is 3.54166497279403
+Damage Inflicted to SharedCode.Bat : 1
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.Bat
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Snake
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 1.05316294442861
+SharedCode.Goose Wondering State direction angle is 5.2658047801518
+SharedCode.Goose Wondering State direction angle is 2.25300598456885
+SharedCode.Goose Wondering State direction angle is 3.1242829987137
+SharedCode.Goose Wondering State direction angle is 1.72233969836374
+SharedCode.Goose Wondering State direction angle is 1.35090212072476
+SharedCode.Goose Wondering State direction angle is 2.74898104982063
+SharedCode.Goose Wondering State direction angle is 4.11724810178113
+SharedCode.Goose Wondering State direction angle is 5.23412718799819
+SharedCode.Goose Wondering State direction angle is 3.87376696834124
+SharedCode.Goose Wondering State direction angle is 2.72189856527955
+SharedCode.Goose Wondering State direction angle is 2.00057036174579
+SharedCode.Goose Wondering State direction angle is 1.90443724559944
+SharedCode.Goose Wondering State direction angle is 3.8070423852606
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 6.24109434521676
+SharedCode.Goose Wondering State direction angle is 5.97978547762902
+SharedCode.Goose Wondering State direction angle is 1.34226936213741
+SharedCode.Goose Wondering State direction angle is 1.98110672530671
+SharedCode.Goose Wondering State direction angle is 0.137175221436741
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 1.69673663361855
+SharedCode.Goose Wondering State direction angle is 5.03380805980916
+SharedCode.Goose Wondering State direction angle is 3.88582772727445
+SharedCode.Goose Wondering State direction angle is 2.43225632163978
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 1.03843453974744
+SharedCode.Goose Wondering State direction angle is 3.42691122090051
+SharedCode.Goose Wondering State direction angle is 2.85015254068357
+SharedCode.Goose Wondering State direction angle is 3.16695649465596
+SharedCode.Goose Wondering State direction angle is 4.86980956243425
+SharedCode.Goose Wondering State direction angle is 4.83487477439812
+SharedCode.Goose Wondering State direction angle is 6.10864059240462
+SharedCode.Goose Wondering State direction angle is 5.30220213516754
+SharedCode.Goose Wondering State direction angle is 5.64130377825857
+SharedCode.Goose Wondering State direction angle is 5.20891303709871
+SharedCode.Goose Wondering State direction angle is 5.70698294252426
+SharedCode.Goose Wondering State direction angle is 1.71306311245524
+SharedCode.Goose Wondering State direction angle is 4.36600100681393
+SharedCode.Goose Wondering State direction angle is 3.95696493356632
+SharedCode.Goose Wondering State direction angle is 3.94711597510737
+SharedCode.Goose Wondering State direction angle is 5.85588619973194
+SharedCode.Goose Wondering State direction angle is 0.739295643432402
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Bat
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 5.8102251968552
+SharedCode.Goose Wondering State direction angle is 0.355116175128025
+SharedCode.Goose Wondering State direction angle is 3.68759786846713
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 5.73693903119811
+SharedCode.Goose Wondering State direction angle is 1.79578375969503
+SharedCode.Goose Wondering State direction angle is 3.82864925227769
+SharedCode.Goose Wondering State direction angle is 1.25987539620821
+SharedCode.Goose Wondering State direction angle is 0.237071916707306
+SharedCode.Goose Wondering State direction angle is 5.86545819854
+SharedCode.Goose Wondering State direction angle is 0.787859816016307
+SharedCode.Goose Wondering State direction angle is 3.57789481783794
+SharedCode.Goose Wondering State direction angle is 3.49828689454276
+SharedCode.Goose Wondering State direction angle is 0.359813926924717
+SharedCode.Goose Wondering State direction angle is 1.26299928221777
+SharedCode.Goose Wondering State direction angle is 2.79718217587631
+SharedCode.Goose Wondering State direction angle is 3.86687988064033
+SharedCode.Goose Wondering State direction angle is 0.37272378399238
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 4.9877347832108
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 5.1432788429348
+SharedCode.Goose Wondering State direction angle is 1.67809545850153
+SharedCode.Goose Wondering State direction angle is 0.816021860954489
+SharedCode.Goose Wondering State direction angle is 5.78060210929805
+SharedCode.Goose Wondering State direction angle is 0.175966551189393
+SharedCode.Goose Wondering State direction angle is 1.55123905262682
+SharedCode.Goose Wondering State direction angle is 6.08173806141655
+SharedCode.Goose Wondering State direction angle is 1.98776971443863
+Remove instance of SharedCode.Sword
+SharedCode.Goose Wondering State direction angle is 2.92081812266732
+SharedCode.Goose Wondering State direction angle is 4.92974120536993
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 2.39684201538957
+SharedCode.Goose Wondering State direction angle is 5.71166532197777
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 5.3376849147614
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 5.17714075318362
+SharedCode.Goose Wondering State direction angle is 0.808249530070663
+SharedCode.Goose Wondering State direction angle is 3.36781058858014
+SharedCode.Goose Wondering State direction angle is 6.05812852391641
+SharedCode.Goose Wondering State direction angle is 5.29911991891657
+SharedCode.Goose Wondering State direction angle is 4.31581220811135
+SharedCode.Goose Wondering State direction angle is 1.3349344488797
+SharedCode.Goose Wondering State direction angle is 1.71574190563897
+SharedCode.Goose Wondering State direction angle is 0.510247917242862
+SharedCode.Goose Wondering State direction angle is 0.121741058260421
+SharedCode.Goose Wondering State direction angle is 6.24441143881714
+SharedCode.Goose Wondering State direction angle is 4.6297908898385
+Remove instance of SharedCode.Sword
+SharedCode.Goose Wondering State direction angle is 2.68237213089507
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 1.21254128903347
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 0.32525800833877
+SharedCode.Goose Wondering State direction angle is 5.29992976695894
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Damage Inflicted to SharedCode.Goose : 5
+SharedCode.Goose Wondering State direction angle is 1.16524414175256
+SharedCode.Goose Wondering State direction angle is 0.316897672161889
+SharedCode.Goose Wondering State direction angle is 0.104898015003649
+SharedCode.Goose Wondering State direction angle is 0.215743234535007
+SharedCode.Goose Wondering State direction angle is -0.796652225048101
+SharedCode.Goose Wondering State direction angle is -1.29768560605282
+SharedCode.Goose Wondering State direction angle is -0.841755682049128
+SharedCode.Goose Wondering State direction angle is 1.44164861231121
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 0.732367716178912
+SharedCode.Goose Wondering State direction angle is -1.38280837209448
+SharedCode.Goose Wondering State direction angle is 0.657697275992017
+SharedCode.Goose Wondering State direction angle is -0.896935734876938
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 0.708031011840445
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 0.917160151623063
+SharedCode.Goose Wondering State direction angle is -1.06084226444384
+SharedCode.Goose Wondering State direction angle is 0.390977732739686
+SharedCode.Goose Wondering State direction angle is -1.2026640867466
+SharedCode.Goose Wondering State direction angle is -1.21531877871693
+SharedCode.Goose Wondering State direction angle is -0.886478666241758
+SharedCode.Goose Wondering State direction angle is 1.3803458581826
+SharedCode.Goose Wondering State direction angle is -1.11358319688278
+SharedCode.Goose Wondering State direction angle is 1.54137827305832
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 4.455729883075
+SharedCode.Goose Wondering State direction angle is 4.06191300889521
+SharedCode.Goose Wondering State direction angle is 1.00421263461751
+SharedCode.Goose Wondering State direction angle is 2.43104826437021
+SharedCode.Goose Wondering State direction angle is 4.71332626248955
+SharedCode.Goose Wondering State direction angle is 0.451301069796896
+SharedCode.Goose Wondering State direction angle is 0.339645951021035
+SharedCode.Goose Wondering State direction angle is 3.91269551395812
+SharedCode.Goose Wondering State direction angle is 3.09679276671954
+SharedCode.Goose Wondering State direction angle is 4.05358592118899
+SharedCode.Goose Wondering State direction angle is 1.2250858905666
+Remove instance of SharedCode.Sword
+SharedCode.Goose Wondering State direction angle is 2.61619205762713
+SharedCode.Goose Wondering State direction angle is 4.56606388149457
+SharedCode.Goose Wondering State direction angle is 3.1800154903702
+SharedCode.Goose Wondering State direction angle is 0.289376669148832
+SharedCode.Goose Wondering State direction angle is -0.904464879768122
+SharedCode.Goose Wondering State direction angle is 1.00750065198959
+SharedCode.Goose Wondering State direction angle is -1.56593873071712
+SharedCode.Goose Wondering State direction angle is 0.129494091791855
+SharedCode.Goose Wondering State direction angle is 1.38720551251222
+SharedCode.Goose Wondering State direction angle is -0.0516070004970324
+SharedCode.Goose Wondering State direction angle is 1.47508976903376
+SharedCode.Goose Wondering State direction angle is -0.418290542029114
+SharedCode.Goose Wondering State direction angle is 3.07515663841501
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 3.76233211236317
+SharedCode.Goose Wondering State direction angle is 5.29982302367832
+SharedCode.Goose Wondering State direction angle is 6.20637689999393
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 5.33143785079463
+SharedCode.Goose Wondering State direction angle is 5.88627575981039
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 4.42441323084758
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 6.20477320823299
+SharedCode.Goose Wondering State direction angle is 6.06979799322494
+SharedCode.Goose Wondering State direction angle is 2.10581764770957
+Remove instance of SharedCode.Sword
+SharedCode.Goose Wondering State direction angle is 3.79715439907311
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 5.66727527307052
+SharedCode.Goose Wondering State direction angle is 6.17769676261774
+SharedCode.Goose Wondering State direction angle is 6.08330093776307
+SharedCode.Goose Wondering State direction angle is 5.37429929952597
+SharedCode.Goose Wondering State direction angle is 3.7770241430492
+SharedCode.Goose Wondering State direction angle is 5.80752891887457
+SharedCode.Goose Wondering State direction angle is 2.96452762208377
+SharedCode.Goose Wondering State direction angle is 5.63734869438018
+SharedCode.Goose Wondering State direction angle is 4.8850828309543
+SharedCode.Goose Wondering State direction angle is 5.11998425121642
+SharedCode.Goose Wondering State direction angle is 3.96271050921529
+SharedCode.Goose Wondering State direction angle is 0.376817464729663
+SharedCode.Goose Wondering State direction angle is 4.4653735268331
+SharedCode.Goose Wondering State direction angle is 2.83076262361238
+Remove instance of SharedCode.Sword
+Damage Inflicted to SharedCode.Goose : 5
+SharedCode.Goose Wondering State direction angle is -1.25479000403599
+SharedCode.Goose Wondering State direction angle is 1.02451975377999
+SharedCode.Goose Wondering State direction angle is 1.14205059524888
+SharedCode.Goose Wondering State direction angle is -0.218092280131851
+SharedCode.Goose Wondering State direction angle is -0.521712657749232
+SharedCode.Goose Wondering State direction angle is 0.866156633360912
+SharedCode.Goose Wondering State direction angle is 0.487455554810295
+SharedCode.Goose Wondering State direction angle is 0.209768147520153
+SharedCode.Goose Wondering State direction angle is -1.32653032610177
+SharedCode.Goose Wondering State direction angle is -1.37086098784955
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is -0.785388968591586
+SharedCode.Goose Wondering State direction angle is 0.00921135658569305
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is -0.0699029357246921
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is -0.920559563623801
+SharedCode.Goose Wondering State direction angle is 0.608926036131404
+SharedCode.Goose Wondering State direction angle is -1.01742363410339
+SharedCode.Goose Wondering State direction angle is 0.491187790914648
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.Sword
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 4.66847250951267
+SharedCode.Goose Wondering State direction angle is 3.69320686315832
+SharedCode.Goose Wondering State direction angle is 0.324312492199502
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 1.40592590391181
+Remove instance of SharedCode.Sword
+SharedCode.Goose Wondering State direction angle is 1.80252586928838
+SharedCode.Goose Wondering State direction angle is 3.92513640045106
+SharedCode.Goose Wondering State direction angle is 2.92917555129452
+SharedCode.Goose Wondering State direction angle is 3.90299896815641
+SharedCode.Goose Wondering State direction angle is 2.76121116785412
+SharedCode.Goose Wondering State direction angle is 4.61929974837832
+SharedCode.Goose Wondering State direction angle is 4.12099694346861
+SharedCode.Goose Wondering State direction angle is 5.78876798343186
+SharedCode.Goose Wondering State direction angle is 0.782503244913983
+SharedCode.Goose Wondering State direction angle is 3.80116735013907
+SharedCode.Goose Wondering State direction angle is 3.66931493858121
+SharedCode.Goose Wondering State direction angle is 5.60502620990105
+SharedCode.Goose Wondering State direction angle is 0.990028722194017
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 2.72155456887056
+SharedCode.Goose Wondering State direction angle is 0.88595012344844
+SharedCode.Goose Wondering State direction angle is 1.88421943100261
+SharedCode.Goose Wondering State direction angle is 2.96099661767591
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 5.05917616820737
+SharedCode.Goose Wondering State direction angle is 2.54652931476469
+SharedCode.Goose Wondering State direction angle is 4.29919812543182
+SharedCode.Goose Wondering State direction angle is 5.27597583513609
+SharedCode.Goose Wondering State direction angle is 1.0449136312992
+Damage Inflicted to SharedCode.Goose : 5
+Remove instance of SharedCode.Sword
+SharedCode.Goose Wondering State direction angle is 3.90849280486217
+SharedCode.Goose Wondering State direction angle is 3.00494304837875
+SharedCode.Goose Wondering State direction angle is 3.50475314459961
+SharedCode.Goose Wondering State direction angle is 1.45830100515797
+SharedCode.Goose Wondering State direction angle is 6.11981164552331
+SharedCode.Goose Wondering State direction angle is 1.21428103510168
+SharedCode.Goose Wondering State direction angle is 3.33524910424846
+SharedCode.Goose Wondering State direction angle is 2.38324709134008
+SharedCode.Goose Wondering State direction angle is 5.39409056232072
+SharedCode.Goose Wondering State direction angle is 0.210172955239351
+SharedCode.Goose Wondering State direction angle is -0.187832930002941
+SharedCode.Goose Wondering State direction angle is 3.89183417340126
+SharedCode.Goose Wondering State direction angle is 2.48355039298762
+SharedCode.Goose Wondering State direction angle is 5.34305064958258
+SharedCode.Goose Wondering State direction angle is 1.29156422064684
+SharedCode.Goose Wondering State direction angle is 2.60648957822968
+SharedCode.Goose Wondering State direction angle is 1.63182386872825
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 5.82298001971642
+SharedCode.Goose Wondering State direction angle is 5.39399285402216
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 0.234158825489722
+SharedCode.Goose Wondering State direction angle is 3.83295206593201
+SharedCode.Goose Wondering State direction angle is 5.33156058084403
+SharedCode.Goose Wondering State direction angle is 3.75575561094814
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 5.07683650356516
+SharedCode.Goose Wondering State direction angle is 4.12369450589131
+SharedCode.Goose Wondering State direction angle is 0.592367559699543
+SharedCode.Goose Wondering State direction angle is 3.64780436375798
+SharedCode.Goose Wondering State direction angle is 1.72540144546494
+SharedCode.Goose Wondering State direction angle is 3.09589848197143
+SharedCode.Goose Wondering State direction angle is 3.3484968076175
+SharedCode.Goose Wondering State direction angle is 2.89072338446952
+SharedCode.Goose Wondering State direction angle is 5.95494519299989
+SharedCode.Goose Wondering State direction angle is 2.6429924915624
+SharedCode.Goose Wondering State direction angle is 3.970152391043
+SharedCode.Goose Wondering State direction angle is 2.68709995736165
+Damage Inflicted to SharedCode.Goose : 1
+SharedCode.Goose Wondering State direction angle is 4.52342563895219
+SharedCode.Goose Wondering State direction angle is 3.83649602594239
+SharedCode.Goose Wondering State direction angle is 1.78063600369457
+SharedCode.Goose Wondering State direction angle is 2.90540047583613
+Remove instance of SharedCode.Sword
+SharedCode.Goose Wondering State direction angle is 0.433671367943698
+SharedCode.Goose Wondering State direction angle is 3.85175502808533
+SharedCode.Goose Wondering State direction angle is 5.32148679528288
+SharedCode.Goose Wondering State direction angle is 1.63178622492022
+SharedCode.Goose Wondering State direction angle is 2.74074194200774
+SharedCode.Goose Wondering State direction angle is 3.22588085705104
+SharedCode.Goose Wondering State direction angle is 0.179091458315773
+SharedCode.Goose Wondering State direction angle is 2.81646224242887
+SharedCode.Goose Wondering State direction angle is 2.03497255982573
+SharedCode.Goose Wondering State direction angle is 4.13352653253641
+SharedCode.Goose Wondering State direction angle is -0.991434081030651
+SharedCode.Goose Wondering State direction angle is 2.87988307079619
+SharedCode.Goose Wondering State direction angle is 0.682944951853672
+SharedCode.Goose Wondering State direction angle is 4.87995650267691
+SharedCode.Goose Wondering State direction angle is 1.95672591983981
+SharedCode.Goose Wondering State direction angle is 2.97342157299096
+SharedCode.Goose Wondering State direction angle is 5.5669413466959
+SharedCode.Goose Wondering State direction angle is 6.03259962619203
+SharedCode.Goose Wondering State direction angle is 5.82933012578107
+SharedCode.Goose Wondering State direction angle is 4.40575009440434
+SharedCode.Goose Wondering State direction angle is 3.13845923959478
+SharedCode.Goose Wondering State direction angle is 5.77955757993729
+SharedCode.Goose Wondering State direction angle is 0.318408087534599
+SharedCode.Goose Wondering State direction angle is 6.06229655892803
+SharedCode.Goose Wondering State direction angle is 5.60054719068984
+Remove instance of SharedCode.Goose
+SharedCode.Goose Wondering State direction angle is 0.995548279925465
+SharedCode.Goose Wondering State direction angle is 2.00360494245824
+SharedCode.Goose Wondering State direction angle is 0.687765582917407
+Remove instance of SharedCode.TimePiece
+SharedCode.Goose Wondering State direction angle is 1.76192291737641
+SharedCode.Goose Wondering State direction angle is 5.87112003383223
+SharedCode.Goose Wondering State direction angle is 5.74097799294753
+SharedCode.Goose Wondering State direction angle is 5.88684545814659
+SharedCode.Goose Wondering State direction angle is 3.97122435304359
+SharedCode.Goose Wondering State direction angle is 2.49714764015102
+SharedCode.Goose Wondering State direction angle is 4.9006059980666
+SharedCode.Goose Wondering State direction angle is 3.94567517634879
+SharedCode.Goose Wondering State direction angle is 1.53417593894599
+SharedCode.Goose Wondering State direction angle is 3.84791978060437
+SharedCode.Goose Wondering State direction angle is 4.29756997660641
+SharedCode.Goose Wondering State direction angle is 1.46493163161612
+SharedCode.Goose Wondering State direction angle is 2.80629689867677
+SharedCode.Goose Wondering State direction angle is 3.79740651544918
+SharedCode.Goose Wondering State direction angle is 1.60861129112327
+SharedCode.Goose Wondering State direction angle is 3.39024989109475
+SharedCode.Goose Wondering State direction angle is 4.54136106435157
+SharedCode.Goose Wondering State direction angle is 0.508311092702586
+SharedCode.Goose Wondering State direction angle is 4.44012520216728
+SharedCode.Goose Wondering State direction angle is 1.87919141667186
+SharedCode.Goose Wondering State direction angle is 4.90715705348455
+SharedCode.Goose Wondering State direction angle is 4.13402288308592
+SharedCode.Goose Wondering State direction angle is 4.27823416702332
+SharedCode.Goose Wondering State direction angle is 3.48414157097238
+SharedCode.Goose Wondering State direction angle is 0.728517138047941
+SharedCode.Goose Wondering State direction angle is 5.96806033551004
+SharedCode.Goose Wondering State direction angle is 4.9152804912907
+SharedCode.Goose Wondering State direction angle is 4.68956318881108
+SharedCode.Goose Wondering State direction angle is 5.93832623295148
+SharedCode.Goose Wondering State direction angle is 0.0870014849387179
+SharedCode.Goose Wondering State direction angle is 1.51073193062659
+SharedCode.Goose Wondering State direction angle is 0.967282651609714
+SharedCode.Goose Wondering State direction angle is 6.2589397104533
+SharedCode.Goose Wondering State direction angle is 0.619851071048047
+SharedCode.Goose Wondering State direction angle is 5.76107393476496
+SharedCode.Goose Wondering State direction angle is 0.803125603173297
+SharedCode.Goose Wondering State direction angle is 1.2297784080424
+SharedCode.Goose Wondering State direction angle is 2.78948446771228
+SharedCode.Goose Wondering State direction angle is 4.55104002002629
+SharedCode.Goose Wondering State direction angle is 4.80400516067757
+SharedCode.Goose Wondering State direction angle is 4.9122719534459
+SharedCode.Goose Wondering State direction angle is 4.35543623961262
+SharedCode.Goose Wondering State direction angle is 4.68850525619488
+SharedCode.Goose Wondering State direction angle is 0.0215090709434414
+SharedCode.Goose Wondering State direction angle is 1.39854739935261
+SharedCode.Goose Wondering State direction angle is 5.58129556619058
+SharedCode.Goose Wondering State direction angle is 4.08094530393841
+SharedCode.Goose Wondering State direction angle is 5.10965082695444
+SharedCode.Goose Wondering State direction angle is 2.60969320205211
+SharedCode.Goose Wondering State direction angle is 2.49710628053106
+SharedCode.Goose Wondering State direction angle is 3.08406232485103
+SharedCode.Goose Wondering State direction angle is 3.25111102982933
+SharedCode.Goose Wondering State direction angle is 3.24245762654203
+SharedCode.Goose Wondering State direction angle is 1.18490383481541
+SharedCode.Goose Wondering State direction angle is 0.464972603940392
+SharedCode.Goose Wondering State direction angle is 1.83655352230399
+SharedCode.Goose Wondering State direction angle is 2.63762958017312
+SharedCode.Goose Wondering State direction angle is 4.74962000194352
+SharedCode.Goose Wondering State direction angle is 0.0523483408171776
+SharedCode.Goose Wondering State direction angle is 5.20422629229765
+SharedCode.Goose Wondering State direction angle is 0.667366884351664
+SharedCode.Goose Wondering State direction angle is 1.97951068753316
+SharedCode.Goose Wondering State direction angle is 0.620710629046774
+SharedCode.Goose Wondering State direction angle is 1.16446725252307
+SharedCode.Goose Wondering State direction angle is 3.89046363567223
+SharedCode.Goose Wondering State direction angle is 4.4368451350235
+SharedCode.Goose Wondering State direction angle is 4.08865331689739
+SharedCode.Goose Wondering State direction angle is 1.49693078194121
+SharedCode.Goose Wondering State direction angle is 0.633064571392384
+SharedCode.Goose Wondering State direction angle is 6.18860984183637
+SharedCode.Goose Wondering State direction angle is 1.94232631770045
+SharedCode.Goose Wondering State direction angle is 2.30150250011739
+SharedCode.Goose Wondering State direction angle is 0.217978819862865
+SharedCode.Goose Wondering State direction angle is 0.56809809107603
+SharedCode.Goose Wondering State direction angle is 2.99675238948683
+SharedCode.Goose Wondering State direction angle is 3.53358119762287
+SharedCode.Goose Wondering State direction angle is 4.81360167214097
+SharedCode.Goose Wondering State direction angle is 2.58832545192103
+SharedCode.Goose Wondering State direction angle is 4.52069970762208
+SharedCode.Goose Wondering State direction angle is 0.380521046657584
+SharedCode.Goose Wondering State direction angle is 4.96818963882798
+SharedCode.Goose Wondering State direction angle is 2.61493475853499
+SharedCode.Goose Wondering State direction angle is 3.33227193721897
+SharedCode.Goose Wondering State direction angle is 5.44818407078052
+SharedCode.Goose Wondering State direction angle is 2.62009347289284
+SharedCode.Goose Wondering State direction angle is 1.7615318676703
+SharedCode.Goose Wondering State direction angle is 6.14928986908051
+SharedCode.Goose Wondering State direction angle is 3.75700890457058
+SharedCode.Goose Wondering State direction angle is 0.0100805852043874
+SharedCode.Goose Wondering State direction angle is 0.390305054479623
+SharedCode.Goose Wondering State direction angle is 0.354325704898542
+SharedCode.Goose Wondering State direction angle is 2.68680618293034
+SharedCode.Goose Wondering State direction angle is 1.01524167057483
+SharedCode.Goose Wondering State direction angle is 1.44379001936183
+SharedCode.Goose Wondering State direction angle is 4.5964730212686
+SharedCode.Goose Wondering State direction angle is 5.04451592965705
+SharedCode.Goose Wondering State direction angle is 1.33046055573344
+SharedCode.Goose Wondering State direction angle is 3.52159985758639
+SharedCode.Goose Wondering State direction angle is 6.07510470222743
+SharedCode.Goose Wondering State direction angle is 5.57025761813632
+SharedCode.Goose Wondering State direction angle is 4.24054998537692
+SharedCode.Goose Wondering State direction angle is 3.20169684625009
+SharedCode.Goose Wondering State direction angle is 3.80559989244289
+SharedCode.Goose Wondering State direction angle is 0.126473896684343
+SharedCode.Goose Wondering State direction angle is 6.01290189067597
+SharedCode.Goose Wondering State direction angle is 0.992805405078155
+SharedCode.Goose Wondering State direction angle is 0.893130912434754
+SharedCode.Goose Wondering State direction angle is 1.56521161142363
+SharedCode.Goose Wondering State direction angle is 3.69892622038945
+SharedCode.Goose Wondering State direction angle is 2.54850232897242
+SharedCode.Goose Wondering State direction angle is 0.553763310836791
+SharedCode.Goose Wondering State direction angle is 3.68721255925157
+SharedCode.Goose Wondering State direction angle is 0.303390791642668
+SharedCode.Goose Wondering State direction angle is 4.68990791082744
+SharedCode.Goose Wondering State direction angle is 4.15138501722229
+SharedCode.Goose Wondering State direction angle is 1.74356338032231
+SharedCode.Goose Wondering State direction angle is 0.342810190162912
+SharedCode.Goose Wondering State direction angle is 3.3576920669841
+SharedCode.Goose Wondering State direction angle is 3.8606114346629
+SharedCode.Goose Wondering State direction angle is 4.90370804270923
+SharedCode.Goose Wondering State direction angle is 4.6054271332189
+SharedCode.Goose Wondering State direction angle is 3.44783326963184
+SharedCode.Goose Wondering State direction angle is 3.49288297755969
+SharedCode.Goose Wondering State direction angle is 0.281108363685443
+SharedCode.Goose Wondering State direction angle is 0.853255250246227
+SharedCode.Goose Wondering State direction angle is 1.40107714166486
+SharedCode.Goose Wondering State direction angle is 2.58854605411581
+SharedCode.Goose Wondering State direction angle is 5.79700768226365
+SharedCode.Goose Wondering State direction angle is 4.66614145488237
+SharedCode.Goose Wondering State direction angle is 2.25295867964981
+SharedCode.Goose Wondering State direction angle is 2.71546392595657
+SharedCode.Goose Wondering State direction angle is 3.58844546787978
+SharedCode.Goose Wondering State direction angle is 0.667945714222521
+SharedCode.Goose Wondering State direction angle is 1.95262917575207
+SharedCode.Goose Wondering State direction angle is 3.39481002326183
+SharedCode.Goose Wondering State direction angle is 4.28201765646261
+SharedCode.Goose Wondering State direction angle is 2.71134853551498
+SharedCode.Goose Wondering State direction angle is 1.05651693867464
+SharedCode.Goose Wondering State direction angle is 5.61682797674322
+SharedCode.Goose Wondering State direction angle is 4.98766779911776
+SharedCode.Goose Wondering State direction angle is 0.434829305639847
+SharedCode.Goose Wondering State direction angle is 1.3901562767962
+SharedCode.Goose Wondering State direction angle is 5.68222249811226
+SharedCode.Goose Wondering State direction angle is 3.46312181979416
+SharedCode.Goose Wondering State direction angle is 2.35024530377637
+SharedCode.Goose Wondering State direction angle is 2.69929360777324
+SharedCode.Goose Wondering State direction angle is 2.66152379275411
+SharedCode.Goose Wondering State direction angle is 4.22545767104585
+SharedCode.Goose Wondering State direction angle is 4.31625371093621
+SharedCode.Goose Wondering State direction angle is 0.413638284790331
+SharedCode.Goose Wondering State direction angle is 0.786862035665714
+SharedCode.Goose Wondering State direction angle is 5.77916232287878
+SharedCode.Goose Wondering State direction angle is 1.38975434590541
+SharedCode.Goose Wondering State direction angle is 5.89893863241862
+SharedCode.Goose Wondering State direction angle is 0.926141805200597
+SharedCode.Goose Wondering State direction angle is 5.57429069017755
+SharedCode.Goose Wondering State direction angle is 3.95498650656169
+SharedCode.Goose Wondering State direction angle is 0.821563254201198
+SharedCode.Goose Wondering State direction angle is 2.18929401209694
+SharedCode.Goose Wondering State direction angle is 3.66388638313184
+SharedCode.Goose Wondering State direction angle is 4.82996594107751
+SharedCode.Goose Wondering State direction angle is 0.990602601550092
+SharedCode.Goose Wondering State direction angle is 0.977438182107337
+SharedCode.Goose Wondering State direction angle is 2.90596154295566
+SharedCode.Goose Wondering State direction angle is 4.61545827764386
+SharedCode.Goose Wondering State direction angle is 0.671453654263937
+SharedCode.Goose Wondering State direction angle is 4.6621024814296
+SharedCode.Goose Wondering State direction angle is 3.18068398834185
+SharedCode.Goose Wondering State direction angle is 0.42684896462861
+SharedCode.Goose Wondering State direction angle is 5.0737297951397
+SharedCode.Goose Wondering State direction angle is 4.00304659561112
+SharedCode.Goose Wondering State direction angle is 4.53947459345161
+SharedCode.Goose Wondering State direction angle is 0.377569536285384
+SharedCode.Goose Wondering State direction angle is 2.95093588134403
+SharedCode.Goose Wondering State direction angle is 5.64728793536552
+SharedCode.Goose Wondering State direction angle is 2.97450634430225
+SharedCode.Goose Wondering State direction angle is 4.65121998597635
+SharedCode.Goose Wondering State direction angle is 1.02165881924925
+SharedCode.Goose Wondering State direction angle is 0.25468815093666
+SharedCode.Goose Wondering State direction angle is 6.09075867469693
+SharedCode.Goose Wondering State direction angle is 5.12765274198055
+SharedCode.Goose Wondering State direction angle is 5.00653288555026
+SharedCode.Goose Wondering State direction angle is 1.74845465862596
+SharedCode.Goose Wondering State direction angle is 3.05202366696027
+SharedCode.Goose Wondering State direction angle is 3.24369999801808
+SharedCode.Goose Wondering State direction angle is 5.1488525608194
+SharedCode.Goose Wondering State direction angle is 5.6810147246488
+SharedCode.Goose Wondering State direction angle is 0.129410622806427
+SharedCode.Goose Wondering State direction angle is 5.94261285502849
+SharedCode.Goose Wondering State direction angle is 4.54565572077468
+SharedCode.Goose Wondering State direction angle is 2.67028333367394
+SharedCode.Goose Wondering State direction angle is 4.20832556322253
+SharedCode.Goose Wondering State direction angle is 2.40045129469222
+SharedCode.Goose Wondering State direction angle is 4.02534786595321
+SharedCode.Goose Wondering State direction angle is 1.88912245361261
+SharedCode.Goose Wondering State direction angle is 1.48175569277934
+SharedCode.Goose Wondering State direction angle is 4.22286027169825
+SharedCode.Goose Wondering State direction angle is 0.731651129895598
+SharedCode.Goose Wondering State direction angle is 5.50372608465134
+SharedCode.Goose Wondering State direction angle is 3.63361844713672
+SharedCode.Goose Wondering State direction angle is 2.04129059872607
+SharedCode.Goose Wondering State direction angle is 4.99022901172374
+SharedCode.Goose Wondering State direction angle is 4.05970952364732
+SharedCode.Goose Wondering State direction angle is 1.96566200278769
+SharedCode.Goose Wondering State direction angle is 2.10427230882499
+SharedCode.Goose Wondering State direction angle is 1.24264979914207
+SharedCode.Goose Wondering State direction angle is 3.200535175187
+SharedCode.Goose Wondering State direction angle is 2.30899440789177
+SharedCode.Goose Wondering State direction angle is 4.91126220057374
+SharedCode.Goose Wondering State direction angle is 2.85576507563651
+SharedCode.Goose Wondering State direction angle is 4.14740307709379
+SharedCode.Goose Wondering State direction angle is 2.07852274746327
+SharedCode.Goose Wondering State direction angle is 5.84807795932946
+SharedCode.Goose Wondering State direction angle is 0.726978499328175
+SharedCode.Goose Wondering State direction angle is 0.438908722925851
+SharedCode.Goose Wondering State direction angle is 5.69563044075028
+SharedCode.Goose Wondering State direction angle is 4.21278950267418
+SharedCode.Goose Wondering State direction angle is 1.60408465392855
+SharedCode.Goose Wondering State direction angle is 4.18535448998586
+SharedCode.Goose Wondering State direction angle is 4.87556078202116
+SharedCode.Goose Wondering State direction angle is 0.563639900892438
+SharedCode.Goose Wondering State direction angle is 3.27227320778598
+SharedCode.Goose Wondering State direction angle is 5.90291408889419
+SharedCode.Goose Wondering State direction angle is 5.08861621545436
+SharedCode.Goose Wondering State direction angle is 3.65363302437637
+SharedCode.Goose Wondering State direction angle is 4.45438299487964
+SharedCode.Goose Wondering State direction angle is 0.155074404503611
+SharedCode.Goose Wondering State direction angle is 0.961979313170483
+SharedCode.Goose Wondering State direction angle is 5.43649240607888
+SharedCode.Goose Wondering State direction angle is 3.70087466927679
+SharedCode.Goose Wondering State direction angle is 4.10065719464982
+SharedCode.Goose Wondering State direction angle is 0.477474774997535
+SharedCode.Goose Wondering State direction angle is 2.76600214556837
+SharedCode.Goose Wondering State direction angle is 0.463878832757066
+SharedCode.Goose Wondering State direction angle is 4.52767429537919
+SharedCode.Goose Wondering State direction angle is 2.78930946174821
+SharedCode.Goose Wondering State direction angle is 1.29885553601993
+SharedCode.Goose Wondering State direction angle is 3.94416677907157
+SharedCode.Goose Wondering State direction angle is 5.01658815056852
+SharedCode.Goose Wondering State direction angle is 5.21328234037977
+SharedCode.Goose Wondering State direction angle is 1.7225457503753
+SharedCode.Goose Wondering State direction angle is 4.58976446809016
+SharedCode.Goose Wondering State direction angle is 3.40041813727632
+SharedCode.Goose Wondering State direction angle is 5.85116921934001
+SharedCode.Goose Wondering State direction angle is 2.23109310142196
+SharedCode.Goose Wondering State direction angle is 2.51826740811253
+SharedCode.Goose Wondering State direction angle is 5.64619706368583
+SharedCode.Goose Wondering State direction angle is 2.94443272186402
+SharedCode.Goose Wondering State direction angle is 1.9734841145794
+SharedCode.Goose Wondering State direction angle is 3.38185329137304
+SharedCode.Goose Wondering State direction angle is 5.50032983255366
+SharedCode.Goose Wondering State direction angle is 0.620181330656268
+SharedCode.Goose Wondering State direction angle is 1.46517927438869
+SharedCode.Goose Wondering State direction angle is 0.460759742192972
+SharedCode.Goose Wondering State direction angle is 0.534909044146411
+SharedCode.Goose Wondering State direction angle is 2.58313596069261
+SharedCode.Goose Wondering State direction angle is 5.47535191366573
+SharedCode.Goose Wondering State direction angle is 0.0976557505423208
+SharedCode.Goose Wondering State direction angle is 0.031476850534684
+SharedCode.Goose Wondering State direction angle is 4.4714218446012
+SharedCode.Goose Wondering State direction angle is 3.22254301634645
+SharedCode.Goose Wondering State direction angle is 3.77453755974616
+SharedCode.Goose Wondering State direction angle is 2.25296386130565
+SharedCode.Goose Wondering State direction angle is 4.69554540316282
+SharedCode.Goose Wondering State direction angle is 4.56230261085508
+SharedCode.Goose Wondering State direction angle is 0.0404071022911017
+SharedCode.Goose Wondering State direction angle is 5.82729889035959
+SharedCode.Goose Wondering State direction angle is 5.47251786976368
+SharedCode.Goose Wondering State direction angle is 2.57739155537812
+SharedCode.Goose Wondering State direction angle is 2.42061165757021
+SharedCode.Goose Wondering State direction angle is 1.72793881250621
+SharedCode.Goose Wondering State direction angle is 5.56309985255474
+SharedCode.Goose Wondering State direction angle is 1.72183781798389
+SharedCode.Goose Wondering State direction angle is 1.83433805575703
+SharedCode.Goose Wondering State direction angle is 2.29975366347623
+SharedCode.Goose Wondering State direction angle is 1.1900206716803
+SharedCode.Goose Wondering State direction angle is 2.97611203148346
+SharedCode.Goose Wondering State direction angle is 2.102242618245
+SharedCode.Goose Wondering State direction angle is 0.481903528343522
+SharedCode.Goose Wondering State direction angle is 1.58649990754795
+SharedCode.Goose Wondering State direction angle is 3.31775196617999
+SharedCode.Goose Wondering State direction angle is 5.49574758399105
+SharedCode.Goose Wondering State direction angle is 4.59514626282602
+SharedCode.Goose Wondering State direction angle is 6.22754866591568
+SharedCode.Goose Wondering State direction angle is 1.1331139424944
+SharedCode.Goose Wondering State direction angle is 1.45865046410307
+SharedCode.Goose Wondering State direction angle is 5.57670315034732
+SharedCode.Goose Wondering State direction angle is 2.5852020135644
+SharedCode.Goose Wondering State direction angle is 4.9974666145966
+SharedCode.Goose Wondering State direction angle is 5.83039107493436
+SharedCode.Goose Wondering State direction angle is 5.58326356258931
+SharedCode.Goose Wondering State direction angle is 2.31470956947385
+SharedCode.Goose Wondering State direction angle is 5.71206173474156
+SharedCode.Goose Wondering State direction angle is 4.41696748984197
+SharedCode.Goose Wondering State direction angle is 2.77853961683878
+SharedCode.Goose Wondering State direction angle is 4.5429249530374
+SharedCode.Goose Wondering State direction angle is 5.66518724716918
+SharedCode.Goose Wondering State direction angle is 4.9290241443697
+SharedCode.Goose Wondering State direction angle is 5.1371445465453
+SharedCode.Goose Wondering State direction angle is 3.3669383178233
+SharedCode.Goose Wondering State direction angle is 3.03647116541463
+SharedCode.Goose Wondering State direction angle is 2.5063062358647
+SharedCode.Goose Wondering State direction angle is 6.10474585682287
+SharedCode.Goose Wondering State direction angle is 6.00658102834374
+SharedCode.Goose Wondering State direction angle is 0.501001438188446
+SharedCode.Goose Wondering State direction angle is 4.40936866616264
+SharedCode.Goose Wondering State direction angle is 4.00446736116951
+SharedCode.Goose Wondering State direction angle is 4.62890722880149
+SharedCode.Goose Wondering State direction angle is 6.21183612698376
+SharedCode.Goose Wondering State direction angle is 2.72326639075846
+SharedCode.Goose Wondering State direction angle is 3.80691804600132
+SharedCode.Goose Wondering State direction angle is 2.84796747650014
+SharedCode.Goose Wondering State direction angle is 3.46776150252058
+SharedCode.Goose Wondering State direction angle is 0.619146520923236
+SharedCode.Goose Wondering State direction angle is 5.94271678658056
+SharedCode.Goose Wondering State direction angle is 4.51526047579657
+SharedCode.Goose Wondering State direction angle is 1.31546489054824
+SharedCode.Goose Wondering State direction angle is 2.86873222350202
+SharedCode.Goose Wondering State direction angle is 4.98962854236864
+SharedCode.Goose Wondering State direction angle is 1.63251187324958
+SharedCode.Goose Wondering State direction angle is 1.05477895103396
+SharedCode.Goose Wondering State direction angle is 0.0855546414026319
+SharedCode.Goose Wondering State direction angle is 6.24782606516591
+SharedCode.Goose Wondering State direction angle is 3.76745901703029
+SharedCode.Goose Wondering State direction angle is 6.20463804045407
+SharedCode.Goose Wondering State direction angle is 5.25081107527683
+SharedCode.Goose Wondering State direction angle is 4.17901067154312
+SharedCode.Goose Wondering State direction angle is 2.43059917485219
+SharedCode.Goose Wondering State direction angle is 5.4687218548198
+SharedCode.Goose Wondering State direction angle is 5.16077244951902
+SharedCode.Goose Wondering State direction angle is 0.871118322643211
+SharedCode.Goose Wondering State direction angle is 5.78611525359663
+SharedCode.Goose Wondering State direction angle is 2.99398760305252
+SharedCode.Goose Wondering State direction angle is 1.71926894261301
+SharedCode.Goose Wondering State direction angle is 6.11124939666158
+SharedCode.Goose Wondering State direction angle is 4.77968868849615
+SharedCode.Goose Wondering State direction angle is 0.866165449636721
+SharedCode.Goose Wondering State direction angle is 4.05976255150188
+SharedCode.Goose Wondering State direction angle is 3.38645447887312
+SharedCode.Goose Wondering State direction angle is 6.20856876967227
+SharedCode.Goose Wondering State direction angle is 0.393906981156005
+SharedCode.Goose Wondering State direction angle is 2.40809686738171
+SharedCode.Goose Wondering State direction angle is 3.38208350786545
+SharedCode.Goose Wondering State direction angle is 5.61869531560054
+SharedCode.Goose Wondering State direction angle is 3.05758869511148
+SharedCode.Goose Wondering State direction angle is 5.27095563571372
+SharedCode.Goose Wondering State direction angle is 5.33847259081735
+SharedCode.Goose Wondering State direction angle is 3.60428282298228
+SharedCode.Goose Wondering State direction angle is 4.15008378377438
+SharedCode.Goose Wondering State direction angle is 0.487129194610217
+SharedCode.Goose Wondering State direction angle is 1.0114947014225
+SharedCode.Goose Wondering State direction angle is 3.76289627794319
+SharedCode.Goose Wondering State direction angle is 1.89079245359844
+SharedCode.Goose Wondering State direction angle is 4.56391128238917
+SharedCode.Goose Wondering State direction angle is 1.96963789228701
+SharedCode.Goose Wondering State direction angle is 1.96190302600376
+SharedCode.Goose Wondering State direction angle is 5.15132217134689
+SharedCode.Goose Wondering State direction angle is 2.10374782928664
+SharedCode.Goose Wondering State direction angle is 1.44572955322639
+SharedCode.Goose Wondering State direction angle is 1.72749579702406
+SharedCode.Goose Wondering State direction angle is 4.71527416424552
+SharedCode.Goose Wondering State direction angle is 3.57263335689167
+SharedCode.Goose Wondering State direction angle is 1.20609913031156
+SharedCode.Goose Wondering State direction angle is 0.744583328648178
+SharedCode.Goose Wondering State direction angle is 2.57058305563646
+SharedCode.Goose Wondering State direction angle is 2.74102354788646
+SharedCode.Goose Wondering State direction angle is 5.08429623299345
+SharedCode.Goose Wondering State direction angle is 5.89391861439809
+SharedCode.Goose Wondering State direction angle is 5.98630893656031
+SharedCode.Goose Wondering State direction angle is 4.06710463598402
+SharedCode.Goose Wondering State direction angle is 0.969143506814098
+SharedCode.Goose Wondering State direction angle is 1.44308549556955
+SharedCode.Goose Wondering State direction angle is 4.04479702535497
+SharedCode.Goose Wondering State direction angle is 0.882949971050082
+SharedCode.Goose Wondering State direction angle is 0.813719777953848
+SharedCode.Goose Wondering State direction angle is 5.74253550623637
+SharedCode.Goose Wondering State direction angle is 0.383884663978741
+SharedCode.Goose Wondering State direction angle is 4.36976258174037
+SharedCode.Goose Wondering State direction angle is 0.188390810155434
+SharedCode.Goose Wondering State direction angle is 2.17423351038243
+SharedCode.Goose Wondering State direction angle is 1.79671566484449
+SharedCode.Goose Wondering State direction angle is 1.11305641983159
+SharedCode.Goose Wondering State direction angle is 3.58695352843096
+SharedCode.Goose Wondering State direction angle is 0.329073360133835
+SharedCode.Goose Wondering State direction angle is 4.40692686278202
+SharedCode.Goose Wondering State direction angle is 6.27447567809881
+SharedCode.Goose Wondering State direction angle is 5.62744322632163
+SharedCode.Goose Wondering State direction angle is 5.96804288582318
+SharedCode.Goose Wondering State direction angle is 3.93140250283372
+SharedCode.Goose Wondering State direction angle is 1.97979282006239
+SharedCode.Goose Wondering State direction angle is 3.85256633904578
+SharedCode.Goose Wondering State direction angle is 6.17130690029135
+SharedCode.Goose Wondering State direction angle is 2.75920841544765
+SharedCode.Goose Wondering State direction angle is 2.36458174003887
+SharedCode.Goose Wondering State direction angle is 3.81168452276357
+SharedCode.Goose Wondering State direction angle is 1.46192422021825
+SharedCode.Goose Wondering State direction angle is 4.38440156409099
+SharedCode.Goose Wondering State direction angle is 4.78376257887765
+SharedCode.Goose Wondering State direction angle is 1.74068952456763
+SharedCode.Goose Wondering State direction angle is 0.613054245392669
+SharedCode.Goose Wondering State direction angle is 6.2481110591629
+SharedCode.Goose Wondering State direction angle is 6.05026012832249
+SharedCode.Goose Wondering State direction angle is 3.58968896287691
+SharedCode.Goose Wondering State direction angle is 3.56349255318767
+SharedCode.Goose Wondering State direction angle is 3.40839809500302
+SharedCode.Goose Wondering State direction angle is 4.03242173610873
+SharedCode.Goose Wondering State direction angle is 2.41135708565298
+SharedCode.Goose Wondering State direction angle is 2.37972675160502
+SharedCode.Goose Wondering State direction angle is 3.30515252569971
+SharedCode.Goose Wondering State direction angle is 4.48921074119986
+SharedCode.Goose Wondering State direction angle is 5.25047653224447
+SharedCode.Goose Wondering State direction angle is 0.825860713575346
+SharedCode.Goose Wondering State direction angle is 3.33814922230851
+SharedCode.Goose Wondering State direction angle is 0.0962948827017935
+SharedCode.Goose Wondering State direction angle is 5.86084203075879
+SharedCode.Goose Wondering State direction angle is 5.33801279859066
+SharedCode.Goose Wondering State direction angle is 1.3406058458045
+SharedCode.Goose Wondering State direction angle is 3.85183169669606
+SharedCode.Goose Wondering State direction angle is 5.04931312184731
+SharedCode.Goose Wondering State direction angle is 5.36538277579281
+SharedCode.Goose Wondering State direction angle is 1.88898400304552
+SharedCode.Goose Wondering State direction angle is 1.81903830841973
+SharedCode.Goose Wondering State direction angle is 0.507285692458644
+SharedCode.Goose Wondering State direction angle is 2.99632717479188
+SharedCode.Goose Wondering State direction angle is 4.32829120362027
+SharedCode.Goose Wondering State direction angle is 3.14863876487475
+SharedCode.Goose Wondering State direction angle is 2.50131369729739
+SharedCode.Goose Wondering State direction angle is 1.71443654383624
+SharedCode.Goose Wondering State direction angle is 3.18952029735085
+SharedCode.Goose Wondering State direction angle is 0.38885273085241
+SharedCode.Goose Wondering State direction angle is 4.61307910178624
+SharedCode.Goose Wondering State direction angle is 2.34914073333177
+SharedCode.Goose Wondering State direction angle is 1.96997158682689
+SharedCode.Goose Wondering State direction angle is 0.633404998281261
+SharedCode.Goose Wondering State direction angle is 4.85612272616764
+SharedCode.Goose Wondering State direction angle is 1.66289341946279
+SharedCode.Goose Wondering State direction angle is 3.17613224747289
+SharedCode.Goose Wondering State direction angle is 6.2475063824554
+SharedCode.Goose Wondering State direction angle is 2.49306127400413
+SharedCode.Goose Wondering State direction angle is 5.07135038814102
+SharedCode.Goose Wondering State direction angle is 5.25423294599593
+SharedCode.Goose Wondering State direction angle is 1.80157211692033
+SharedCode.Goose Wondering State direction angle is 4.77535023523156
+SharedCode.Goose Wondering State direction angle is 4.8596265027442
+SharedCode.Goose Wondering State direction angle is 3.05465305447461
+SharedCode.Goose Wondering State direction angle is 4.10829389620408
+SharedCode.Goose Wondering State direction angle is 1.83098648410334
+SharedCode.Goose Wondering State direction angle is 1.48460720684911
+SharedCode.Goose Wondering State direction angle is 4.55518804524441
+SharedCode.Goose Wondering State direction angle is 2.18577665964059
+SharedCode.Goose Wondering State direction angle is 5.60973186145538
+SharedCode.Goose Wondering State direction angle is 2.68005962021435
+SharedCode.Goose Wondering State direction angle is 0.261624585790244
+SharedCode.Goose Wondering State direction angle is 1.13592673897426
+SharedCode.Goose Wondering State direction angle is 6.12091417373426
+SharedCode.Goose Wondering State direction angle is 0.628756265943592
+SharedCode.Goose Wondering State direction angle is 4.20498823746511
+SharedCode.Goose Wondering State direction angle is 5.31758579256007
+SharedCode.Goose Wondering State direction angle is 3.39282388667891
+SharedCode.Goose Wondering State direction angle is 5.24869290741136
+SharedCode.Goose Wondering State direction angle is 2.88368331357332
+SharedCode.Goose Wondering State direction angle is 5.8836141237299
+SharedCode.Goose Wondering State direction angle is 2.28959604685742
+SharedCode.Goose Wondering State direction angle is 5.82539878213728
+SharedCode.Goose Wondering State direction angle is 0.244345501513267
+SharedCode.Goose Wondering State direction angle is 5.50033380291333
+SharedCode.Goose Wondering State direction angle is 2.29683979691206
+SharedCode.Goose Wondering State direction angle is 4.28947426109788
+SharedCode.Goose Wondering State direction angle is 1.32777424900244
+SharedCode.Goose Wondering State direction angle is 3.28821158908524
+SharedCode.Goose Wondering State direction angle is 5.99474331467851
+SharedCode.Goose Wondering State direction angle is 0.99079762315933
+SharedCode.Goose Wondering State direction angle is 0.990934288966359
+SharedCode.Goose Wondering State direction angle is 1.33735064534225
+SharedCode.Goose Wondering State direction angle is 0.022419842778311
+SharedCode.Goose Wondering State direction angle is 4.41402411622013
+SharedCode.Goose Wondering State direction angle is 1.04343240918823
+SharedCode.Goose Wondering State direction angle is 3.78561844737191
+SharedCode.Goose Wondering State direction angle is 6.25716769241224
+SharedCode.Goose Wondering State direction angle is 0.674531993781996
+SharedCode.Goose Wondering State direction angle is 5.23823124960217
+SharedCode.Goose Wondering State direction angle is 0.5359361150428
+SharedCode.Goose Wondering State direction angle is 2.93391749784641
+SharedCode.Goose Wondering State direction angle is 0.600482863681164
+SharedCode.Goose Wondering State direction angle is 5.48409839950462
+SharedCode.Goose Wondering State direction angle is 1.3309469262558
+SharedCode.Goose Wondering State direction angle is 2.36909722979782
+SharedCode.Goose Wondering State direction angle is 2.10821179214498
+SharedCode.Goose Wondering State direction angle is 5.88147371950962
+SharedCode.Goose Wondering State direction angle is 1.85590613788998
