@@ -1,5 +1,4 @@
 C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\obj\x86\Debug\Windows.csprojAssemblyReference.cache
-C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\obj\x86\Debug\Windows.csproj.CoreCompileInputs.cache
 C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Debug\lua53.dll
 C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Debug\liblua53.dylib
 C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Debug\Windows.exe

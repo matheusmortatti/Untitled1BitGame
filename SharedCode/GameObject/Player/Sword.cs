@@ -7,96 +7,88 @@ using SharedCode.Graphics;
 using SharedCode.Particles;
 using Microsoft.Xna.Framework;
 
-namespace SharedCode
-{
-    public class Sword : GameObject
-    {
-        private double timePassed;
+namespace SharedCode {
+	public class Sword : GameObject {
+		private double _timePassed;
 
-        private new double lifeTime = 0.5;
-        private float repelSpeed = 80;
+		private float _repelSpeed = 80;
 
-        private float timeGivenAdjustment = 1.5f;
+		public float timeGivenAdjustment = 1f;
 
-        public float damage { get; set; } = 5;
+		public float Damage { get; set; } = 4;
 
-        public Sword(Vector2 position, Vector2 direction) : base(position, new TopDownPhysics(0, 0))
-        {
-            timePassed = 0;
+		public Sword(Vector2 position, Vector2 direction) : base(position, new TopDownPhysics(0, 0)) {
+			_timePassed = 0;
 
-            transform.direction = direction;
+			transform.direction = direction;
 
-            AddComponent(new P8Sprite(direction.X != 0 ? 3 : 4, 1, 1, direction.X < 0 ? true : false, direction.Y > 0 ? true : false));
+			AddComponent(new P8Sprite(direction.X != 0 ? 3 : 4, 1, 1, direction.X < 0 ? true : false, direction.Y > 0 ? true : false));
 
-            collisionBox = new Box(position, new Vector2(8, 8), true);
-            collisionBox.isTrigger = true;
-            depth = 1000;
+			collisionBox = new Box(position, new Vector2(8, 8), true);
+			collisionBox.isTrigger = true;
+			depth = 1000;
 
-            List<string> newTags = new List<string>(tags);
-            newTags.Add("player_attack");
-            tags = newTags;
-        }
+			List<string> newTags = new List<string>(tags);
+			newTags.Add("player_attack");
+			tags = newTags;
 
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
+			lifeTime = 0.5;
+		}
 
-            timePassed += gameTime.ElapsedGameTime.TotalSeconds;
+		public override void Update(GameTime gameTime) {
+			base.Update(gameTime);
 
-            if (timePassed > lifeTime)
-            {
-                done = true;
-            }
+			_timePassed += gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (timePassed > 2 * lifeTime / 3 && !fadeOut)
-            {
-                fadeOut = true;
-                fadeOutTime = lifeTime - timePassed;
+			if (_timePassed > lifeTime) {
+				done = true;
+			}
 
-                this.collisionBox = null;
-            }
-        }
+			if (_timePassed > 2 * lifeTime / 3 && !fadeOut) {
+				fadeOut = true;
+				fadeOutTime = lifeTime - _timePassed;
 
-        public override void OnCollision(GameObject other)
-        {
-            base.OnCollision(other);
+				this.collisionBox = null;
+			}
+		}
 
-            if (other.tags.Contains("attackable"))
-            {
-                //
-                // TODO(matheusmortatti) remove time from enemy and give to the player.
-                //
+		public override void OnCollision(GameObject other) {
+			base.OnCollision(other);
 
-                var inflicted = ((Enemy)other).TakeHit(damage);
-                if (inflicted <= 0) return;
+			if (other.tags.Contains("attackable")) {
+				//
+				// TODO(matheusmortatti) remove time from enemy and give to the player.
+				//
 
-                //
-                // Camera shake, brief pause and time particles.
-                //
+				var inflicted = ((Enemy)other).TakeHit(Damage);
+				if (inflicted <= 0) return;
 
-                ((Camera)GameObjectManager.FindObjectWithTag("camera"))?.AddShake(0.1);
+				//
+				// Camera shake, brief pause and time particles.
+				//
 
-                if (other.lifeTime <= 0)
-                {
-                    GameObjectManager.AddPause(0.2f);
-                }
+				((Camera)GameObjectManager.FindObjectWithTag("camera"))?.AddShake(0.1);
 
-                TimePiece.SpawnParticles((int)Math.Ceiling(inflicted / timeGivenAdjustment), other.collisionBox == null ? other.transform.position : other.collisionBox.middle, GameObjectManager.playerInstance);
+				if (other.lifeTime <= 0) {
+					GameObjectManager.AddPause(0.2f);
+				}
 
-                Debug.Log($"Damage Inflicted to {other.GetType().FullName} : {Math.Ceiling(inflicted).ToString()}");
+				TimePiece.SpawnParticles((int)Math.Ceiling(inflicted / timeGivenAdjustment), other.collisionBox == null ? other.transform.position : other.collisionBox.middle, GameObjectManager.playerInstance);
 
-                //
-                // Add force to repel enemy.
-                //
+				Debug.Log($"Damage Inflicted to {other.GetType().FullName} : {Math.Ceiling(inflicted).ToString()}");
 
-                Vector2 repelDir = transform.direction;
+				//
+				// Add force to repel enemy.
+				//
 
-                var physics = other.GetComponent<APhysics>();
-                if (physics == null)
-                    Debug.Log($"{other.GetType().FullName} does not have a physics component. Attacking it does not send it back.");
-                else
-                    physics.velocity = (repelDir * repelSpeed);
-            }
-        }
-    }
+				Vector2 repelDir = transform.direction;
+
+				var physics = other.GetComponent<APhysics>();
+				if (physics == null)
+					Debug.Log($"{other.GetType().FullName} does not have a physics component. Attacking it does not send it back.");
+				else
+					physics.velocity = (repelDir * _repelSpeed);
+			}
+		}
+	}
 }

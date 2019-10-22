@@ -55,7 +55,7 @@ namespace SharedCode
 
         public static void Log(string message)
         {
-#if DEBUG
+#if LOG
             lock (logQueue)
             {
                 logQueue.Enqueue(message);
@@ -65,7 +65,7 @@ namespace SharedCode
 
         private static void LogThread()
         {
-#if DEBUG
+#if LOG
             var s = File.AppendText(logPath);
             while (true)
             {

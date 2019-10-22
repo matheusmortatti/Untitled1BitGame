@@ -40,7 +40,7 @@ namespace SharedCode
         void StillStateUpdate(GameTime gameTime)
         {
             var player = GameObjectManager.FindObjectWithTag("player");
-            if (player != null && (player.transform.position - transform.position).LengthSquared() < 800)
+            if (player != null && (player.transform.position - transform.position).LengthSquared() < 1000)
             {
                 InitState("Following");
             }

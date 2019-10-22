@@ -7,317 +7,270 @@ using SharedCode.Input;
 using Microsoft.Xna.Framework;
 using System.Reflection;
 
-namespace SharedCode
-{
-    public class GameObject
-    {
-        private List<Component> components = new List<Component>();
+namespace SharedCode {
+	public class GameObject {
+		private List<Component> components = new List<Component>();
 
-        public bool isPaused { get; set; }
+		public bool isPaused { get; set; }
 
-        public float depth { get; protected set; }
-        public Transform transform { get; protected set; }
+		public float depth { get; protected set; }
+		public Transform transform { get; protected set; }
 
-        public double lifeTime { get; set; }
+		public double lifeTime { get; set; }
 
-        private Box _collisionBox;
-        
-        public int id { get; private set; }
-        public Box collisionBox
-        {
-            get { return _collisionBox; }
-            set
-            {
-                _collisionBox?.CleanUp();
-                _collisionBox = value;
-                if (_collisionBox != null) _collisionBox.gameObject = this;
-            }
-        }
+		private Box _collisionBox;
 
-        /// <summary>
-        /// Defines if object should stop existing or not.
-        /// </summary>
+		public int id { get; private set; }
+		public Box collisionBox {
+			get { return _collisionBox; }
+			set {
+				_collisionBox?.CleanUp();
+				_collisionBox = value;
+				if (_collisionBox != null) _collisionBox.gameObject = this;
+			}
+		}
 
-        private bool _done;
-        public bool done
-        {
-            get
-            {
-                return _done;
-            }
-            set
-            {
-                _done = value;
-            }
-        }
+		/// <summary>
+		/// Defines if object should stop existing or not.
+		/// </summary>
 
-        private List<string> _tags;
-        public List<string> tags
-        {
-            get
-            {
-                return new List<string>(_tags);
-            }
-            set
-            {
-                GameObjectManager.RemoveFromTagList(this);
-                _tags = new List<string>(value);
-                GameObjectManager.InsertInTagList(this);
-            }
-        }
-        public List<string> ignoreSolidCollision;
+		private bool _done;
+		public bool done {
+			get {
+				return _done;
+			}
+			set {
+				_done = value;
+			}
+		}
 
-        public List<GameObject> collidedLast { get; protected set; }
-        public List<GameObject> collidedAlready { get; protected set; }
-        public List<GameObject> collidedEnterAlready { get; protected set; }
-        public List<GameObject> collidedExitAlready { get; protected set; }
+		private List<string> _tags;
+		public List<string> tags {
+			get {
+				return new List<string>(_tags);
+			}
+			set {
+				GameObjectManager.RemoveFromTagList(this);
+				_tags = new List<string>(value);
+				GameObjectManager.InsertInTagList(this);
+			}
+		}
+		public List<string> ignoreSolidCollision;
 
-        /// <summary>
-        /// Fade out variables.
-        /// </summary>
-        private double foTimePassed;
-        public double fadeOutTime;
-        public bool fadeOut;
-        private int fillp;
-        private static int lastId = -1;
+		public List<GameObject> collidedLast { get; protected set; }
+		public List<GameObject> collidedAlready { get; protected set; }
+		public List<GameObject> collidedEnterAlready { get; protected set; }
+		public List<GameObject> collidedExitAlready { get; protected set; }
 
-        private Dictionary<string, MethodInfo> states;
-        public string currentState { get; private set; }
-        private const BindingFlags BINDING_FLAGS = BindingFlags.NonPublic | BindingFlags.Instance;
+		/// <summary>
+		/// Fade out variables.
+		/// </summary>
+		private double foTimePassed;
+		public double fadeOutTime;
+		public bool fadeOut;
+		private int fillp;
+		private static int lastId = -1;
 
-        public GameObject(Vector2 position, params Component[] comps)
-        {
-            components.AddRange(comps);
+		private Dictionary<string, MethodInfo> states;
+		public string currentState { get; private set; }
+		private const BindingFlags BINDING_FLAGS = BindingFlags.NonPublic | BindingFlags.Instance;
 
-            transform = new Transform(position);
-            collisionBox = null;
+		public GameObject(Vector2 position, params Component[] comps) {
+			components.AddRange(comps);
 
-            collidedLast = new List<GameObject>();
-            collidedAlready = new List<GameObject>();
-            collidedEnterAlready = new List<GameObject>();
-            collidedExitAlready = new List<GameObject>();
+			transform = new Transform(position);
+			collisionBox = null;
 
-            ignoreSolidCollision = new List<string>();
-            _tags = new List<string>();
+			collidedLast = new List<GameObject>();
+			collidedAlready = new List<GameObject>();
+			collidedEnterAlready = new List<GameObject>();
+			collidedExitAlready = new List<GameObject>();
 
-            depth = position.Y;
+			ignoreSolidCollision = new List<string>();
+			_tags = new List<string>();
 
-            lastId += 1;
-            id = lastId;
+			depth = position.Y;
 
-            //
-            // Setup states
-            //
+			lastId += 1;
+			id = lastId;
 
-            states = new Dictionary<string, MethodInfo>();
+			//
+			// Setup states
+			//
 
-            var ss = GetType().GetMethods(BINDING_FLAGS);
-            foreach(var s in ss)
-            {
-                if(s.Name.Contains("StateUpdate"))
-                {
-                    states[s.Name] = s;
-                }
-                else if (s.Name.Contains("StateInit"))
-                {
-                    states[s.Name] = s;
-                }
-            }
-        }
+			states = new Dictionary<string, MethodInfo>();
 
-        public GameObject(Vector2 position, Box collisionBox, params Component[] comps) 
-            : this(position, comps)
-        {
-            this.collisionBox = collisionBox;
-            if (collisionBox != null) this.collisionBox.position = transform.position;
-        }
+			var ss = GetType().GetMethods(BINDING_FLAGS);
+			foreach (var s in ss) {
+				if (s.Name.Contains("StateUpdate")) {
+					states[s.Name] = s;
+				}
+				else if (s.Name.Contains("StateInit")) {
+					states[s.Name] = s;
+				}
+			}
+		}
 
-        #region States
+		public GameObject(Vector2 position, Box collisionBox, params Component[] comps)
+				: this(position, comps) {
+			this.collisionBox = collisionBox;
+			if (collisionBox != null) this.collisionBox.position = transform.position;
+		}
 
-        public void InitState(string stateName)
-        {
-            if (!states.ContainsKey(stateName + "StateUpdate") && !states.ContainsKey(stateName + "StateInit"))
-            {
-                throw new ArgumentException($"{stateName} is not a valid state!");
-            }
+		#region States
 
-            if (states.ContainsKey(stateName + "StateInit"))
-                states[stateName + "StateInit"].Invoke(this, new object[] { currentState });
+		public void InitState(string stateName) {
+			if (!states.ContainsKey(stateName + "StateUpdate") && !states.ContainsKey(stateName + "StateInit")) {
+				throw new ArgumentException($"{stateName} is not a valid state!");
+			}
 
-            this.currentState = stateName;
-        }
+			if (states.ContainsKey(stateName + "StateInit"))
+				states[stateName + "StateInit"].Invoke(this, new object[] { currentState });
 
-        #endregion
+			this.currentState = stateName;
+		}
 
-        public T GetComponent<T>() where T : Component
-        {
-            foreach(var c in components)
-            {
-                if (c is T)
-                {
-                    return (T)c;
-                }
-            }
+		#endregion
 
-            return default;
-        }
+		public T GetComponent<T>() where T : Component {
+			foreach (var c in components) {
+				if (c is T) {
+					return (T)c;
+				}
+			}
 
-        public List<T> GetComponents<T>() where T : Component
-        {
-            List<T> res = new List<T>();
-            foreach (var c in components)
-            {
-                if (c is T)
-                {
-                    res.Add((T)c);
-                }
-            }
+			return default;
+		}
 
-            return res;
-        }
+		public List<T> GetComponents<T>() where T : Component {
+			List<T> res = new List<T>();
+			foreach (var c in components) {
+				if (c is T) {
+					res.Add((T)c);
+				}
+			}
+
+			return res;
+		}
 
 
-        /// <summary>
-        /// Returns whether or not the game object should stop moving
-        /// after it collides to another object.
-        /// </summary>
-        public bool shouldIgnoreSolidCollision(GameObject other)
-        {
-            if (other == null) return false;
+		/// <summary>
+		/// Returns whether or not the game object should stop moving
+		/// after it collides to another object.
+		/// </summary>
+		public bool shouldIgnoreSolidCollision(GameObject other) {
+			if (other == null) return false;
 
-            foreach(var t in ignoreSolidCollision)
-            {
-                if (other.tags.Contains(t)) return true;
-            }
+			foreach (var t in ignoreSolidCollision) {
+				if (other.tags.Contains(t)) return true;
+			}
 
-            return false;
-        }
+			return false;
+		}
 
-        public Component AddComponent(Component component)
-        {
-            components.Add(component);
-            return component;
-        }
+		public Component AddComponent(Component component) {
+			components.Add(component);
+			return component;
+		}
 
-        public T RemoveComponent<T>()
-        {
-            for (int i = components.Count-1; i >= 0; i--)
-            {
-                if (components[i] is T)
-                {
-                    var comp = components[i];
-                    components.RemoveAt(i);
-                    try
-                    {
-                        return (T)((object)comp);
-                    }
-                    catch (InvalidCastException)
-                    {
-                        return default;
-                    }
-                }
-            }
+		public T RemoveComponent<T>() {
+			for (int i = components.Count - 1; i >= 0; i--) {
+				if (components[i] is T) {
+					var comp = components[i];
+					components.RemoveAt(i);
+					try {
+						return (T)((object)comp);
+					}
+					catch (InvalidCastException) {
+						return default;
+					}
+				}
+			}
 
-            return default;
-        }
+			return default;
+		}
 
-        public Component RemoveComponent(Component component)
-        {
-            components.Remove(component);
-            return component;
-        }
+		public Component RemoveComponent(Component component) {
+			components.Remove(component);
+			return component;
+		}
 
-        public virtual void Update(GameTime gameTime)
-        {
-            for (int i = components.Count - 1; i >= 0; --i)
-            {
-                components[i].Update(this, gameTime);
-            }
+		public virtual void Update(GameTime gameTime) {
+			for (int i = components.Count - 1; i >= 0; --i) {
+				components[i].Update(this, gameTime);
+			}
 
-            List<GameObject> collidedWith = GetComponent<APhysics>()?.collidedWith;
+			List<GameObject> collidedWith = GetComponent<APhysics>()?.collidedWith;
 
-            if (collidedWith != null)
-            {
-                // Call collision code.
-                foreach (var other in collidedWith)
-                {
-                    if (!collidedLast.Contains(other))
-                    {
-                        if (!collidedEnterAlready.Contains(other))
-                        {
-                            OnCollisionEnter(other);
-                            other.OnCollisionEnter(this);
+			if (collidedWith != null) {
+				// Call collision code.
+				foreach (var other in collidedWith) {
+					if (!collidedLast.Contains(other)) {
+						if (!collidedEnterAlready.Contains(other)) {
+							OnCollisionEnter(other);
+							other.OnCollisionEnter(this);
 
-                            other.collidedEnterAlready.Add(this);
-                        }
-                    }
+							other.collidedEnterAlready.Add(this);
+						}
+					}
 
-                    if (!collidedAlready.Contains(other))
-                    {
-                        OnCollision(other);
-                        other.OnCollision(this);
+					if (!collidedAlready.Contains(other)) {
+						OnCollision(other);
+						other.OnCollision(this);
 
-                        other.collidedAlready.Add(this);
-                    }
-                }
+						other.collidedAlready.Add(this);
+					}
+				}
 
-                foreach (var other in collidedLast)
-                {
-                    if (!collidedWith.Contains(other))
-                    {
-                        if (!collidedExitAlready.Contains(other))
-                        {
-                            OnCollisionExit(other);
-                            other.OnCollisionExit(this);
+				foreach (var other in collidedLast) {
+					if (!collidedWith.Contains(other)) {
+						if (!collidedExitAlready.Contains(other)) {
+							OnCollisionExit(other);
+							other.OnCollisionExit(this);
 
-                            other.collidedExitAlready.Add(this);
-                        }
-                    }
-                }
+							other.collidedExitAlready.Add(this);
+						}
+					}
+				}
 
-                collidedLast.Clear();
-                collidedLast.AddRange(collidedWith);
-                collidedLast.AddRange(collidedAlready);
-                collidedAlready.Clear();
-                collidedEnterAlready.Clear();
-                collidedExitAlready.Clear();
-            }
+				collidedLast.Clear();
+				collidedLast.AddRange(collidedWith);
+				collidedLast.AddRange(collidedAlready);
+				collidedAlready.Clear();
+				collidedEnterAlready.Clear();
+				collidedExitAlready.Clear();
+			}
 
-            if (fadeOut)
-            {
-                fillp = 0b1010010110100101;
-            }
+			if (fadeOut) {
+				fillp = 0b1010010110100101;
+			}
 
-            if (states.ContainsKey(currentState + "StateUpdate"))
-                states[currentState + "StateUpdate"].Invoke(this, new object[] { gameTime });
-        }
+			if (states.ContainsKey(currentState + "StateUpdate"))
+				states[currentState + "StateUpdate"].Invoke(this, new object[] { gameTime });
+		}
 
-        public virtual void Draw()
-        {
-            GameManager.pico8.memory.Fillp(fillp);
-            foreach (var obj in GetComponents<AGraphics>())
-            {
-                obj.Draw(this);
-            }
-            GameManager.pico8.memory.Fillp();
+		public virtual void Draw() {
+			GameObjectManager.Fillp(fillp);
+			foreach (var obj in GetComponents<AGraphics>()) {
+				obj.Draw(this);
+			}
+			GameObjectManager.Fillp();
 
-            if (Debug.debugMode)
-            {
-                collisionBox?.DrawCollisionBox();
-            }
-        }
+			if (Debug.debugMode) {
+				collisionBox?.DrawCollisionBox();
+			}
+		}
 
-        public virtual void OnCollision(GameObject other) {  }
-        public virtual void OnCollisionEnter(GameObject other) {  }
-        public virtual void OnCollisionExit(GameObject other) {  }
+		public virtual void OnCollision(GameObject other) { }
+		public virtual void OnCollisionEnter(GameObject other) { }
+		public virtual void OnCollisionExit(GameObject other) { }
 
-        public virtual void OnDestroy() { }
+		public virtual void OnDestroy() { }
 
-        public virtual void CleanUp()
-        {
-            _collisionBox?.CleanUp();
+		public virtual void CleanUp() {
+			_collisionBox?.CleanUp();
 
-            Misc.TaskScheduler.RemoveTasksUnderId(id);
-        }
-    }
+			Misc.TaskScheduler.RemoveTasksUnderId(id);
+		}
+	}
 }

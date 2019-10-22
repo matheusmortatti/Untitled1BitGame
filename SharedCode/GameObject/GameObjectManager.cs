@@ -5,208 +5,178 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Pico8_Emulator;
 
-namespace SharedCode
-{
-    public static class GameObjectManager
-    {
+namespace SharedCode {
+	public static class GameObjectManager {
 
-        private static List<GameObject> activeObjects;
-        private static List<GameObject> nextObjects;
-        private static int MAX_OBJECTS = 200;
+		private static List<GameObject> activeObjects;
+		private static List<GameObject> nextObjects;
+		private static int MAX_OBJECTS = 200;
 
-        public static Pico8<Color> pico8 { get; private set; }
-        public static Player playerInstance { get; private set; }
+		public static Pico8<Color> pico8 { get; private set; }
+		public static Player playerInstance { get; private set; }
 
-        private static Dictionary<string, List<GameObject>> taggedObjects;
+		private static Dictionary<string, List<GameObject>> taggedObjects;
 
-        private static double _globalPause;
+		private static double _globalPause;
 
-        public static int numberOfObjects
-        {
-            get
-            {
-                if (activeObjects == null)
-                    return 0;
-                return activeObjects.Count;
-            }
-        }
+		public static int GlobalFillPattern { get; set; }
 
-        public static void Init(in Pico8<Color> p8)
-        {
-            if (activeObjects == null)
-            {
-                activeObjects = new List<GameObject>();
-                activeObjects.Capacity = MAX_OBJECTS;
-            }
+		public static int numberOfObjects {
+			get {
+				if (activeObjects == null)
+					return 0;
+				return activeObjects.Count;
+			}
+		}
 
-            if (nextObjects == null)
-            {
-                nextObjects = new List<GameObject>();
-                nextObjects.Capacity = MAX_OBJECTS / 10;
-            }
+		public static void Init(in Pico8<Color> p8) {
+			if (activeObjects == null) {
+				activeObjects = new List<GameObject>();
+				activeObjects.Capacity = MAX_OBJECTS;
+			}
 
-            pico8 = p8;
+			if (nextObjects == null) {
+				nextObjects = new List<GameObject>();
+				nextObjects.Capacity = MAX_OBJECTS / 10;
+			}
 
-            taggedObjects = new Dictionary<string, List<GameObject>>();
-        }
+			pico8 = p8;
 
-        public static GameObject AddObject(GameObject go)
-        {
-            nextObjects.Add(go);
-            return go;
-        }
+			taggedObjects = new Dictionary<string, List<GameObject>>();
+		}
 
-        public static void UpdateObjects(GameTime gameTime)
-        {
-            if (_globalPause > 0)
-            {
-                _globalPause -= gameTime.ElapsedGameTime.TotalSeconds;
-                return;
-            }
+		public static GameObject AddObject(GameObject go) {
+			nextObjects.Add(go);
+			return go;
+		}
 
-            foreach(var go in activeObjects)
-            {
-                if (go.isPaused) continue;
+		public static void UpdateObjects(GameTime gameTime) {
+			if (_globalPause > 0) {
+				_globalPause -= gameTime.ElapsedGameTime.TotalSeconds;
+				return;
+			}
 
-                go.Update(gameTime);
-            }
+			foreach (var go in activeObjects) {
+				if (go.isPaused) continue;
 
-            // Remove all unactive objects;
-            for(int i = activeObjects.Count - 1; i >= 0; i -= 1)
-            {
-                if (activeObjects[i].done)
-                {
-                    Debug.Log($"Remove instance of {activeObjects[i].GetType().FullName}");
-                    activeObjects[i].OnDestroy();
-                    activeObjects[i].CleanUp();
-                    RemoveFromTagList(activeObjects[i]);
-                    activeObjects.RemoveAt(i);
-                }
-            }
+				go.Update(gameTime);
+			}
 
-            activeObjects.AddRange(nextObjects);
-            activeObjects.Sort((x, y) => x.depth.CompareTo(y.depth));
-            nextObjects.Clear();
+			// Remove all unactive objects;
+			for (int i = activeObjects.Count - 1; i >= 0; i -= 1) {
+				if (activeObjects[i].done) {
+					Debug.Log($"Remove instance of {activeObjects[i].GetType().FullName}");
+					activeObjects[i].OnDestroy();
+					activeObjects[i].CleanUp();
+					RemoveFromTagList(activeObjects[i]);
+					activeObjects.RemoveAt(i);
+				}
+			}
 
-            //GC.Collect();
-        }
+			activeObjects.AddRange(nextObjects);
+			activeObjects.Sort((x, y) => x.depth.CompareTo(y.depth));
+			nextObjects.Clear();
 
-        public static void DrawObjects()
-        {
-            for (int i = 0; i < activeObjects.Count; i += 1)
-            {
-                activeObjects[i].Draw();
-            }
-        }
+			//GC.Collect();
+		}
 
-        public static Player InstantiatePlayer(Vector2 position)
-        {
-            playerInstance = new Player(position);
-            AddObject(playerInstance);
+		public static void DrawObjects() {
+			GameManager.pico8.memory.Fillp(GlobalFillPattern);
+			for (int i = 0; i < activeObjects.Count; i += 1) {
+				activeObjects[i].Draw();
+			}
+			GameManager.pico8.memory.Fillp();
+		}
 
-            return playerInstance;
-        }
+		public static Player InstantiatePlayer(Vector2 position) {
+			playerInstance = new Player(position);
+			AddObject(playerInstance);
 
-        public static void InsertInTagList(GameObject obj)
-        {
-            foreach(var t in obj.tags)
-            {
-                if (!taggedObjects.ContainsKey(t))
-                {
-                    taggedObjects[t] = new List<GameObject>();
-                }
+			return playerInstance;
+		}
 
-                taggedObjects[t].Add(obj);
-            }
-        }
+		public static void InsertInTagList(GameObject obj) {
+			foreach (var t in obj.tags) {
+				if (!taggedObjects.ContainsKey(t)) {
+					taggedObjects[t] = new List<GameObject>();
+				}
 
-        public static void RemoveFromTagList(GameObject obj)
-        {
-            foreach (var t in obj.tags)
-            {
-                if (!taggedObjects.ContainsKey(t) && taggedObjects[t] == null)
-                {
-                    continue;
-                }
+				taggedObjects[t].Add(obj);
+			}
+		}
 
-                taggedObjects[t].Remove(obj);
-            }
-        }
+		public static void RemoveFromTagList(GameObject obj) {
+			foreach (var t in obj.tags) {
+				if (!taggedObjects.ContainsKey(t) && taggedObjects[t] == null) {
+					continue;
+				}
 
-        public static GameObject FindObjectWithTag(string tag)
-        {
-            return taggedObjects.ContainsKey(tag) && taggedObjects[tag] != null && taggedObjects[tag].Count > 0 ? 
-                taggedObjects[tag][0] : 
-                null;
-        }
+				taggedObjects[t].Remove(obj);
+			}
+		}
 
-        public static List<GameObject> FindObjectsWithTag(string tag)
-        {
-            return taggedObjects.ContainsKey(tag) ? taggedObjects[tag] : new List<GameObject>();
-        }
+		public static GameObject FindObjectWithTag(string tag) {
+			return taggedObjects.ContainsKey(tag) && taggedObjects[tag] != null && taggedObjects[tag].Count > 0 ?
+					taggedObjects[tag][0] :
+					null;
+		}
 
-        public static GameObject FindObjectOfType<T>() where T : GameObject
-        {
-            foreach (var obj in activeObjects)
-            {
-                if (obj is T)
-                {
-                    return (T)obj;
-                }
-            }
+		public static List<GameObject> FindObjectsWithTag(string tag) {
+			return taggedObjects.ContainsKey(tag) ? taggedObjects[tag] : new List<GameObject>();
+		}
 
-            return default;
-        }
+		public static GameObject FindObjectOfType<T>() where T : GameObject {
+			foreach (var obj in activeObjects) {
+				if (obj is T) {
+					return (T)obj;
+				}
+			}
 
-        public static List<GameObject> FindObjectsOfType<T>() where T : GameObject
-        {
-            var list = new List<GameObject>();
-            foreach (var obj in activeObjects)
-            {
-                if (obj is T)
-                {
-                    list.Add((T)obj);
-                }
-            }
+			return default;
+		}
 
-            return list;
-        }
+		public static List<GameObject> FindObjectsOfType<T>() where T : GameObject {
+			var list = new List<GameObject>();
+			foreach (var obj in activeObjects) {
+				if (obj is T) {
+					list.Add((T)obj);
+				}
+			}
 
-        public static void RemoveObjectsWithTag(string tag)
-        {
-            if (!taggedObjects.ContainsKey(tag))
-            {
-                return;
-            }
+			return list;
+		}
 
-            foreach(var obj in taggedObjects[tag])
-            {
-                obj.done = true;
-            }
-        }
+		public static void RemoveObjectsWithTag(string tag) {
+			if (!taggedObjects.ContainsKey(tag)) {
+				return;
+			}
 
-        public static void AddPause(double time)
-        {
-            _globalPause = Math.Max(_globalPause, time);
-        }
+			foreach (var obj in taggedObjects[tag]) {
+				obj.done = true;
+			}
+		}
 
-        public static void RemoveAllObjects()
-        {
-            foreach(var obj in activeObjects)
-            {
-                obj.CleanUp();
-            }
+		public static void AddPause(double time) {
+			_globalPause = Math.Max(_globalPause, time);
+		}
 
-            foreach (var obj in nextObjects)
-            {
-                obj.CleanUp();
-            }
+		public static void RemoveAllObjects() {
+			foreach (var obj in activeObjects) {
+				obj.CleanUp();
+			}
 
-            activeObjects.Clear();
-            nextObjects.Clear();
-            taggedObjects.Clear();
-            playerInstance = null;
-        }
+			foreach (var obj in nextObjects) {
+				obj.CleanUp();
+			}
 
-    }
+			activeObjects.Clear();
+			nextObjects.Clear();
+			taggedObjects.Clear();
+			playerInstance = null;
+		}
+
+		public static void Fillp(int p = 0) {
+			pico8.memory.Fillp((p | GlobalFillPattern));
+		}
+	}
 }

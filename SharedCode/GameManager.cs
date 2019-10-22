@@ -8,99 +8,92 @@ using Pico8_Emulator;
 using SharedCode.Misc;
 using SharedCode.Particles;
 
-namespace SharedCode
-{
+namespace SharedCode {
 
-    internal enum GameStates { TitleScreen, Overworld }
+	internal enum GameStates { TitleScreen, Overworld }
 
-    internal class GameStateMachine : StateMachine<GameStates>
-    {
-        public GameStateMachine() : base(GameStates.Overworld) {  }
-        public bool resetOverworld;
+	internal class GameStateMachine : StateMachine<GameStates> {
+		public GameStateMachine() : base(GameStates.Overworld) { }
+		public bool resetOverworld;
 
-        void OverworldInit (GameStates previous)
-        {
-            GameObjectManager.RemoveAllObjects();
-            ParticleManager.RemoveAllParticles();
+		void OverworldInit(GameStates previous) {
+			GameObjectManager.RemoveAllObjects();
+			ParticleManager.RemoveAllParticles();
 
-            GameManager.pico8.LoadGame("untitled1bitgame.p8", new NLuaInterpreter());
+			GameManager.pico8.LoadGame("untitled1bitgame.p8", new NLuaInterpreter());
 
-            Vector2 playerPosition = Map.FindPlayerInMapSheet();
-            GameObjectManager.AddObject(new Camera(playerPosition));
-            GameObjectManager.AddObject(new Map(playerPosition));
-            GameObjectManager.AddObject(new UI());
-        }
+			Vector2 playerPosition = Map.FindPlayerInMapSheet();
+			GameObjectManager.AddObject(new Camera(playerPosition));
+			GameObjectManager.AddObject(new Map(playerPosition));
+			GameObjectManager.AddObject(new UI());
+			GameObjectManager.AddObject(new ScreenTransition(1, () => { }, ScreenTransition.TransitionEffect.FadeIn));
 
-        void OverworldState(GameTime gameTime)
-        {
-            if (resetOverworld)
-            {
-                Init(GameStates.Overworld);
-                resetOverworld = false;
-            }
-        }
-    }
+			GameObjectManager.GlobalFillPattern = 0;
+		}
 
-    public static class GameManager
-    {
-        private static GameStateMachine stateMachine;
+		void OverworldState(GameTime gameTime) {
+			if (resetOverworld) {
+				Init(GameStates.Overworld);
+				resetOverworld = false;
+			}
+		}
+	}
 
-        public static Pico8<Color> pico8 { get; private set; }
+	public static class GameManager {
+		private static GameStateMachine stateMachine;
 
-        public static double framerate;
+		public static Pico8<Color> pico8 { get; private set; }
 
-        public static Random random = new Random();
+		public static double framerate;
 
-        public static void InitGameState(Pico8<Color> pico8)
-        {
-            GameManager.pico8 = pico8;
+		public static Random random = new Random();
 
-            //
-            // Start PICO-8 stuff.
-            //
+		public static void InitGameState(Pico8<Color> pico8) {
+			GameManager.pico8 = pico8;
 
-            Debug.Init(pico8);
-            GameObjectManager.Init(pico8);
+			//
+			// Start PICO-8 stuff.
+			//
 
-            //
-            // Start state machine.
-            //
+			Debug.Init(pico8);
+			GameObjectManager.Init(pico8);
 
-            stateMachine = new GameStateMachine();
-            stateMachine.Init(GameStates.Overworld);
-        }
+			//
+			// Start state machine.
+			//
 
-        public static void Update(GameTime gameTime)
-        {
-            GameObjectManager.UpdateObjects(gameTime);
-            ParticleManager.Update(gameTime);
-            TaskScheduler.Update(gameTime);
+			stateMachine = new GameStateMachine();
+			stateMachine.Init(GameStates.Overworld);
+		}
 
-            stateMachine.StateDo(gameTime);
-        }
+		public static void Update(GameTime gameTime) {
+			GameObjectManager.UpdateObjects(gameTime);
+			ParticleManager.Update(gameTime);
+			TaskScheduler.Update(gameTime);
+			ControllerVibration.Update(gameTime);
 
-        public static void Draw()
-        {
-            GameObjectManager.DrawObjects();
-            ParticleManager.Draw();
+			stateMachine.StateDo(gameTime);
+		}
 
-            ((Camera)GameObjectManager.FindObjectWithTag("camera"))?.ResetCamera();
+		public static void Draw() {
+			GameObjectManager.DrawObjects();
+			ParticleManager.Draw();
 
-            if (Debug.debugMode)
-            {
-                pico8.graphics.Rectfill(3, 119, 64, 125, 0);
-                pico8.Print(framerate.ToString("0.##"), 4, 120, 14);
-                pico8.Print(GameObjectManager.numberOfObjects, 32, 120, 14);
-                pico8.Print(TaskScheduler.numberOfTasks, 42, 120, 14);
-                pico8.Print(ParticleManager.numberOfParticles, 52, 120, 14);
-            }
+			((Camera)GameObjectManager.FindObjectWithTag("camera"))?.ResetCamera();
 
-            ((Camera)GameObjectManager.FindObjectWithTag("camera"))?.RestoreCamera();
-        }
+			if (Debug.debugMode) {
+				pico8.graphics.Rectfill(3, 119, 64, 125, 0);
+				pico8.Print(framerate.ToString("0.##"), 4, 120, 14);
+				pico8.Print(GameObjectManager.numberOfObjects, 32, 120, 14);
+				pico8.Print(TaskScheduler.numberOfTasks, 42, 120, 14);
+				pico8.Print(ParticleManager.numberOfParticles, 52, 120, 14);
+			}
 
-        public static void ResetOverworld()
-        {
-            stateMachine.resetOverworld = true;
-        }
-    }
+				((Camera)GameObjectManager.FindObjectWithTag("camera"))?.RestoreCamera();
+		}
+
+		public static void ResetOverworld() {
+			stateMachine.resetOverworld = true;
+		}
+	}
 }
