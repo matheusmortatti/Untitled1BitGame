@@ -207,6 +207,7 @@ namespace SharedCode {
 		private float _baseSpeed = 20;
 
 		public double timeDecrease;
+		private bool canRun;
 
 		public static int spriteIndex { get; } = 32;
 		public Player(Vector2 position)
@@ -277,6 +278,10 @@ namespace SharedCode {
 		}
 
 		public void Interact() {
+			if (InteractableObject != null && InteractableObject.done) {
+				InteractableObject = null;
+			}
+
 			if (InteractableObject == null) {
 				stateMachine.Init(PlayerStates.Attacking);
 			} else {
@@ -285,15 +290,23 @@ namespace SharedCode {
 		}
 
 		public void Run() {
-			if (stateMachine.State != PlayerStates.Running) {
+			if (canRun && stateMachine.State != PlayerStates.Running && stateMachine.State != PlayerStates.Still) {
 				stateMachine.Init(PlayerStates.Running);
 			}
 		}
 
 		public void Walk() {
-			if (stateMachine.State != PlayerStates.Walking) {
+			if (stateMachine.State != PlayerStates.Walking && stateMachine.State != PlayerStates.Still) {
 				stateMachine.Init(PlayerStates.Walking);
 			}
+		}
+
+		public void GiveItem(Item item) {
+
+		}
+
+		public void EnableRunning() {
+			canRun = true;
 		}
 
 	}

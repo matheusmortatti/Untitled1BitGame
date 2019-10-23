@@ -160,6 +160,22 @@ namespace SharedCode {
 			_globalPause = Math.Max(_globalPause, time);
 		}
 
+		public static void PauseEveryone(List<GameObject> exceptions) {
+			foreach(var go in activeObjects) {
+				if (exceptions == null || !exceptions.Contains(go)) {
+					go.isPaused = true;
+				}
+			}
+		}
+
+		public static void ResumeEveryone(List<GameObject> exceptions) {
+			foreach (var go in activeObjects) {
+				if (exceptions == null || !exceptions.Contains(go)) {
+					go.isPaused = false;
+				}
+			}
+		}
+
 		public static void RemoveAllObjects() {
 			foreach (var obj in activeObjects) {
 				obj.CleanUp();

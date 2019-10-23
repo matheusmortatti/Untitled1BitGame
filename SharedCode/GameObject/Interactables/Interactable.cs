@@ -11,9 +11,12 @@ namespace SharedCode {
 
 		}
 
-		public void Interact() {
+		public virtual void Interact() {
 
 		}
 
+		public virtual void SetEndAction(Action endAction) {
+
+		}
 	}
 }

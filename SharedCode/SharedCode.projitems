@@ -33,7 +33,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\GameObjectFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\GameObjectManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Environment\Key.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Interactables\DialogueArea.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Interactables\DialogueBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Interactables\Interactable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Items\Item.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject\Items\RunningBoots.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Map.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\OldMan.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObject\Player\Player.cs" />
@@ -49,7 +53,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\AGraphics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Graphics\P8Sprite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\AInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\InteractableInput.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\PlayerInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Misc\GlobalVars.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Misc\TaskScheduler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Misc\util.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Misc\ControllerVibration.cs" />
@@ -77,6 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+    <None Include="$(MSBuildThisFileDirectory)GlobalVariables.lua">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="$(MSBuildThisFileDirectory)pico8-emulator\.gitignore" />
     <None Include="$(MSBuildThisFileDirectory)pico8-emulator\CODEOWNERS" />
     <None Include="$(MSBuildThisFileDirectory)pico8-emulator\LICENSE" />

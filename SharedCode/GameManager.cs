@@ -57,6 +57,7 @@ namespace SharedCode {
 
 			Debug.Init(pico8);
 			GameObjectManager.Init(pico8);
+			GlobalVars.LoadScript("GlobalVariables.lua");
 
 			//
 			// Start state machine.

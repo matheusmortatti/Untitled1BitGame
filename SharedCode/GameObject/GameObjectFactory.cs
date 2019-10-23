@@ -3,16 +3,27 @@ using System.Collections.Generic;
 using System.Text;
 
 using Microsoft.Xna.Framework;
+using SharedCode.Misc;
 
 namespace SharedCode {
 	public static class GameObjectFactory {
 		public static GameObject CreateGameObject(int spriteValue, Vector2 position) {
+			
+
 			switch (spriteValue) {
 				case 32:
 					return GameObjectManager.InstantiatePlayer(position);
 				case 1:
+					var messages = GlobalVars.GetMessageListAt((int)(position.X / 8), (int)(position.Y / 8));
+					List<string> messageList = new List<string>();
+
+					if (messages != null) {
+						foreach (var m in messages) {
+							messageList.Add((string)m.Value);
+						}
+					}
 					return GameObjectManager.AddObject(
-							new OldMan(position, spriteValue)
+							new OldMan(position, spriteValue, messageList)
 							);
 				case 98:
 					return GameObjectManager.AddObject(
@@ -48,6 +59,10 @@ namespace SharedCode {
 					return GameObjectManager.AddObject(new Altar(position));
 				case 126:
 					return GameObjectManager.AddObject(new Stairs(position, spriteValue));
+				case 51:
+					return GameObjectManager.AddObject(new RunningBoots(position));
+				case 123:
+					return GameObjectManager.AddObject(new RunningBoots(position));
 				default:
 					return GameObjectManager.AddObject(new GameObject(position, new Graphics.P8Sprite(spriteValue)));
 			}

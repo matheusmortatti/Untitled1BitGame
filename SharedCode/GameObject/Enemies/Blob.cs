@@ -15,7 +15,7 @@ namespace SharedCode
         private float baseSpeed = 20f;
         public Blob(Vector2 position, int spriteIndex) : base(position, new Box(position, new Vector2(7, 4), false, new Vector2(0, 4)), spriteIndex)
         {
-            var physics = new TopDownPhysics(baseSpeed, baseSpeed / 2, 0.95f);
+            var physics = new TopDownPhysics(baseSpeed, baseSpeed / 2, 0.97f);
             AddComponent(physics);
 
             var anim = new P8TopDownAnimator(P8TopDownAnimator.AnimationMode.SIDES_ONLY);
