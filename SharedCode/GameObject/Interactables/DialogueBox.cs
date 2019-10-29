@@ -42,10 +42,10 @@ namespace SharedCode {
 			
 			
 			cam?.ResetCamera();
-			GameManager.pico8.graphics.Rectfill(0, 96, 127, 127, 0);
-			GameManager.pico8.graphics.Rect(0, 96, 127, 127, 7);
+			GameManager.pico8.Graphics.Rectfill(0, 96, 127, 127, 0);
+			GameManager.pico8.Graphics.Rect(0, 96, 127, 127, 7);
 
-			GameManager.pico8.graphics.Print(_messages[_currentMessage].Substring(0, _currentLength), 4, 100, 7);
+			GameManager.pico8.Graphics.Print(_messages[_currentMessage].Substring(0, _currentLength), 4, 100, 7);
 			cam?.RestoreCamera();
 		}
 

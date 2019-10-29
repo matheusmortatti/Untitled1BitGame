@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using Microsoft.Xna.Framework;
-using Pico8_Emulator;
-
+using Pico8Emulator;
 using SharedCode.Misc;
 using SharedCode.Particles;
 
@@ -20,7 +19,7 @@ namespace SharedCode {
 			GameObjectManager.RemoveAllObjects();
 			ParticleManager.RemoveAllParticles();
 
-			GameManager.pico8.LoadGame("untitled1bitgame.p8", new NLuaInterpreter());
+			GameManager.pico8.CartridgeLoader.Load("untitled1bitgame.p8");
 
 			Vector2 playerPosition = Map.FindPlayerInMapSheet();
 			GameObjectManager.AddObject(new Camera(playerPosition));
@@ -42,21 +41,21 @@ namespace SharedCode {
 	public static class GameManager {
 		private static GameStateMachine stateMachine;
 
-		public static Pico8<Color> pico8 { get; private set; }
+		public static Emulator pico8 { get; private set; }
 
 		public static double framerate;
 
 		public static Random random = new Random();
 
-		public static void InitGameState(Pico8<Color> pico8) {
+		public static void InitGameState(Emulator pico8) {
 			GameManager.pico8 = pico8;
 
 			//
 			// Start PICO-8 stuff.
 			//
 
-			Debug.Init(pico8);
-			GameObjectManager.Init(pico8);
+			Debug.Init();
+			GameObjectManager.Init();
 			GlobalVars.LoadScript("GlobalVariables.lua");
 
 			//
@@ -83,11 +82,11 @@ namespace SharedCode {
 			((Camera)GameObjectManager.FindObjectWithTag("camera"))?.ResetCamera();
 
 			if (Debug.debugMode) {
-				pico8.graphics.Rectfill(3, 119, 64, 125, 0);
-				pico8.Print(framerate.ToString("0.##"), 4, 120, 14);
-				pico8.Print(GameObjectManager.numberOfObjects, 32, 120, 14);
-				pico8.Print(TaskScheduler.numberOfTasks, 42, 120, 14);
-				pico8.Print(ParticleManager.numberOfParticles, 52, 120, 14);
+				pico8.Graphics.Rectfill(3, 119, 64, 125, 0);
+				pico8.Graphics.Print(framerate.ToString("0.##"), 4, 120, 14);
+				pico8.Graphics.Print(GameObjectManager.numberOfObjects, 32, 120, 14);
+				pico8.Graphics.Print(TaskScheduler.numberOfTasks, 42, 120, 14);
+				pico8.Graphics.Print(ParticleManager.numberOfParticles, 52, 120, 14);
 			}
 
 				((Camera)GameObjectManager.FindObjectWithTag("camera"))?.RestoreCamera();

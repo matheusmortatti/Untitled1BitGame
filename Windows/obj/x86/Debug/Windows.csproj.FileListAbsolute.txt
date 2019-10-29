@@ -30,3 +30,6 @@ C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Debug\1bit
 C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Debug\untitled1bitgame.p8
 C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Debug\Windows.exe.config
 C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Debug\GlobalVariables.lua
+C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Debug\MoonSharp.Interpreter.dll
+C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Debug\MoonSharp.Interpreter.pdb
+C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Debug\MoonSharp.Interpreter.xml

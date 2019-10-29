@@ -69,7 +69,7 @@ namespace SharedCode.Graphics
 
         public override void Draw(GameObject gameObject)
         {
-            GameManager.pico8.graphics.Sspr(
+            GameManager.pico8.Graphics.Sspr(
                 spriteX, 
                 spriteY, 
                 width, 

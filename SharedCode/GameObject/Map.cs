@@ -57,7 +57,7 @@ namespace SharedCode {
 		}
 
 		public override void Draw() {
-			GameManager.pico8.graphics.Map(0, 0, 0, 0, 64, 128, 0x1);
+			GameManager.pico8.Graphics.Map(0, 0, 0, 0, 64, 128, 0x1);
 		}
 
 		public void InstantiateEntities(Vector2 screenIndex) {
@@ -65,11 +65,11 @@ namespace SharedCode {
 
 			for (int i = 0; i < 16; i += 1) {
 				for (int j = 0; j < 16; j += 1) {
-					byte val = GameManager.pico8.memory.Mget((int)celPos.X + i, (int)celPos.Y + j);
-					byte flag = (byte)GameManager.pico8.memory.Fget(val);
+					byte val = GameManager.pico8.Memory.Mget((int)celPos.X + i, (int)celPos.Y + j);
+					byte flag = (byte)GameManager.pico8.Memory.Fget(val);
 
 					if ((flag & 0b00000010) != 0) {
-						GameManager.pico8.memory.Mset((int)celPos.X + i, (int)celPos.Y + j, 0);
+						GameManager.pico8.Memory.Mset((int)celPos.X + i, (int)celPos.Y + j, 0);
 					}
 
 					if ((flag & 0b00001000) != 0) {
@@ -80,8 +80,8 @@ namespace SharedCode {
 		}
 
 		public static bool IsSolid(Vector2 celPos) {
-			byte val = GameManager.pico8.memory.Mget((int)celPos.X, (int)celPos.Y);
-			byte flag = (byte)GameManager.pico8.memory.Fget(val);
+			byte val = GameManager.pico8.Memory.Mget((int)celPos.X, (int)celPos.Y);
+			byte flag = (byte)GameManager.pico8.Memory.Fget(val);
 
 			return (flag & 0b00000100) != 0;
 		}
@@ -89,7 +89,7 @@ namespace SharedCode {
 		public static Vector2 FindPlayerInMapSheet() {
 			for (int i = 0; i < 128; ++i) {
 				for (int j = 0; j < 64; ++j) {
-					byte val = GameManager.pico8.memory.Mget(i, j);
+					byte val = GameManager.pico8.Memory.Mget(i, j);
 					if (val == Player.spriteIndex) {
 						return new Vector2(i, j) * 8;
 					}

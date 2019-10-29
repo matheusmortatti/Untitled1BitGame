@@ -16,7 +16,7 @@ namespace SharedCode {
 
 			done = true;
 
-			GameManager.pico8.audio.Sfx(2);
+			GameManager.pico8.Audio.Sfx(2);
 		}
 	}
 }

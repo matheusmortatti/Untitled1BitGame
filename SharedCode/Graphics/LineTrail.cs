@@ -19,7 +19,7 @@ namespace SharedCode.Graphics
 
         public override void Draw(GameObject gameObject)
         {
-            GameManager.pico8.graphics.Line((int)gameObject.transform.position.X,
+            GameManager.pico8.Graphics.Line((int)gameObject.transform.position.X,
                                             (int)gameObject.transform.position.Y,
                                             (int)trailPos.X,
                                             (int)trailPos.Y,

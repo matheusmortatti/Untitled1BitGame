@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 
-using Pico8_Emulator;
 using Microsoft.Xna.Framework;
 
 namespace SharedCode.Input {
@@ -13,7 +12,7 @@ namespace SharedCode.Input {
 		public override void Update(GameObject gameObject, GameTime gameTime) {
 			var interactable = (Interactable)gameObject;
 
-			if ((bool)GameManager.pico8.Btnp(4)) {
+			if ((bool)GameManager.pico8.Input.Btnp(4)) {
 				interactable.Interact();
 				return;
 			}

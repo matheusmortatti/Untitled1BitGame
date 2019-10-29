@@ -268,7 +268,7 @@ namespace SharedCode {
 			lifeTime -= hitAmount;
 
 			ControllerVibration.SetVibration(0, 1f, 1f, 0.2);
-			GameManager.pico8.audio.Sfx(1);
+			GameManager.pico8.Audio.Sfx(1);
 
 			return lifeTime > 0 ? hitAmount : hitAmount + lifeTime;
 		}

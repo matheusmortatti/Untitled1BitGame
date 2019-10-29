@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 
 using Microsoft.Xna.Framework;
-using Pico8_Emulator;
 
 namespace SharedCode {
 	public static class GameObjectManager {
@@ -11,8 +10,6 @@ namespace SharedCode {
 		private static List<GameObject> activeObjects;
 		private static List<GameObject> nextObjects;
 		private static int MAX_OBJECTS = 200;
-
-		public static Pico8<Color> pico8 { get; private set; }
 		public static Player playerInstance { get; private set; }
 
 		private static Dictionary<string, List<GameObject>> taggedObjects;
@@ -29,7 +26,7 @@ namespace SharedCode {
 			}
 		}
 
-		public static void Init(in Pico8<Color> p8) {
+		public static void Init() {
 			if (activeObjects == null) {
 				activeObjects = new List<GameObject>();
 				activeObjects.Capacity = MAX_OBJECTS;
@@ -39,8 +36,6 @@ namespace SharedCode {
 				nextObjects = new List<GameObject>();
 				nextObjects.Capacity = MAX_OBJECTS / 10;
 			}
-
-			pico8 = p8;
 
 			taggedObjects = new Dictionary<string, List<GameObject>>();
 		}
@@ -81,11 +76,11 @@ namespace SharedCode {
 		}
 
 		public static void DrawObjects() {
-			GameManager.pico8.memory.Fillp(GlobalFillPattern);
+			GameManager.pico8.Memory.drawState.Fillp(GlobalFillPattern);
 			for (int i = 0; i < activeObjects.Count; i += 1) {
 				activeObjects[i].Draw();
 			}
-			GameManager.pico8.memory.Fillp();
+			GameManager.pico8.Memory.drawState.Fillp();
 		}
 
 		public static Player InstantiatePlayer(Vector2 position) {
@@ -192,7 +187,7 @@ namespace SharedCode {
 		}
 
 		public static void Fillp(int p = 0) {
-			pico8.memory.Fillp((p | GlobalFillPattern));
+			GameManager.pico8.Memory.drawState.Fillp((p | GlobalFillPattern));
 		}
 	}
 }

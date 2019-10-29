@@ -8,7 +8,8 @@ using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Audio;
 
 using IndependentResolutionRendering;
-using Pico8_Emulator;
+using Pico8Emulator;
+using MonoGamePico8.backend;
 using System.Diagnostics;
 
 #endregion
@@ -29,7 +30,9 @@ namespace SharedCode {
 		/// <summary>
 		/// Defines the pico8
 		/// </summary>
-		internal Pico8<Color> pico8;
+		internal Emulator pico8;
+
+		internal MonoGameGraphicsBackend graphicsBackend;
 
 		/// <summary>
 		/// Defines the screenColorData
@@ -158,53 +161,11 @@ namespace SharedCode {
 
 			rasterizerState = new RasterizerState { MultiSampleAntiAlias = true };
 
-			pico8 = new Pico8<Color>();
-			pico8.screenColorData = screenColorData;
-			pico8.indexToColor = (i) => pico8Palette[i];
+			graphicsBackend = new MonoGameGraphicsBackend(GraphicsDevice);
 
-#if WINDOWS
-
-			//
-			// Keyboard input
-			//
-
-			pico8.AddLeftButtonDownFunction(() => { return Keyboard.GetState().IsKeyDown(Keys.Left); }, 0);
-			pico8.AddDownButtonDownFunction(() => { return Keyboard.GetState().IsKeyDown(Keys.Down); }, 0);
-			pico8.AddUpButtonDownFunction(() => { return Keyboard.GetState().IsKeyDown(Keys.Up); }, 0);
-			pico8.AddRightButtonDownFunction(() => { return Keyboard.GetState().IsKeyDown(Keys.Right); }, 0);
-			pico8.AddOButtonDownFunction(() => { return Keyboard.GetState().IsKeyDown(Keys.Z); }, 0);
-			pico8.AddXButtonDownFunction(() => { return Keyboard.GetState().IsKeyDown(Keys.X); }, 0);
-
-#endif
-
-			//
-			// Gamepad input
-			//
-
-			pico8.AddLeftButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).DPad.Left == ButtonState.Pressed; }, 0);
-			pico8.AddDownButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).DPad.Down == ButtonState.Pressed; }, 0);
-			pico8.AddUpButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).DPad.Up == ButtonState.Pressed; }, 0);
-			pico8.AddRightButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).DPad.Right == ButtonState.Pressed; }, 0);
-
-			pico8.AddLeftButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X < -0.5f; }, 0);
-			pico8.AddRightButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.X > 0.5f; }, 0);
-			pico8.AddDownButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y < -0.5f; }, 0);
-			pico8.AddUpButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).ThumbSticks.Left.Y > 0.5f; }, 0);
-
-			pico8.AddOButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).Buttons.A == ButtonState.Pressed; }, 0);
-			pico8.AddXButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).Buttons.B == ButtonState.Pressed; }, 0);
-
-			pico8.AddOButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).Triggers.Right > 0.5f; }, 1);
-			pico8.AddXButtonDownFunction(() => { return GamePad.GetState(PlayerIndex.One).Triggers.Left > 0.5f; }, 1);
-
-			
+			pico8 = new Emulator(graphicsBackend, new MonoGameAudioBackend(), new MonoGameInputBackend());	
 
 			GameManager.InitGameState(pico8);
-
-			soundEffectInstance = new DynamicSoundEffectInstance(pico8.audio.sampleRate, AudioChannels.Mono);
-			audioBuffer = new byte[pico8.audio.samplesPerBuffer * 2];
-
-			soundEffectInstance.Play();
 		}
 
 		/// <summary>
@@ -234,30 +195,8 @@ namespace SharedCode {
 
 				var gt = new GameTime(gameTime.TotalGameTime, new TimeSpan(0, 0, 0, 0, (int)(updateTime * 1000)));
 				GameManager.Update(gt);
-				pico8.Update();
-
-				while (soundEffectInstance.PendingBufferCount < 3) {
-					float[] p8Buffer = pico8.audio.RequestBuffer();
-					int samplesPerBuffer = p8Buffer.Length;
-
-					for (int i = 0; i < samplesPerBuffer; i += 1) {
-						float floatSample = p8Buffer[i];
-
-						// Convert it to the 16 bit [short.MinValue..short.MaxValue] range
-						short shortSample = (short)(floatSample >= 0.0f ? floatSample * short.MaxValue : floatSample * short.MinValue * -1);
-
-						// Store the 16 bit sample as two consecutive 8 bit values in the buffer with regard to endian-ness
-						if (!BitConverter.IsLittleEndian) {
-							audioBuffer[i * 2] = (byte)(shortSample >> 8);
-							audioBuffer[i * 2 + 1] = (byte)shortSample;
-						}
-						else {
-							audioBuffer[i * 2] = (byte)shortSample;
-							audioBuffer[i * 2 + 1] = (byte)(shortSample >> 8);
-						}
-					}
-					soundEffectInstance.SubmitBuffer(audioBuffer);
-				}
+				pico8.Update30();
+				pico8.Update60();
 			}
 
 			frameCounter.Update((float)dt);
@@ -295,9 +234,9 @@ namespace SharedCode {
 
 				GameManager.Draw();
 				pico8.Draw();
-				pico8.memory.Cls();
-				screenTexture.SetData(screenColorData);
-				spriteBatch.Draw(screenTexture, new Rectangle(0, 0, 128, 128), Color.White);
+				pico8.Graphics.Flip();
+				pico8.Graphics.Cls(null);
+				spriteBatch.Draw(graphicsBackend.Surface, new Rectangle(0, 0, 128, 128), Color.White);
 
 				spriteBatch.End();
 			}

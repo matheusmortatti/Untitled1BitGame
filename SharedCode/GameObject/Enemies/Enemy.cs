@@ -151,7 +151,7 @@ namespace SharedCode {
 			// Play audio effect
 			//
 
-			GameManager.pico8.audio.Sfx(0);
+			GameManager.pico8.Audio.Sfx(0);
 
 			//
 			// Give a bonus time in the last hit.
@@ -222,9 +222,9 @@ namespace SharedCode {
 
 			if (lifeTime <= 0) {
 				var celPos = new Vector2((float)Math.Floor(startPosition.X / 8), (float)Math.Floor(startPosition.Y / 8));
-				GameManager.pico8.memory.Mset((int)celPos.X, (int)celPos.Y, 0);
+				GameManager.pico8.Memory.Mset((int)celPos.X, (int)celPos.Y, 0);
 				TaskScheduler.AddTask(() => {
-					GameManager.pico8.memory.Mset((int)celPos.X, (int)celPos.Y, (byte)spriteIndex);
+					GameManager.pico8.Memory.Mset((int)celPos.X, (int)celPos.Y, (byte)spriteIndex);
 				}, respawnTime, respawnTime, -1
 				);
 			}

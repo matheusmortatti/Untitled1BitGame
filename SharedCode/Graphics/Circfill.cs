@@ -18,7 +18,7 @@ namespace SharedCode.Graphics
 
         public override void Draw(GameObject gameObject)
         {
-            GameManager.pico8.graphics.CircFill((int)gameObject.transform.position.X,
+            GameManager.pico8.Graphics.Circfill((int)gameObject.transform.position.X,
                                                 (int)gameObject.transform.position.Y,
                                                 this.radius,
                                                 this.col);

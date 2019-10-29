@@ -99,7 +99,7 @@ namespace SharedCode {
 				//
 
 				var celPos = util.CorrespondingCelIndex(this.transform.position);
-				GameManager.pico8.memory.Mset((int)celPos.X, (int)celPos.Y, 0);
+				GameManager.pico8.Memory.Mset((int)celPos.X, (int)celPos.Y, 0);
 			},
 			2, 2, this.id
 			);
@@ -115,13 +115,13 @@ namespace SharedCode {
 			if (_openCondition == OpenCondition.KEYS) {
 				switch (keysLeft) {
 					case 3:
-						GameManager.pico8.graphics.Spr(13, (int)transform.position.X - 1, (int)transform.position.Y + 6);
+						GameManager.pico8.Graphics.Spr(13, (int)transform.position.X - 1, (int)transform.position.Y + 6);
 						goto case 2;
 					case 2:
-						GameManager.pico8.graphics.Spr(13, (int)transform.position.X + 1 + 8, (int)transform.position.Y + 6);
+						GameManager.pico8.Graphics.Spr(13, (int)transform.position.X + 1 + 8, (int)transform.position.Y + 6);
 						goto case 1;
 					case 1:
-						GameManager.pico8.graphics.Spr(13, (int)transform.position.X + 4, (int)transform.position.Y + 6);
+						GameManager.pico8.Graphics.Spr(13, (int)transform.position.X + 4, (int)transform.position.Y + 6);
 						break;
 				}
 			}

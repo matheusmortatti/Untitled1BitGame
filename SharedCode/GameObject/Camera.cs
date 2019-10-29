@@ -42,7 +42,7 @@ namespace SharedCode {
 			// Update Camera's position
 			var offX = _shake > 0 ? random.NextDouble() * shakeSize : 0;
 			var offY = _shake > 0 ? random.NextDouble() * shakeSize : 0;
-			GameManager.pico8.Camera((int)(transform.position.X + offX), (int)(transform.position.Y + offY));
+			GameManager.pico8.Memory.drawState.Camera((int)(transform.position.X + offX), (int)(transform.position.Y + offY));
 		}
 
 		public void MoveCamera(Vector2 position) {
@@ -50,11 +50,11 @@ namespace SharedCode {
 		}
 
 		public void ResetCamera() {
-			GameManager.pico8.memory.Camera();
+			GameManager.pico8.Memory.drawState.Camera();
 		}
 
 		public void RestoreCamera() {
-			GameObjectManager.pico8.Camera((int)transform.position.X, (int)transform.position.Y);
+			GameManager.pico8.Memory.drawState.Camera((int)transform.position.X, (int)transform.position.Y);
 		}
 
 		public void AddShake(double time) {

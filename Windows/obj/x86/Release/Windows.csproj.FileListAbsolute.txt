@@ -28,3 +28,8 @@ C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\obj\x86\Release\Windows.cs
 C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\obj\x86\Release\Windows.csproj.CopyComplete
 C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\obj\x86\Release\Windows.exe
 C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\obj\x86\Release\Windows.pdb
+C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Release\GlobalVariables.lua
+C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Release\Windows.exe.config
+C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Release\MoonSharp.Interpreter.dll
+C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Release\MoonSharp.Interpreter.pdb
+C:\Users\mathe\Documents\git\Untitled1BitGame\Windows\bin\Windows\x86\Release\MoonSharp.Interpreter.xml

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Pico8_Emulator;
 using Microsoft.Xna.Framework;
 using SharedCode.Physics;
 
@@ -46,7 +45,7 @@ namespace SharedCode.Graphics
 
         public override void Draw(GameObject gameObject)
         {
-            GameManager.pico8.graphics.Spr(index, (int)gameObject.transform.position.X, (int)gameObject.transform.position.Y, width, height, flipX, flipY);
+            GameManager.pico8.Graphics.Spr(index, (int)gameObject.transform.position.X, (int)gameObject.transform.position.Y, width, height, flipX, flipY);
         }
 
         public override void Update(GameObject gameObject, GameTime gameTime)
@@ -340,7 +339,7 @@ namespace SharedCode.Graphics
         public override void Draw(GameObject gameObject)
         {
             var spr = spriteList[currentIndex];
-            GameManager.pico8.graphics.Spr(
+            GameManager.pico8.Graphics.Spr(
                 spr.index, 
                 (int)gameObject.transform.position.X, 
                 (int)gameObject.transform.position.Y, 
