@@ -32,13 +32,13 @@ namespace SharedCode.Graphics
             };
             foreach(var off in offsets)
             {
-                GameManager.pico8.Graphics.Print(message,
+                GameManager.Pico8.Graphics.Print(message,
                                             (int)(gameObject.transform.position.X + off.X),
                                             (int)(gameObject.transform.position.Y + off.Y),
                                             0);
             }
 
-            GameManager.pico8.Graphics.Print(message, 
+            GameManager.Pico8.Graphics.Print(message, 
                                             (int)gameObject.transform.position.X,
                                             (int)gameObject.transform.position.Y,
                                             col);

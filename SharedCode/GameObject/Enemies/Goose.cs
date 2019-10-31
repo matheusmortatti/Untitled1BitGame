@@ -219,14 +219,14 @@ namespace SharedCode
         {
             if (gooseStateMachine.State == GooseStates.Chasing)
             {
-                GameManager.pico8.Memory.drawState.Pal(7, 8);
+                GameManager.Pico8.Memory.drawState.Pal(7, 8);
             }
 
             base.Draw();
 
             if (gooseStateMachine.State == GooseStates.Chasing)
             {
-                GameManager.pico8.Memory.drawState.Pal(7, 7);
+                GameManager.Pico8.Memory.drawState.Pal(7, 7);
             }
         }
 

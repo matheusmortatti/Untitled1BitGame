@@ -6,11 +6,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Audio;
+using MonoGame.Extended.Tiled;
 
 using IndependentResolutionRendering;
 using Pico8Emulator;
 using MonoGamePico8.backend;
 using System.Diagnostics;
+using MonoGame.Extended.Tiled.Renderers;
 
 #endregion
 
@@ -124,8 +126,8 @@ namespace SharedCode {
 
 		public Untitled1BitGame() {
 			graphics = new GraphicsDeviceManager(this);
-			Content.RootDirectory = "Content";
 
+			Content.RootDirectory = "Content";
 
 			Resolution.Init(ref graphics);
 			Resolution.SetResolution(1000, 1000, false);
@@ -133,7 +135,6 @@ namespace SharedCode {
 
 			//this.TargetElapsedTime = TimeSpan.FromSeconds(1d / 60d); //60);
 			this.IsFixedTimeStep = false;
-			
 		}
 
 		/// <summary>
@@ -165,7 +166,7 @@ namespace SharedCode {
 
 			pico8 = new Emulator(graphicsBackend, new MonoGameAudioBackend(), new MonoGameInputBackend());	
 
-			GameManager.InitGameState(pico8);
+			GameManager.InitGameState(pico8, spriteBatch, GraphicsDevice, Content);
 		}
 
 		/// <summary>
@@ -203,7 +204,6 @@ namespace SharedCode {
 			GameManager.framerate = frameCounter.AverageFramesPerSecond;
 			Window.Title = $"FPS: {frameCounter.AverageFramesPerSecond}";
 
-
 			// TODO: Add your update logic here			
 			base.Update(gameTime);
 		}
@@ -236,7 +236,7 @@ namespace SharedCode {
 				pico8.Draw();
 				pico8.Graphics.Flip();
 				pico8.Graphics.Cls(null);
-				spriteBatch.Draw(graphicsBackend.Surface, new Rectangle(0, 0, 128, 128), Color.White);
+				//spriteBatch.Draw(graphicsBackend.Surface, new Rectangle(0, 0, 128, 128), Color.White);
 
 				spriteBatch.End();
 			}

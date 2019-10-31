@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/mathe/Documents/git/Untitled1BitGame/SharedCode/Content/Maps/1bitSheet.png","C:/Users/mathe/Documents/git/Untitled1BitGame/SharedCode/Content/bin/Windows/Maps/1bitSheet_0.xnb","TextureProcessor","Texture2DContent",3990,65621,0.0105038
+"C:/Users/mathe/Documents/git/Untitled1BitGame/SharedCode/Content/Maps/OverworldMap.tmx","C:/Users/mathe/Documents/git/Untitled1BitGame/SharedCode/Content/bin/Windows/Maps/OverworldMap.xnb","TiledMapProcessor","TiledMapContentItem",35585,15604,0.0945519

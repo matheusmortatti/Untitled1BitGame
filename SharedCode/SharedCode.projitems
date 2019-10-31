@@ -55,6 +55,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Input\AInput.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\InteractableInput.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\PlayerInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Misc\DrawUtility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Misc\GlobalVars.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Misc\TaskScheduler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Misc\util.cs" />
@@ -108,6 +109,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+    <None Include="$(MSBuildThisFileDirectory)Content\Dithering.fx" />
+    <None Include="$(MSBuildThisFileDirectory)Content\SpriteDithering.fx" />
     <None Include="$(MSBuildThisFileDirectory)GlobalVariables.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

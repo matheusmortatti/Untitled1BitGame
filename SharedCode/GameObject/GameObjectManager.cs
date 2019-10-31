@@ -76,11 +76,11 @@ namespace SharedCode {
 		}
 
 		public static void DrawObjects() {
-			GameManager.pico8.Memory.drawState.Fillp(GlobalFillPattern);
+			GameManager.Pico8.Memory.drawState.Fillp(GlobalFillPattern);
 			for (int i = 0; i < activeObjects.Count; i += 1) {
 				activeObjects[i].Draw();
 			}
-			GameManager.pico8.Memory.drawState.Fillp();
+			GameManager.Pico8.Memory.drawState.Fillp();
 		}
 
 		public static Player InstantiatePlayer(Vector2 position) {
@@ -187,7 +187,7 @@ namespace SharedCode {
 		}
 
 		public static void Fillp(int p = 0) {
-			GameManager.pico8.Memory.drawState.Fillp((p | GlobalFillPattern));
+			GameManager.Pico8.Memory.drawState.Fillp((p | GlobalFillPattern));
 		}
 	}
 }

@@ -17,6 +17,8 @@ namespace SharedCode {
 			if (!Directory.Exists("Debug")) {
 				Directory.CreateDirectory("Debug/");
 			}
+
+#if LOG
 			logPath = "Debug/log_" + Math.Floor(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds).ToString() + ".txt";
 			if (!File.Exists(logPath)) {
 				File.Create(logPath).Close();
@@ -27,18 +29,19 @@ namespace SharedCode {
 			logThread = new Thread(LogThread);
 			logThread.IsBackground = true;
 			logThread.Start();
+#endif
 		}
 
 		public static void DrawLine(float x1, float y1, float x2, float y2, int col = 8) {
-			GameManager.pico8.Graphics.Line((int)x1, (int)y1, (int)x2, (int)y2, (byte)col);
+			GameManager.Pico8.Graphics.Line((int)x1, (int)y1, (int)x2, (int)y2, (byte)col);
 		}
 
 		public static void DrawRectangle(float x1, float y1, float x2, float y2, int col = 8) {
-			GameManager.pico8.Graphics.Rect((int)x1, (int)y1, (int)x2, (int)y2, (byte)col);
+			GameManager.Pico8.Graphics.Rect((int)x1, (int)y1, (int)x2, (int)y2, (byte)col);
 		}
 
 		public static void DrawFilledRectangle(float x1, float y1, float x2, float y2, int col = 8) {
-			GameManager.pico8.Graphics.Rectfill((int)x1, (int)y1, (int)x2, (int)y2, (byte)col);
+			GameManager.Pico8.Graphics.Rectfill((int)x1, (int)y1, (int)x2, (int)y2, (byte)col);
 		}
 
 		public static void Log(string message) {

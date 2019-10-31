@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using IndependentResolutionRendering;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using Pico8Emulator;
 using SharedCode.Misc;
 using SharedCode.Particles;
@@ -19,11 +21,11 @@ namespace SharedCode {
 			GameObjectManager.RemoveAllObjects();
 			ParticleManager.RemoveAllParticles();
 
-			GameManager.pico8.CartridgeLoader.Load("untitled1bitgame.p8");
+			GameManager.Pico8.CartridgeLoader.Load("untitled1bitgame.p8");
 
 			Vector2 playerPosition = Map.FindPlayerInMapSheet();
 			GameObjectManager.AddObject(new Camera(playerPosition));
-			GameObjectManager.AddObject(new Map(playerPosition));
+			GameObjectManager.AddObject(new Map(playerPosition, "Maps/OverworldMap"));
 			GameObjectManager.AddObject(new UI());
 			GameObjectManager.AddObject(new ScreenTransition(1, () => { }, ScreenTransition.TransitionEffect.FadeIn));
 
@@ -41,14 +43,21 @@ namespace SharedCode {
 	public static class GameManager {
 		private static GameStateMachine stateMachine;
 
-		public static Emulator pico8 { get; private set; }
+		public static Emulator Pico8 { get; private set; }
+		public static SpriteBatch SpriteBatch { get; private set; }
+		public static GraphicsDevice GraphicsDevice { get; private set; }
+		public static ContentManager Content { get; private set; }
 
 		public static double framerate;
 
 		public static Random random = new Random();
+		private static RasterizerState _rasterizerState = new RasterizerState { MultiSampleAntiAlias = true };
 
-		public static void InitGameState(Emulator pico8) {
-			GameManager.pico8 = pico8;
+		public static void InitGameState(Emulator pico8, SpriteBatch spriteBatch, GraphicsDevice graphicsDevice, ContentManager content) {
+			Pico8 = pico8;
+			SpriteBatch = spriteBatch;
+			GraphicsDevice = graphicsDevice;
+			Content = content;
 
 			//
 			// Start PICO-8 stuff.
@@ -64,6 +73,11 @@ namespace SharedCode {
 
 			stateMachine = new GameStateMachine();
 			stateMachine.Init(GameStates.Overworld);
+
+			DrawUtility.Init(spriteBatch, graphicsDevice, content);
+
+			DrawUtility.Palt(1, true);
+			DrawUtility.Palt(0, false);
 		}
 
 		public static void Update(GameTime gameTime) {
@@ -76,20 +90,41 @@ namespace SharedCode {
 		}
 
 		public static void Draw() {
+			var cam = ((Camera)GameObjectManager.FindObjectWithTag("camera"));
+
+			SpriteBatch.End();
+			SpriteBatch.Begin(
+						SpriteSortMode.Immediate,
+						null,
+						SamplerState.PointClamp,
+						null,
+						_rasterizerState,
+						null,
+						cam.TranslationMatrix * Resolution.getTransformationMatrix());
 			GameObjectManager.DrawObjects();
 			ParticleManager.Draw();
 
-			((Camera)GameObjectManager.FindObjectWithTag("camera"))?.ResetCamera();
+			cam?.ResetCamera();
 
 			if (Debug.debugMode) {
-				pico8.Graphics.Rectfill(3, 119, 64, 125, 0);
-				pico8.Graphics.Print(framerate.ToString("0.##"), 4, 120, 14);
-				pico8.Graphics.Print(GameObjectManager.numberOfObjects, 32, 120, 14);
-				pico8.Graphics.Print(TaskScheduler.numberOfTasks, 42, 120, 14);
-				pico8.Graphics.Print(ParticleManager.numberOfParticles, 52, 120, 14);
+				Pico8.Graphics.Rectfill(3, 119, 64, 125, 0);
+				Pico8.Graphics.Print(framerate.ToString("0.##"), 4, 120, 14);
+				Pico8.Graphics.Print(GameObjectManager.numberOfObjects, 32, 120, 14);
+				Pico8.Graphics.Print(TaskScheduler.numberOfTasks, 42, 120, 14);
+				Pico8.Graphics.Print(ParticleManager.numberOfParticles, 52, 120, 14);
 			}
 
-				((Camera)GameObjectManager.FindObjectWithTag("camera"))?.RestoreCamera();
+			cam?.RestoreCamera();
+
+			SpriteBatch.End();
+			SpriteBatch.Begin(
+						SpriteSortMode.Immediate,
+						null,
+						SamplerState.PointClamp,
+						null,
+						_rasterizerState,
+						null,
+						Resolution.getTransformationMatrix());
 		}
 
 		public static void ResetOverworld() {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using Microsoft.Xna.Framework;
+using SharedCode.Misc;
 
 namespace SharedCode {
 	public class Camera : GameObject {
@@ -11,6 +12,8 @@ namespace SharedCode {
 		private int shakeSize = 2;
 
 		private Random random;
+
+		public Matrix TranslationMatrix { get; private set; }
 		public Camera(Vector2 position) : base(position) {
 			transform.position = new Vector2((float)Math.Floor(position.X / 128) * 128,
 																			 (float)Math.Floor(position.Y / 128) * 128);
@@ -42,7 +45,10 @@ namespace SharedCode {
 			// Update Camera's position
 			var offX = _shake > 0 ? random.NextDouble() * shakeSize : 0;
 			var offY = _shake > 0 ? random.NextDouble() * shakeSize : 0;
-			GameManager.pico8.Memory.drawState.Camera((int)(transform.position.X + offX), (int)(transform.position.Y + offY));
+			GameManager.Pico8.Memory.drawState.Camera((int)(transform.position.X + offX), (int)(transform.position.Y + offY));
+			DrawUtility.Camera((int)(transform.position.X + offX), (int)(transform.position.Y + offY));
+
+			TranslationMatrix = Matrix.CreateTranslation(-(int)(transform.position.X + offX), -(int)(transform.position.Y + offY), 0);
 		}
 
 		public void MoveCamera(Vector2 position) {
@@ -50,11 +56,15 @@ namespace SharedCode {
 		}
 
 		public void ResetCamera() {
-			GameManager.pico8.Memory.drawState.Camera();
+			GameManager.Pico8.Memory.drawState.Camera();
+			DrawUtility.Camera();
+			TranslationMatrix = Matrix.CreateTranslation(0, 0, 0);
 		}
 
 		public void RestoreCamera() {
-			GameManager.pico8.Memory.drawState.Camera((int)transform.position.X, (int)transform.position.Y);
+			GameManager.Pico8.Memory.drawState.Camera((int)transform.position.X, (int)transform.position.Y);
+			DrawUtility.Camera((int)transform.position.X, (int)transform.position.Y);
+			TranslationMatrix = Matrix.CreateTranslation(-(int)(transform.position.X), -(int)(transform.position.Y), 0);
 		}
 
 		public void AddShake(double time) {
