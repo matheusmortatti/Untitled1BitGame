@@ -116,12 +116,15 @@ namespace SharedCode {
 				switch (keysLeft) {
 					case 3:
 						GameManager.Pico8.Graphics.Spr(13, (int)transform.position.X - 1, (int)transform.position.Y + 6);
+						DrawUtility.Spr(13, (int)transform.position.X - 1, (int)transform.position.Y + 6);
 						goto case 2;
 					case 2:
 						GameManager.Pico8.Graphics.Spr(13, (int)transform.position.X + 1 + 8, (int)transform.position.Y + 6);
+						DrawUtility.Spr(13, (int)transform.position.X + 1 + 8, (int)transform.position.Y + 6);
 						goto case 1;
 					case 1:
 						GameManager.Pico8.Graphics.Spr(13, (int)transform.position.X + 4, (int)transform.position.Y + 6);
+						DrawUtility.Spr(13, (int)transform.position.X + 4, (int)transform.position.Y + 6);
 						break;
 				}
 			}

@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using System.IO;
 using System.Threading;
+using SharedCode.Misc;
 
 namespace SharedCode {
 	public static class Debug {
@@ -34,14 +35,17 @@ namespace SharedCode {
 
 		public static void DrawLine(float x1, float y1, float x2, float y2, int col = 8) {
 			GameManager.Pico8.Graphics.Line((int)x1, (int)y1, (int)x2, (int)y2, (byte)col);
+			DrawUtility.Line((int)x1, (int)y1, (int)x2, (int)y2, (byte)col);
 		}
 
 		public static void DrawRectangle(float x1, float y1, float x2, float y2, int col = 8) {
 			GameManager.Pico8.Graphics.Rect((int)x1, (int)y1, (int)x2, (int)y2, (byte)col);
+			DrawUtility.Rect((int)x1, (int)y1, (int)x2, (int)y2, (byte)col);
 		}
 
 		public static void DrawFilledRectangle(float x1, float y1, float x2, float y2, int col = 8) {
 			GameManager.Pico8.Graphics.Rectfill((int)x1, (int)y1, (int)x2, (int)y2, (byte)col);
+			DrawUtility.Rectfill((int)x1, (int)y1, (int)x2, (int)y2, (byte)col);
 		}
 
 		public static void Log(string message) {

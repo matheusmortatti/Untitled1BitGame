@@ -223,14 +223,14 @@ namespace SharedCode {
 				Resolution.BeginDraw();
 				GraphicsDevice.Clear(Color.Black);
 
-				spriteBatch.Begin(
-						SpriteSortMode.Immediate,
-						null,
-						SamplerState.PointClamp,
-						null,
-						rasterizerState,
-						null,
-						Resolution.getTransformationMatrix());
+				//spriteBatch.Begin(
+				//		SpriteSortMode.Immediate,
+				//		null,
+				//		SamplerState.PointClamp,
+				//		null,
+				//		rasterizerState,
+				//		null,
+				//		Camera.TranslationMatrix * Resolution.getTransformationMatrix());
 
 				GameManager.Draw();
 				pico8.Draw();
@@ -238,7 +238,7 @@ namespace SharedCode {
 				pico8.Graphics.Cls(null);
 				//spriteBatch.Draw(graphicsBackend.Surface, new Rectangle(0, 0, 128, 128), Color.White);
 
-				spriteBatch.End();
+				//spriteBatch.End();
 			}
 
 			base.Draw(gameTime);

@@ -17,15 +17,11 @@ namespace SharedCode {
 		private TiledMapRenderer _mapRenderer;
 
 		private Dictionary<string, TiledMapObjectLayer> _objectLayers;
+		private Dictionary<Vector2, TiledMapTileObject> _gameObjects;
 
 		private bool[] _isSolid;
 
 		public Map(Vector2 position, string mapPath) : base(position) {
-			currentIndex = new Vector2((float)Math.Floor(position.X / 128),
-																 (float)Math.Floor(position.Y / 128));
-			InstantiateEntities( currentIndex);
-
-			depth = -1000;
 
 			//
 			// Load Tiled map, map rendered and tilesets.
@@ -57,7 +53,7 @@ namespace SharedCode {
 			_objectLayers.TryGetValue("CollisionObjects", out colObjLayer);
 
 			if (colObjLayer == null)
-				return; 
+				return;
 
 			foreach (TiledMapTileObject obj in colObjLayer.Objects) {
 				var objPos = new Vector2(
@@ -70,6 +66,36 @@ namespace SharedCode {
 				// Is solid if the "IsSolid" property is not null.
 				_isSolid[(int)objPos.Y * mapWidth + (int)objPos.X] = solid.Length != 0;
 			}
+
+			//
+			// Load Game Object tile location.
+			//
+
+			_gameObjects = new Dictionary<Vector2, TiledMapTileObject>();
+
+			TiledMapObjectLayer goLayer;
+			_objectLayers.TryGetValue("GameObjects", out goLayer);
+
+			if (goLayer == null)
+				return;
+
+			foreach (TiledMapTileObject obj in goLayer.Objects) {
+				var objPos = new Vector2(
+					obj.Position.X / _loadedMap.TileWidth,
+					obj.Position.Y / _loadedMap.TileHeight - 1);
+
+				_gameObjects[objPos] = obj;
+			}
+
+			//
+			// Set current index and instantiate entities.
+			//
+
+			currentIndex = new Vector2((float)Math.Floor(position.X / 128),
+																 (float)Math.Floor(position.Y / 128));
+			InstantiateEntities(currentIndex);
+
+			depth = -1000;
 		}
 
 		public override void Update(GameTime gameTime) {
@@ -115,12 +141,13 @@ namespace SharedCode {
 			//GameManager.Pico8.Graphics.Map(0, 0, 0, 0, 64, 128, 0x1);
 
 			var cam = GameObjectManager.FindObjectOfType<Camera>() as Camera;
-			var layer = _loadedMap.GetLayer("Grass") as TiledMapTileLayer;
+			if (cam == null)
+				return;
 
-			if (cam != null) {
+			foreach (TiledMapTileLayer layer in _loadedMap.TileLayers) {
 				_mapRenderer.Draw(
 					layer,
-					cam.TranslationMatrix * Resolution.getTransformationMatrix());
+					Camera.TranslationMatrix * Resolution.getTransformationMatrix());
 			}
 		}
 
@@ -129,15 +156,35 @@ namespace SharedCode {
 
 			for (int i = 0; i < 16; i += 1) {
 				for (int j = 0; j < 16; j += 1) {
-					byte val = GameManager.Pico8.Memory.Mget((int)celPos.X + i, (int)celPos.Y + j);
-					byte flag = (byte)GameManager.Pico8.Memory.Fget(val);
+					//byte val = GameManager.Pico8.Memory.Mget((int)celPos.X + i, (int)celPos.Y + j);
+					//byte flag = (byte)GameManager.Pico8.Memory.Fget(val);
 
-					if ((flag & 0b00000010) != 0) {
-						GameManager.Pico8.Memory.Mset((int)celPos.X + i, (int)celPos.Y + j, 0);
-					}
+					//if ((flag & 0b00000010) != 0) {
+					//	GameManager.Pico8.Memory.Mset((int)celPos.X + i, (int)celPos.Y + j, 0);
+					//}
 
-					if ((flag & 0b00001000) != 0) {
-						GameObjectFactory.CreateGameObject(val, new Vector2((int)celPos.X + i, (int)celPos.Y + j) * 8);
+					//if ((flag & 0b00001000) != 0) {
+					//	GameObjectFactory.CreateGameObject(val, new Vector2((int)celPos.X + i, (int)celPos.Y + j) * 8);
+					//}
+
+					//
+					// Instantiate object based on tiled objects.
+					//
+
+					Vector2 objPos = new Vector2(celPos.X + i, celPos.Y + j);
+					TiledMapTileObject obj;
+					_gameObjects.TryGetValue(objPos, out obj);
+
+					if (obj == null)
+						continue;
+
+					GameObjectFactory.CreateGameObject(
+						obj.Tile.LocalTileIdentifier, 
+						new Vector2((int)celPos.X + i, (int)celPos.Y + j) * 8,
+						obj.Properties);
+
+					if (TiledHelper.IsTilePropertyEquals(obj.Tile, "ShouldDeleteOnceCreated", "true")) {
+						_gameObjects.Remove(objPos);
 					}
 				}
 			}

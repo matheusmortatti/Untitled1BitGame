@@ -92,6 +92,19 @@ namespace SharedCode {
 		public static void Draw() {
 			var cam = ((Camera)GameObjectManager.FindObjectWithTag("camera"));
 
+			SpriteBatch.Begin(
+						SpriteSortMode.Immediate,
+						null,
+						SamplerState.PointClamp,
+						null,
+						_rasterizerState,
+						null,
+						Camera.TranslationMatrix * Resolution.getTransformationMatrix());
+			GameObjectManager.DrawObjects();
+			ParticleManager.Draw();
+
+			cam?.ResetCamera();
+
 			SpriteBatch.End();
 			SpriteBatch.Begin(
 						SpriteSortMode.Immediate,
@@ -100,11 +113,7 @@ namespace SharedCode {
 						null,
 						_rasterizerState,
 						null,
-						cam.TranslationMatrix * Resolution.getTransformationMatrix());
-			GameObjectManager.DrawObjects();
-			ParticleManager.Draw();
-
-			cam?.ResetCamera();
+						Resolution.getTransformationMatrix());
 
 			if (Debug.debugMode) {
 				Pico8.Graphics.Rectfill(3, 119, 64, 125, 0);
@@ -117,6 +126,14 @@ namespace SharedCode {
 			cam?.RestoreCamera();
 
 			SpriteBatch.End();
+		}
+
+		public static void ResetOverworld() {
+			stateMachine.resetOverworld = true;
+		}
+
+		public static void ResetCamera() {
+			SpriteBatch.End();
 			SpriteBatch.Begin(
 						SpriteSortMode.Immediate,
 						null,
@@ -127,8 +144,16 @@ namespace SharedCode {
 						Resolution.getTransformationMatrix());
 		}
 
-		public static void ResetOverworld() {
-			stateMachine.resetOverworld = true;
+		public static void RestoreCamera() {
+			SpriteBatch.End();
+			SpriteBatch.Begin(
+						SpriteSortMode.Immediate,
+						null,
+						SamplerState.PointClamp,
+						null,
+						_rasterizerState,
+						null,
+						Camera.TranslationMatrix * Resolution.getTransformationMatrix());
 		}
 	}
 }

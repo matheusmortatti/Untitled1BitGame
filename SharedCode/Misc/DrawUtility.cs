@@ -277,12 +277,16 @@ namespace SharedCode.Misc {
 			DrawCircle(x, y, (int)(r), DrawColor, true);
 		}
 
+		//
+		// Pure draw functions.
+		//
+
 		private static void Plot4(int x, int y, int offX, int offY, Color c, bool fill) {
 			if (fill) {
-				Line((x - offX), (y + offY), (x + offX), (y + offY), c);
+				Line((x - offX), (y + offY), (x + offX + 1), (y + offY), c);
 
 				if (offY != 0) {
-					Line((x - offX), (y - offY), (x + offX), (y - offY), c);
+					Line((x - offX), (y - offY), (x + offX + 1), (y - offY), c);
 				}
 			}
 			else {
@@ -295,10 +299,6 @@ namespace SharedCode.Misc {
 				}
 			}
 		}
-
-		//
-		// Pure draw functions.
-		//
 
 		private static void DrawCircle(int posX, int posY, int r, Color col, bool fill) {
 			var x = r;
@@ -360,7 +360,9 @@ namespace SharedCode.Misc {
 																Vector2 point2, float Layer) {
 
 			float angle = (float)Math.Atan2(point2.Y - point1.Y, point2.X - point1.X);
-			float length = (point2 - point1).Length() + 1;
+			float length = (point2 - point1).Length();
+
+			if (length < 1) length = 1;
 
 			batch.Draw(_empty_texture, point1, null, color,
 								 angle, Vector2.Zero, new Vector2(length, 1),

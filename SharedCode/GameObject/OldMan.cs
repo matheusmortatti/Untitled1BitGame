@@ -6,10 +6,11 @@ using SharedCode.Physics;
 using SharedCode.Graphics;
 
 using Microsoft.Xna.Framework;
+using SharedCode.Misc;
 
 namespace SharedCode {
 	public class OldMan : Enemy {
-		public OldMan(Vector2 position, int spritePosition, List<string> messages) : base(position, new Box(position, new Vector2(8, 8)), spritePosition) {
+		public OldMan(Vector2 position, int spritePosition, Dictionary<string, string> properties) : base(position, new Box(position, new Vector2(8, 8)), spritePosition) {
 			AddComponent(new TopDownPhysics(0, 0, 0.95f));
 			var graphics = new P8TopDownAnimator(P8TopDownAnimator.AnimationMode.SIDES_ONLY);
 			AddComponent(graphics);
@@ -20,9 +21,10 @@ namespace SharedCode {
 
 			doesDamage = false;
 
-			if (messages != null && messages.Count != 0) {
+			if (properties != null && properties.ContainsKey("dialogue")) {
 				var dialoguePos = position - new Vector2(8, 0);
-				GameObjectManager.AddObject(new DialogueArea(dialoguePos, new Box(dialoguePos, new Vector2(24, 16)), this, messages));
+				var dialogue = util.ParseDialogue(properties["dialogue"]);
+				GameObjectManager.AddObject(new DialogueArea(dialoguePos, new Box(dialoguePos, new Vector2(24, 16)), this, dialogue));
 			}
 		}
 

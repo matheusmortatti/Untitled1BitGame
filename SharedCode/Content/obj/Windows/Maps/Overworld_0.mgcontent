@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/mathe/Documents/git/Untitled1BitGame/SharedCode/Content/Maps/Overworld.tsx</SourceFile>
-  <SourceTime>2019-11-07T16:32:03.2611636-08:00</SourceTime>
-  <DestFile>C:/Users/mathe/Documents/git/Untitled1BitGame/SharedCode/Content/bin/Windows/Content/Maps/Overworld_0.xnb</DestFile>
-  <DestTime>2019-11-07T21:57:30.8112373-08:00</DestTime>
+  <SourceTime>2019-11-02T12:33:29.4379472-07:00</SourceTime>
+  <DestFile>C:/Users/mathe/Documents/git/Untitled1BitGame/SharedCode/Content/bin/Windows/Maps/Overworld_0.xnb</DestFile>
+  <DestTime>2019-11-06T16:22:13.8265817-08:00</DestTime>
   <Importer>TiledMapTilesetImporter</Importer>
   <ImporterTime>2019-10-30T15:12:31.5368413-07:00</ImporterTime>
   <Processor>TiledMapTilesetProcessor</Processor>
   <ProcessorTime>2019-10-30T15:12:31.5368413-07:00</ProcessorTime>
   <Dependencies />
   <BuildAsset>
-    <string>C:/Users/mathe/Documents/git/Untitled1BitGame/SharedCode/Content/bin/Windows/Content/Maps/1bitSheet_0.xnb</string>
+    <string>C:/Users/mathe/Documents/git/Untitled1BitGame/SharedCode/Content/bin/Windows/Maps/1bitSheet_0.xnb</string>
   </BuildAsset>
   <BuildOutput />
 </PipelineBuildEvent>

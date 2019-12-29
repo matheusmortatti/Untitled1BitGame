@@ -59,5 +59,9 @@ namespace SharedCode.Misc {
 			lhs = rhs;
 			rhs = temp;
 		}
+
+		public static List<string> ParseDialogue(string dialogue) {
+			return new List<string>(dialogue.Split(';'));
+		}
 	}
 }

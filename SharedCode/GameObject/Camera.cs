@@ -13,7 +13,7 @@ namespace SharedCode {
 
 		private Random random;
 
-		public Matrix TranslationMatrix { get; private set; }
+		public static Matrix TranslationMatrix { get; private set; }
 		public Camera(Vector2 position) : base(position) {
 			transform.position = new Vector2((float)Math.Floor(position.X / 128) * 128,
 																			 (float)Math.Floor(position.Y / 128) * 128);
@@ -59,12 +59,14 @@ namespace SharedCode {
 			GameManager.Pico8.Memory.drawState.Camera();
 			DrawUtility.Camera();
 			TranslationMatrix = Matrix.CreateTranslation(0, 0, 0);
+			GameManager.ResetCamera();
 		}
 
 		public void RestoreCamera() {
 			GameManager.Pico8.Memory.drawState.Camera((int)transform.position.X, (int)transform.position.Y);
 			DrawUtility.Camera((int)transform.position.X, (int)transform.position.Y);
 			TranslationMatrix = Matrix.CreateTranslation(-(int)(transform.position.X), -(int)(transform.position.Y), 0);
+			GameManager.RestoreCamera();
 		}
 
 		public void AddShake(double time) {

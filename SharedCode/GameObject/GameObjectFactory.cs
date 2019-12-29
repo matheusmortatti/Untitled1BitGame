@@ -7,7 +7,7 @@ using SharedCode.Misc;
 
 namespace SharedCode {
 	public static class GameObjectFactory {
-		public static GameObject CreateGameObject(int spriteValue, Vector2 position) {
+		public static GameObject CreateGameObject(int spriteValue, Vector2 position, Dictionary<string, string> properties) {
 			
 
 			switch (spriteValue) {
@@ -23,7 +23,7 @@ namespace SharedCode {
 						}
 					}
 					return GameObjectManager.AddObject(
-							new OldMan(position, spriteValue, messageList)
+							new OldMan(position, spriteValue, properties)
 							);
 				case 98:
 					return GameObjectManager.AddObject(
