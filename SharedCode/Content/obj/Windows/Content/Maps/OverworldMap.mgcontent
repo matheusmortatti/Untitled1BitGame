@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/mathe/Documents/git/Untitled1BitGame/SharedCode/Content/Maps/OverworldMap.tmx</SourceFile>
-  <SourceTime>2019-11-09T23:56:51.8964538-08:00</SourceTime>
+  <SourceTime>2019-12-29T14:05:22.1563843-08:00</SourceTime>
   <DestFile>C:/Users/mathe/Documents/git/Untitled1BitGame/SharedCode/Content/bin/Windows/Content/Maps/OverworldMap.xnb</DestFile>
-  <DestTime>2019-11-10T23:55:34.8699256-08:00</DestTime>
+  <DestTime>2019-12-29T14:05:24.3122604-08:00</DestTime>
   <Importer>TiledMapImporter</Importer>
   <ImporterTime>2019-10-30T15:12:31.5368413-07:00</ImporterTime>
   <Processor>TiledMapProcessor</Processor>
