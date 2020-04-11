@@ -12,10 +12,10 @@ namespace SharedCode.Input {
 		public override void Update(GameObject gameObject, GameTime gameTime) {
 			var interactable = (Interactable)gameObject;
 
-			if ((bool)GameManager.Pico8.Input.Btnp(4)) {
-				interactable.Interact();
-				return;
-			}
+			//if ((bool)GameManager.Pico8.Input.Btnp(4)) {
+			//	interactable.Interact();
+			//	return;
+			//}
 		}
 	}
 }

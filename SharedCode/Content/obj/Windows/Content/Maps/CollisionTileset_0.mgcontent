@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/mathe/Documents/git/Untitled1BitGame/SharedCode/Content/Maps/CollisionTileset.tsx</SourceFile>
-  <SourceTime>2019-10-31T16:54:24.2820977-03:00</SourceTime>
-  <DestFile>C:/Users/mathe/Documents/git/Untitled1BitGame/SharedCode/Content/bin/Windows/Content/Maps/CollisionTileset_0.xnb</DestFile>
-  <DestTime>2019-10-31T16:56:13.665557-03:00</DestTime>
+  <SourceFile>C:/Users/matdi/Documents/git/Untitled1BitGame/SharedCode/Content/Maps/CollisionTileset.tsx</SourceFile>
+  <SourceTime>2020-02-11T10:04:23.0888857-08:00</SourceTime>
+  <DestFile>C:/Users/matdi/Documents/git/Untitled1BitGame/SharedCode/Content/bin/Windows/Content/Maps/CollisionTileset_0.xnb</DestFile>
+  <DestTime>2020-04-10T21:37:58.2705661-07:00</DestTime>
   <Importer>TiledMapTilesetImporter</Importer>
-  <ImporterTime>2019-10-30T19:12:31.5368413-03:00</ImporterTime>
+  <ImporterTime>2019-08-18T10:59:20-07:00</ImporterTime>
   <Processor>TiledMapTilesetProcessor</Processor>
-  <ProcessorTime>2019-10-30T19:12:31.5368413-03:00</ProcessorTime>
+  <ProcessorTime>2019-08-18T10:59:20-07:00</ProcessorTime>
   <Dependencies />
   <BuildAsset>
-    <string>C:/Users/mathe/Documents/git/Untitled1BitGame/SharedCode/Content/bin/Windows/Content/TileMaps/CollisionTilesetImage_0.xnb</string>
+    <string>C:/Users/matdi/Documents/git/Untitled1BitGame/SharedCode/Content/bin/Windows/Content/TileMaps/CollisionTilesetImage_0.xnb</string>
   </BuildAsset>
   <BuildOutput />
 </PipelineBuildEvent>

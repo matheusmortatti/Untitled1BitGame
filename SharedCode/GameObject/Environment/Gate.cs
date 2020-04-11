@@ -99,7 +99,7 @@ namespace SharedCode {
 				//
 
 				var celPos = util.CorrespondingCelIndex(this.transform.position);
-				GameManager.Pico8.Memory.Mset((int)celPos.X, (int)celPos.Y, 0);
+				//GameManager.Pico8.Memory.Mset((int)celPos.X, (int)celPos.Y, 0);
 			},
 			2, 2, this.id
 			);
@@ -115,15 +115,15 @@ namespace SharedCode {
 			if (_openCondition == OpenCondition.KEYS) {
 				switch (keysLeft) {
 					case 3:
-						GameManager.Pico8.Graphics.Spr(13, (int)transform.position.X - 1, (int)transform.position.Y + 6);
+						//GameManager.Pico8.Graphics.Spr(13, (int)transform.position.X - 1, (int)transform.position.Y + 6);
 						DrawUtility.Spr(13, (int)transform.position.X - 1, (int)transform.position.Y + 6);
 						goto case 2;
 					case 2:
-						GameManager.Pico8.Graphics.Spr(13, (int)transform.position.X + 1 + 8, (int)transform.position.Y + 6);
+						//GameManager.Pico8.Graphics.Spr(13, (int)transform.position.X + 1 + 8, (int)transform.position.Y + 6);
 						DrawUtility.Spr(13, (int)transform.position.X + 1 + 8, (int)transform.position.Y + 6);
 						goto case 1;
 					case 1:
-						GameManager.Pico8.Graphics.Spr(13, (int)transform.position.X + 4, (int)transform.position.Y + 6);
+						//GameManager.Pico8.Graphics.Spr(13, (int)transform.position.X + 4, (int)transform.position.Y + 6);
 						DrawUtility.Spr(13, (int)transform.position.X + 4, (int)transform.position.Y + 6);
 						break;
 				}

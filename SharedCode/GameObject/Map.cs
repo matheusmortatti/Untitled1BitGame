@@ -201,7 +201,7 @@ namespace SharedCode {
 		public static Vector2 FindPlayerInMapSheet() {
 			for (int i = 0; i < 128; ++i) {
 				for (int j = 0; j < 64; ++j) {
-					byte val = GameManager.Pico8.Memory.Mget(i, j);
+					byte val = 0; //GameManager.Pico8.Memory.Mget(i, j);
 					if (val == Player.spriteIndex) {
 						return new Vector2(i, j) * 8;
 					}

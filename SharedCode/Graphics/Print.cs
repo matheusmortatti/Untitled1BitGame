@@ -30,18 +30,18 @@ namespace SharedCode.Graphics
                 new Vector2(1, 1),
 
             };
-            foreach(var off in offsets)
-            {
-                GameManager.Pico8.Graphics.Print(message,
-                                            (int)(gameObject.transform.position.X + off.X),
-                                            (int)(gameObject.transform.position.Y + off.Y),
-                                            0);
-            }
+            //foreach(var off in offsets)
+            //{
+            //    GameManager.Pico8.Graphics.Print(message,
+            //                                (int)(gameObject.transform.position.X + off.X),
+            //                                (int)(gameObject.transform.position.Y + off.Y),
+            //                                0);
+            //}
 
-            GameManager.Pico8.Graphics.Print(message, 
-                                            (int)gameObject.transform.position.X,
-                                            (int)gameObject.transform.position.Y,
-                                            col);
+            //GameManager.Pico8.Graphics.Print(message, 
+            //                                (int)gameObject.transform.position.X,
+            //                                (int)gameObject.transform.position.Y,
+            //                                col);
         }
 
         public override void Update(GameObject gameObject, GameTime gameTime)

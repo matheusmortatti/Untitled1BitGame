@@ -60,17 +60,17 @@ namespace SharedCode.Graphics {
 		}
 
 		public override void Draw(GameObject gameObject) {
-			GameManager.Pico8.Graphics.Sspr(
-					spriteX,
-					spriteY,
-					width,
-					height,
-					(int)gameObject.transform.position.X,
-					(int)gameObject.transform.position.Y,
-					screenWidth,
-					screenHeight,
-					flipX,
-					flipY);
+			//GameManager.Pico8.Graphics.Sspr(
+			//		spriteX,
+			//		spriteY,
+			//		width,
+			//		height,
+			//		(int)gameObject.transform.position.X,
+			//		(int)gameObject.transform.position.Y,
+			//		screenWidth,
+			//		screenHeight,
+			//		flipX,
+			//		flipY);
 
 			DrawUtility.Sspr(
 								spriteX,

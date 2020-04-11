@@ -16,11 +16,11 @@ namespace SharedCode.Graphics {
 		}
 
 		public override void Draw(GameObject gameObject) {
-			GameManager.Pico8.Graphics.Line((int)gameObject.transform.position.X,
-																			(int)gameObject.transform.position.Y,
-																			(int)trailPos.X,
-																			(int)trailPos.Y,
-																			this.col);
+			//GameManager.Pico8.Graphics.Line((int)gameObject.transform.position.X,
+			//																(int)gameObject.transform.position.Y,
+			//																(int)trailPos.X,
+			//																(int)trailPos.Y,
+			//																this.col);
 
 			DrawUtility.Line( (int)gameObject.transform.position.X,
 												(int)gameObject.transform.position.Y,

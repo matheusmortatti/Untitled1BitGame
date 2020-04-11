@@ -38,7 +38,7 @@ namespace SharedCode.Graphics {
 		}
 
 		public override void Draw(GameObject gameObject) {
-			GameManager.Pico8.Graphics.Spr(index, (int)gameObject.transform.position.X, (int)gameObject.transform.position.Y, width, height, flipX, flipY);
+			//GameManager.Pico8.Graphics.Spr(index, (int)gameObject.transform.position.X, (int)gameObject.transform.position.Y, width, height, flipX, flipY);
 			DrawUtility.Spr(index, (int)gameObject.transform.position.X, (int)gameObject.transform.position.Y, width, height, flipX, flipY);
 		}
 
@@ -281,14 +281,14 @@ namespace SharedCode.Graphics {
 
 		public override void Draw(GameObject gameObject) {
 			var spr = spriteList[currentIndex];
-			GameManager.Pico8.Graphics.Spr(
-					spr.index,
-					(int)gameObject.transform.position.X,
-					(int)gameObject.transform.position.Y,
-					spr.width,
-					spr.height,
-					spr.flipX,
-					spr.flipY);
+			//GameManager.Pico8.Graphics.Spr(
+			//		spr.index,
+			//		(int)gameObject.transform.position.X,
+			//		(int)gameObject.transform.position.Y,
+			//		spr.width,
+			//		spr.height,
+			//		spr.flipX,
+			//		spr.flipY);
 			DrawUtility.Spr(
 								spr.index,
 								(int)gameObject.transform.position.X,

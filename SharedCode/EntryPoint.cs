@@ -9,8 +9,8 @@ using Microsoft.Xna.Framework.Audio;
 using MonoGame.Extended.Tiled;
 
 using IndependentResolutionRendering;
-using Pico8Emulator;
-using MonoGamePico8.backend;
+//using Pico8Emulator;
+//using MonoGamePico8.backend;
 using System.Diagnostics;
 using MonoGame.Extended.Tiled.Renderers;
 
@@ -32,9 +32,9 @@ namespace SharedCode {
 		/// <summary>
 		/// Defines the pico8
 		/// </summary>
-		internal Emulator pico8;
+		//internal Emulator pico8;
 
-		internal MonoGameGraphicsBackend graphicsBackend;
+		//internal MonoGameGraphicsBackend graphicsBackend;
 
 		/// <summary>
 		/// Defines the screenColorData
@@ -87,35 +87,35 @@ namespace SharedCode {
 
             new Color( 42, 24, 22 ),
 
-						new Color( 17, 29, 53 ),
+			new Color( 17, 29, 53 ),
 
-						new Color( 66, 33, 54 ),
+			new Color( 66, 33, 54 ),
 
-						new Color( 15, 84, 91 ),
+			new Color( 15, 84, 91 ),
 
-						new Color( 116, 47, 40 ),
+			new Color( 116, 47, 40 ),
 
-						new Color( 72, 50, 63 ),
+			new Color( 72, 50, 63 ),
 
-						new Color( 162, 136, 121 ),
+			new Color( 162, 136, 121 ),
 
-						new Color( 242, 239, 124 ),
+			new Color( 242, 239, 124 ),
 
-						new Color( 190, 17, 80 ),
+			new Color( 190, 17, 80 ),
 
-						new Color( 255, 109, 36 ),
+			new Color( 255, 109, 36 ),
 
-						new Color( 169, 231, 46 ),
+			new Color( 169, 231, 46 ),
 
-						new Color( 0, 181, 68 ),
+			new Color( 0, 181, 68 ),
 
-						new Color( 6, 89, 181 ),
+			new Color( 6, 89, 181 ),
 
-						new Color( 117, 70, 102 ),
+			new Color( 117, 70, 102 ),
 
-						new Color( 255, 110, 89 ),
+			new Color( 255, 110, 89 ),
 
-						new Color( 255, 157, 128 )
+			new Color( 255, 157, 128 )
 
 				};
 
@@ -162,11 +162,11 @@ namespace SharedCode {
 
 			rasterizerState = new RasterizerState { MultiSampleAntiAlias = true };
 
-			graphicsBackend = new MonoGameGraphicsBackend(GraphicsDevice);
+			// graphicsBackend = new MonoGameGraphicsBackend(GraphicsDevice);
 
-			pico8 = new Emulator(graphicsBackend, new MonoGameAudioBackend(), new MonoGameInputBackend());	
+			// pico8 = new Emulator(graphicsBackend, new MonoGameAudioBackend(), new MonoGameInputBackend());	
 
-			GameManager.InitGameState(pico8, spriteBatch, GraphicsDevice, Content);
+			GameManager.InitGameState(spriteBatch, GraphicsDevice, Content);
 		}
 
 		/// <summary>
@@ -196,8 +196,8 @@ namespace SharedCode {
 
 				var gt = new GameTime(gameTime.TotalGameTime, new TimeSpan(0, 0, 0, 0, (int)(updateTime * 1000)));
 				GameManager.Update(gt);
-				pico8.Update30();
-				pico8.Update60();
+				//pico8.Update30();
+				//pico8.Update60();
 			}
 
 			frameCounter.Update((float)dt);
@@ -233,9 +233,9 @@ namespace SharedCode {
 				//		Camera.TranslationMatrix * Resolution.getTransformationMatrix());
 
 				GameManager.Draw();
-				pico8.Draw();
-				pico8.Graphics.Flip();
-				pico8.Graphics.Cls(null);
+				//pico8.Draw();
+				//pico8.Graphics.Flip();
+				//pico8.Graphics.Cls(null);
 				//spriteBatch.Draw(graphicsBackend.Surface, new Rectangle(0, 0, 128, 128), Color.White);
 
 				//spriteBatch.End();

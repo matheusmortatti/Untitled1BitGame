@@ -15,10 +15,10 @@ namespace SharedCode.Graphics {
 		}
 
 		public override void Draw(GameObject gameObject) {
-			GameManager.Pico8.Graphics.Circfill((int)gameObject.transform.position.X,
-																					(int)gameObject.transform.position.Y,
-																					this.radius,
-																					this.col);
+			//GameManager.Pico8.Graphics.Circfill((int)gameObject.transform.position.X,
+			//																		(int)gameObject.transform.position.Y,
+			//																		this.radius,
+			//																		this.col);
 			DrawUtility.Circfill((int)gameObject.transform.position.X,
 													 (int)gameObject.transform.position.Y,
 													 this.radius,

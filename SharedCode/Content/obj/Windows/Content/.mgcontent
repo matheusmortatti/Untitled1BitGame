@@ -5,8 +5,10 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/matdi/Documents/git/Untitled1BitGame/SharedCode/Content/Maps/1bitSheet.png</File>
+    <File>C:/Users/matdi/Documents/git/Untitled1BitGame/SharedCode/Content/Maps/OverworldMap.tmx</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

@@ -45,12 +45,12 @@ namespace SharedCode.Misc {
 			var digits = num.ToString().Length;
 			int x2 = x1 + 3 * (int)digits + (int)digits - 1 + 3, y2 = y1 + 8;
 
-			GameManager.Pico8.Graphics.Rectfill(x1, y1, x2, y2, 0);
+			//GameManager.Pico8.Graphics.Rectfill(x1, y1, x2, y2, 0);
 
-			if (border)
-				GameManager.Pico8.Graphics.Rect(x1, y1, x2, y2, numCol);
+			//if (border)
+				//GameManager.Pico8.Graphics.Rect(x1, y1, x2, y2, numCol);
 
-			GameManager.Pico8.Graphics.Print(num, x1 + 2, y1 + 2, numCol);
+			//GameManager.Pico8.Graphics.Print(num, x1 + 2, y1 + 2, numCol);
 		}
 
 		public static void Swap<T>(ref T lhs, ref T rhs) {

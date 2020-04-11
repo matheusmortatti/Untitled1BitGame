@@ -27,8 +27,8 @@ namespace SharedCode.Graphics
 
             var x = (int)(gameObject.transform.position.X + _offset.X);
             var y = (int)(gameObject.transform.position.Y + _offset.Y);
-            GameManager.Pico8.Graphics.Rectfill(x, y, x + _size, y + 1, col);
-            GameManager.Pico8.Graphics.Rect(x - 1, y - 1, x + _size + 1, y + 1, 0);
+            //GameManager.Pico8.Graphics.Rectfill(x, y, x + _size, y + 1, col);
+            //GameManager.Pico8.Graphics.Rect(x - 1, y - 1, x + _size + 1, y + 1, 0);
         }
 
         public override void Update(GameObject gameObject, GameTime gameTime)

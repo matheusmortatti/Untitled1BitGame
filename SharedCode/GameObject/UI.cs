@@ -31,9 +31,9 @@ namespace SharedCode
             var life = player == null ? 0 : Math.Floor(player.lifeTime);
             var digits = life.ToString().Length;
             int x1 = 4, y1 = 4, x2 = x1 + 3 * (int)digits + (int)digits - 1 + 3, y2 = y1 + 8;
-            GameManager.Pico8.Graphics.Rectfill(x1, y1, x2, y2, 0);
-            GameManager.Pico8.Graphics.Rect(x1, y1, x2, y2, 9);
-            GameManager.Pico8.Graphics.Print(life, x1 + 2, y1 + 2, 9);
+            //GameManager.Pico8.Graphics.Rectfill(x1, y1, x2, y2, 0);
+            //GameManager.Pico8.Graphics.Rect(x1, y1, x2, y2, 9);
+            //GameManager.Pico8.Graphics.Print(life, x1 + 2, y1 + 2, 9);
 
             camera.RestoreCamera();
         }

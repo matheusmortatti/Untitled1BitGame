@@ -5,7 +5,6 @@ using IndependentResolutionRendering;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Pico8Emulator;
 using SharedCode.Misc;
 using SharedCode.Particles;
 
@@ -21,7 +20,7 @@ namespace SharedCode {
 			GameObjectManager.RemoveAllObjects();
 			ParticleManager.RemoveAllParticles();
 
-			GameManager.Pico8.CartridgeLoader.Load("untitled1bitgame.p8");
+			// GameManager.Pico8.CartridgeLoader.Load("untitled1bitgame.p8");
 
 			Vector2 playerPosition = Map.FindPlayerInMapSheet();
 			GameObjectManager.AddObject(new Camera(playerPosition));
@@ -42,8 +41,6 @@ namespace SharedCode {
 
 	public static class GameManager {
 		private static GameStateMachine stateMachine;
-
-		public static Emulator Pico8 { get; private set; }
 		public static SpriteBatch SpriteBatch { get; private set; }
 		public static GraphicsDevice GraphicsDevice { get; private set; }
 		public static ContentManager Content { get; private set; }
@@ -53,8 +50,7 @@ namespace SharedCode {
 		public static Random random = new Random();
 		private static RasterizerState _rasterizerState = new RasterizerState { MultiSampleAntiAlias = true };
 
-		public static void InitGameState(Emulator pico8, SpriteBatch spriteBatch, GraphicsDevice graphicsDevice, ContentManager content) {
-			Pico8 = pico8;
+		public static void InitGameState(SpriteBatch spriteBatch, GraphicsDevice graphicsDevice, ContentManager content) {
 			SpriteBatch = spriteBatch;
 			GraphicsDevice = graphicsDevice;
 			Content = content;
@@ -115,13 +111,13 @@ namespace SharedCode {
 						null,
 						Resolution.getTransformationMatrix());
 
-			if (Debug.debugMode) {
-				Pico8.Graphics.Rectfill(3, 119, 64, 125, 0);
-				Pico8.Graphics.Print(framerate.ToString("0.##"), 4, 120, 14);
-				Pico8.Graphics.Print(GameObjectManager.numberOfObjects, 32, 120, 14);
-				Pico8.Graphics.Print(TaskScheduler.numberOfTasks, 42, 120, 14);
-				Pico8.Graphics.Print(ParticleManager.numberOfParticles, 52, 120, 14);
-			}
+			//if (Debug.debugMode) {
+			//	Pico8.Graphics.Rectfill(3, 119, 64, 125, 0);
+			//	Pico8.Graphics.Print(framerate.ToString("0.##"), 4, 120, 14);
+			//	Pico8.Graphics.Print(GameObjectManager.numberOfObjects, 32, 120, 14);
+			//	Pico8.Graphics.Print(TaskScheduler.numberOfTasks, 42, 120, 14);
+			//	Pico8.Graphics.Print(ParticleManager.numberOfParticles, 52, 120, 14);
+			//}
 
 			cam?.RestoreCamera();
 
