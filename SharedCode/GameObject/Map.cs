@@ -10,6 +10,10 @@ using SharedCode.Misc;
 
 namespace SharedCode {
 	public class Map : GameObject {
+		public int tileWidth;
+		public int tileHeight;
+		public int width, height;
+
 		private Vector2 currentIndex;
 		private List<GameObject> toDestroy;
 
@@ -35,9 +39,11 @@ namespace SharedCode {
 			// Load tilemap information to an easier accessible format.
 			//
 
-			var mapWidth = _loadedMap.Width;
-			var mapHeight = _loadedMap.Height;
-			var mapSize = mapWidth * mapHeight;
+			tileWidth = _loadedMap.TileWidth;
+			tileHeight = _loadedMap.TileHeight;
+			width = _loadedMap.Width;
+			height = _loadedMap.Height;
+			var mapSize = width * height;
 
 			// Init data structures.
 			_isSolid = new bool[mapSize];
@@ -64,7 +70,7 @@ namespace SharedCode {
 				obj.Tile.Properties.TryGetValue("IsSolid", out solid);
 
 				// Is solid if the "IsSolid" property is not null.
-				_isSolid[(int)objPos.Y * mapWidth + (int)objPos.X] = solid.Length != 0;
+				_isSolid[(int)objPos.Y * width + (int)objPos.X] = solid.Length != 0;
 			}
 
 			//
@@ -87,13 +93,7 @@ namespace SharedCode {
 				_gameObjects[objPos] = obj;
 			}
 
-			//
-			// Set current index and instantiate entities.
-			//
-
-			currentIndex = new Vector2((float)Math.Floor(position.X / 128),
-																 (float)Math.Floor(position.Y / 128));
-			InstantiateEntities(currentIndex);
+			SetCurrentIndex();
 
 			depth = -1000;
 		}
@@ -149,6 +149,10 @@ namespace SharedCode {
 					layer,
 					Camera.TranslationMatrix * Resolution.getTransformationMatrix());
 			}
+		}
+
+		public void InstantiateEntities() {
+			InstantiateEntities(currentIndex);
 		}
 
 		public void InstantiateEntities(Vector2 screenIndex) {
@@ -209,6 +213,32 @@ namespace SharedCode {
 			}
 
 			return Vector2.Zero;
+		}
+
+		public Vector2 FindInMapSheet(int spriteIndex)
+		{
+			foreach (var pair in _gameObjects)
+			{
+				if (pair.Value.Tile.LocalTileIdentifier.Equals(spriteIndex))
+				{
+					return pair.Key;
+				}
+			}
+
+			return Vector2.Zero;
+		}
+
+		public void SetPosition(Vector2 position)
+		{
+			this.transform.position = position;
+			SetCurrentIndex();
+		}
+
+		private void SetCurrentIndex()
+		{
+			currentIndex = new Vector2(
+				(float)Math.Floor(this.transform.position.X / 128),
+				(float)Math.Floor(this.transform.position.Y / 128));
 		}
 	}
 }

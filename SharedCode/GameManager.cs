@@ -22,9 +22,16 @@ namespace SharedCode {
 
 			// GameManager.Pico8.CartridgeLoader.Load("untitled1bitgame.p8");
 
-			Vector2 playerPosition = Map.FindPlayerInMapSheet();
+			var map = new Map(Vector2.Zero, "Maps/OverworldMap");
+			GameObjectManager.AddObject(map);
+
+			Vector2 playerPosition = map.FindInMapSheet(Player.spriteIndex);
+			playerPosition.X *= map.tileWidth;
+			playerPosition.Y *= map.tileHeight;
+			map.SetPosition(playerPosition);
+			map.InstantiateEntities();
+
 			GameObjectManager.AddObject(new Camera(playerPosition));
-			GameObjectManager.AddObject(new Map(playerPosition, "Maps/OverworldMap"));
 			GameObjectManager.AddObject(new UI());
 			GameObjectManager.AddObject(new ScreenTransition(1, () => { }, ScreenTransition.TransitionEffect.FadeIn));
 
